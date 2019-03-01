@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>655</width>
+    <height>526</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Довідник C++/Qt User</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/new/ico.ico</normaloff>:/new/ico.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+border-image: url(:/new/fone.png) 0 0 0 0 stretch stretch;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="spacing">
+     <number>7</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetDefaultConstraint</enum>
+    </property>
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <family>Tahoma</family>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#label{
+background-color: none;
+color: white;
+padding-left: 10px;
+}
+#label:hover{
+color: #8C46E7;
+}</string>
+      </property>
+      <property name="text">
+       <string>       &lt;h3&gt;Зміст:&lt;/h3&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QTreeWidget" name="treeWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>460</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTreeWidget{
+    border-radius: 5px;
+    color: #fff;
+    background-color:  rgba(28,22,22,0.6);
+    padding: 10px;
+}
+QTreeWidget::item:open{
+ background-color: rgba(28,22,22,0.4);
+}
+QTreeWidget::item{
+     border-radius: 5px;
+     padding: 6px;
+}
+QTreeWidget::item:hover{
+background-color: #6E37B6;
+}
+QTreeWidget::item:selected{
+    background-color: #551E9D;
+   color: white;
+}
+QTreeWidget::branch:closed:has-children{
+image: url(:/new/arrow_close2.png);
+}
+QTreeWidget::branch:open{
+image: url(:/new/arrow_open2.png);
+}</string>
+        </property>
+        <property name="autoScroll">
+         <bool>true</bool>
+        </property>
+        <property name="animated">
+         <bool>true</bool>
+        </property>
+        <property name="expandsOnDoubleClick">
+         <bool>false</bool>
+        </property>
+        <attribute name="headerVisible">
+         <bool>false</bool>
+        </attribute>
+        <column>
+         <property name="text">
+          <string notr="true">1</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButton_open">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>77</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>95</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Tahoma</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+ /* background-color: rgb(255, 151, 57); */
+border-radius: 5px;
+margin:1.5px;
+color: #fff;
+background-color: #8C46E7;
+
+}
+QPushButton:hover  {
+background-color: #6E37B6;
+margin: 0px;
+}
+QPushButton:pressed{
+background-color: #551E9D;
+}</string>
+          </property>
+          <property name="text">
+           <string>Відкрити</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_add">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>77</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>95</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Tahoma</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+ /* background-color: rgb(255, 151, 57); */
+border-radius: 5px;
+margin:1.5px;
+color: #fff;
+background-color: #8C46E7;
+
+}
+QPushButton:hover  {
+background-color: #6E37B6;
+margin: 0px;
+}
+QPushButton:pressed{
+background-color: #551E9D;
+}</string>
+          </property>
+          <property name="text">
+           <string>Добавити</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_delete">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>77</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>95</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Tahoma</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+ /* background-color: rgb(255, 151, 57); */
+border-radius: 5px;
+margin:1.5px;
+color: #fff;
+background-color: #8C46E7;
+
+}
+QPushButton:hover  {
+background-color: #6E37B6;
+margin: 0px;
+}
+QPushButton:pressed{
+background-color: #551E9D;
+}</string>
+          </property>
+          <property name="text">
+           <string>Видалити</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_web">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>77</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>95</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Tahoma</family>
+            <pointsize>10</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+ /* background-color: rgb(255, 151, 57); */
+border-radius: 5px;
+margin:1.5px;
+color: #fff;
+background-color: #8C46E7;
+
+}
+QPushButton:hover  {
+background-color: #6E37B6;
+margin: 0px;
+}
+QPushButton:pressed{
+background-color: #551E9D;
+}</string>
+          </property>
+          <property name="text">
+           <string>Сайт</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>655</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Управління</string>
+    </property>
+    <addaction name="action_login"/>
+    <addaction name="action_logout"/>
+    <addaction name="action_collapse"/>
+    <addaction name="action_quit"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Опції</string>
+    </property>
+    <addaction name="select2"/>
+    <addaction name="add2"/>
+    <addaction name="delete2"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Довідка</string>
+    </property>
+    <addaction name="help2"/>
+    <addaction name="me"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_login"/>
+   <addaction name="action_logout"/>
+   <addaction name="help2"/>
+   <addaction name="me"/>
+   <addaction name="action_collapse"/>
+   <addaction name="action_quit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar{
+  color: white;
+  background-color:  rgba(28,22,22,0.6);
+}</string>
+   </property>
+  </widget>
+  <action name="action_login">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/sign_in.png</normaloff>:/new/sign_in.png</iconset>
+   </property>
+   <property name="text">
+    <string>Увійти</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="action_logout">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/sign_out.png</normaloff>:/new/sign_out.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вийти</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="select2">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/select.png</normaloff>:/new/select.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відкрити</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
+   </property>
+  </action>
+  <action name="add2">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/add.png</normaloff>:/new/add.png</iconset>
+   </property>
+   <property name="text">
+    <string>Добавити</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="delete2">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/delete1.png</normaloff>:/new/delete1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Видалити</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="help2">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/help.png</normaloff>:/new/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Про програму</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/quit.png</normaloff>:/new/quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Закрити</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_collapse">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/collapse.png</normaloff>:/new/collapse.png</iconset>
+   </property>
+   <property name="text">
+    <string>Згорнути</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="me">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/new/Author1.png</normaloff>:/new/Author1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Про автора</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

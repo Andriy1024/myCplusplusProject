@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Kласи компонування</h1></center>
+        <br>
+        <p>Система компоновки Qt надає простий і потужний спосіб автоматичного розміщення дочірніх віджетів всередині віджета щоб гарантувати, що вони з користю використовують доступне простір.</p>
+        <h2>Вступ</h2>
+        <p>Qt включає в себе набір класів управління компонуванням (layout management), які використовуються для опису того, як віджети розташовані в інтерфейсі програми. Ці компонування автоматично позиціонують і змінюють розмір віджетів, коли обсяг доступного простір для них змінюється, гарантуючи що вони однаково розташовані і що призначений для користувача інтерфейс як ціле залишається придатним до використання.</p>
+        <p>Все підкласи QWidget можуть використовувати компонування для управління своїми дочірніми елементами. Функція QWidget :: setLayout () прив'язує компоновку до віджету. Коли компоновка встановлена ​​на віджеті цим способом, вона приймає на себе управління наступними завданнями:</p>
+        <p>Позиціонування дочірніх віджетів.<br>За умовчанням встановлюються розумні розміри вікон.<br>Розумні мінімальні розміри вікон.<br>Обробка зміни розмірів.<br>Автоматичне оновлення, коли вміст змінилося:</p>
+        <p>Розміру шрифту, тексту або іншого вмісту дочірніх віджетів.<br>Приховування або відображення дочірніх віджетів.<br>Видалення дочірніх віджетів.</p>
+        <p>Класи компонування Qt були спроектовані для введення коду C ++ вручну, дозволяючи для простоти задавати розміри в пікселях, тому їх легше розуміти і використовувати. Код, згенерований для форм, створених за допомогою Qt Designer'а, також використовує класи компоновки. Qt Designer корисний при використанні, коли проводяться експерименти з дизайном форм без компіляції, компонування і робочого циклу, зазвичай пов'язаного з розробкою користувальницького інтерфейсу.</p>
+        <h2>Горизонтальний, вертикальний, компонувальник з сіткою і компонувальник форми</h2>
+        <p>Найлегший спосіб завдання правильного розташування віджетів полягає у використанні вбудованих менеджерів компонування: QHBoxLayout, QVBoxLayout, QGridLayout і QFormLayout. Ці класи успадковані від QLayout, який, в свою чергу, походить від QObject (а не від QWidget). Вони беруть на себе турботи по управлінню геометрією безлічі віджетів. Для створення більш складних компоновок ви можете поміщати менеджери компоновок один в одного.</p>
+        <p>QHBoxLayout має віджети в горизонтальну лінію з напрямком розміщення зліва направо (або справа наліво для мов з написанням справа наліво).</p>
+        <br><center><img src="html_files/images/comp1.png"></center><br>
+        <p>QVBoxLayout має віджети в вертикальну лінію з напрямком зверху вниз.</p>
+        <br><center><img src="html_files/images/comp2.png"></center><br>
+        <p>QGridLayout має віджети в двовимірної сітці. Віджети можуть займати кілька осередків.</p>
+        <br><center><img src="html_files/images/comp3.png"></center><br>
+        <p>QFormLayout має віджети в 2-столбцовую наочному стилі мітка-поле.</p>
+        <br><center><img src="html_files/images/comp4.png"></center><br>
+        <h2>Розміщення віджетів в коді</h2>
+        <p>У наступному коді створюється QHBoxLayout, керуючий геометрією п'яти QPushButton, як це показано на першому скріншоті:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QWidget *window = new QWidget; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button1 = new QPushButton("One"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button2 = new QPushButton("Two"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button3 = new QPushButton("Three"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button4 = new QPushButton("Four"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button5 = new QPushButton("Five"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHBoxLayout *layout = new QHBoxLayout; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button2); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button3); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button4); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button5); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; window->setLayout(layout); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; window->show(); &nbsp;&nbsp;</ex></p>
+        <p>Код для QVBoxLayout ідентичний, за винятком рядка, в якій створюється компонувальник. Код для QGridLayout трохи інший, так як ми повинні задавати рядки і стовпці, в яких розташовуються дочірні віджети:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QWidget *window = new QWidget; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button1 = new QPushButton("One"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button2 = new QPushButton("Two"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button3 = new QPushButton("Three"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button4 = new QPushButton("Four"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton *button5 = new QPushButton("Five"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  QGridLayout *layout = new QGridLayout; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button1, 0, 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button2, 0, 1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button3, 1, 0, 1, 2); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button4, 2, 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; layout->addWidget(button5, 2, 1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; window->setLayout(layout); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; window->show(); &nbsp;&nbsp;</ex></p>
+        <p>Третій віджет QPushButton розтягується на 2 колонки. Це задається за допомогою передачі числа 2 в якості п'ятого аргументу в QGridLayout :: addWidget ().</p>
+        <h2>Поради щодо використання компоновок</h2>
+        <p>Якщо ви використовуєте компонувальник, то при створенні дочірніх віджетів ви не повинні передавати батька в їх конструктор. Компоновщик автоматично змінить батька віджетів (використовуючи QWidget :: setParent ()), так, щоб вони стали дочірніми віджетами по відношенню до віджету, на якому він (компоновщик) встановлено.</p>
+        <p>Зауваження: компонований віджети є дочірніми віджетами по відношенню до віджету, на якому розташований компоновщик, а не по відношенню до самого компонувальнику. Віджети можуть мати в якості батька інший віджет, але не компоновщик.</p>
+        <p>Ви можете вставляти компоновщики в інший компоновщик за допомогою addLayout () (); в цьому випадку внутрішній компонувальник стає дочірнім по відношенню до зовнішнього.</p>
+        <h2>Додавання віджетів в компоновщик</h2>
+        <p>При додаванні віджету в компоновщик, компонувальник виконує наступні дії:</p>
+        <p> 1. Всі віджети спочатку розміщуються на просторі, відповідному їх QWidget :: sizePolicy () і QWidget :: sizeHint ().</p>
+        <p> 2. Якщо будь-які з віджетів мають значення коефіцієнтів розтягування більше, ніж нуль, то такі віджети займають вільне місце відповідно до їх коефіцієнтами розтягування (пояснення нижче).</p>
+        <p> 3. Якщо будь-які з віджетів мають значення коефіцієнта розтягування рівне нулю, то ці віджети отримують додаткове місце тільки в тому випадку, якщо на додаткове місце не претендують інші віджети. Додаткове місце спершу віддається тим з цих віджетів, у яких політика розміру містить Expanding.</p>
+        <p> 4. Будь-які віджети, які займають менше місця, ніж того вимагає їх мінімальний розмір (або мінімального місця при відсутності заданого мінімального розміру) розташовуються на мінімальному необхідному просторі. (Віджети не мають мінімального розміру або переваги мінімального розміру, якщо заданий коефіцієнт їх розтягування.)</p>
+        <p> 5. Будь-які віджети, які займають більше місця, ніж їх максимальний розмір, розміщуються на просторі, необхідному їх максимальним розміром. (Віджети не мають максимального розміру або переваги максимального розміру, якщо заданий коефіцієнт їх розтягування.)</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Шаблони функцій в С++</h1></center>
+        <br>
+        <p>
+Шаблони функцій, своїми словами,- Це інструкції, згідно з якими створюються локальні версії шаблованої функції для певного набору параметрів і типів даних.</p>
+         <p>Насправді, шаблони функцій -це потужний інструмент у С , який значно спрощує роботу програміста. Наприклад, нам потрібно запрограмувати функцію, яка виводила б на екран елементи масиву. Завдання не складне! Але, щоб написати таку функцію, ми повинні знати тип даних масиву, який будемо виводити на екран. І тут нам говорять – тип даних не один, ми хочемо, щоб функція виводила масиви типу int, double, float і char.</p>
+         <p>Як виявилося, завдання ускладнилося. І тепер ми розуміємо, що нам потрібно запрограмувати цілих 4 функції, які виконують одні й ті ж дії, але для різних типів даних. Так як ми ще не знайомі з шаблонами функцій, ми поступимо так: скористаємося перевантаженням функцій.</p>
+         <p><ex class="ex">&nbsp;&nbsp; // перевантаження функції printArray для виведення масиву на екран &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; void printArray(const int * array, int count) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; for (int ix = 0; ix < count; ix++) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; array[ix] &lt;&lt; "   "; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp;  cout &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; void printArray(const double * array, int count) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; for (int ix = 0; ix < count; ix++) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; array[ix] &lt;&lt; "   "; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+         <p>Таким чином, ми маємо 4 перевантажені функції, для різних типів даних. Як бачите, вони відрізняються тільки заголовком функції, тіло у них абсолютно однакове. Я написав один раз тіло функції для типу int і три рази його скопіював для інших типів даних.</p>
+         <p>І, якщо запустити програму з цими функціями, то вона буде справно працювати. Компілятор сам визначатиме яку функцію використовувати при виклику.</p>
+         <p>Як бачите, коду вийшло досить багато, як для такої простої операції. А що якщо, нам знадобиться запрограмувати алгоритм сортування у вигляді функції. Виходить, що для кожного типу даних доведеться свою функцію створювати. Тобто, самі розумієте, що один і той же код буде в кількох примірниках, нам це ні до чого. Тому в С придуманий такий механізм - шаблони функцій.</p>
+         <p>Ми створюємо один шаблон, в якому описуємо всі типи даних. Таким чином вихідний код НЕ БУДЕ захаращуватися нікому не потрібними рядками коду. Нижче розглянемо приклад програми з шаблоном функції. Отже, згадаємо умову: “запрограмувати функцію, яка виводила б на екран елементи масиву”.</p>
+         <p><ex class="ex">&nbsp;&nbsp; #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; #include &lt;iostream> &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; #include &lt;cstring> &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; // шаблон функциї printArray &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; template &lt;typename T> &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; void printArray(const T * array, int count) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; for (int ix = 0; ix &lt; count; ix++) &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; array[ix] &lt;&lt; "   "; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; } // кінець шаблону функції printArray &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; int main() &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; // розміри масивів&nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; const int iSize = 10,dSize = 7; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; // масиви різних типів даних&nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; int    iArray[iSize] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; double dArray[dSize] = {1.2345, 2.234, 3.57, 4.67876, 5.346, 6.1545, 7.7682}; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt;"\t\t Шаблон функції виведення масиву на екран\n\n"; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; // виклик локальної версії функції printArray для типу int через шаблон &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "\nМассив типу int:\n"; printArray(iArray, iSize); &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; //виклик локальної версії функції printArray для типу double через шаблон &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "\nМассив типу double:\n"; printArray(dArray, dSize); &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+         <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+         <p>Всі шаблони функцій починаються зі слова template, після якого йдуть кутові дужки, в яких перераховується список параметрів. Кожному параметру повинно передувати зарезервоване слово class або typename.</p>
+         <p><ex class="ex">&nbsp;&nbsp; template &lt;class T> &nbsp;&nbsp;</ex></p>
+            <p>або</p>
+         <p><ex class="ex">&nbsp;&nbsp; template &lt;typename T> &nbsp;&nbsp;</ex></p>
+            <p>або</p>
+         <p><ex class="ex">&nbsp;&nbsp; template &lt;typename T1, typename T2> &nbsp;&nbsp;</ex></p>
+         <p>Ключове слово typename говорить про те, що в шаблоні буде використовуватися вбудований тип даних, такий як: int, double, float, char і т. д. А ключове слово class повідомляє компілятору, що в шаблоні функції як параметр будуть використовуватися для користувача типи даних, тобто класи.</p>
+         <p>Шаблони функцій також можна перевантажувати іншими шаблонами функцій, змінивши кількість переданих параметрів у функцію. Ще однією особливістю перевантаження є те, що шаблонні функції можуть бути перевантажені зазвичай не шаблонними функціями. Тобто вказується те ж саме ім'я функції, з тими ж параметрами, але для певного типу даних, і все буде коректно працювати.</p>
+    </div>
+</body>
+</html>

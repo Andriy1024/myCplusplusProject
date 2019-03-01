@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Структури в С++</h1></center>
+        <br>
+        <p>Якщо ви читаєте цю статтю, то звичайно досить багато вже знаєте про типах даних мови С++ . А тепер тільки уявіть – ви самі можете створювати, свого роду, типи даних, які вам необхідні і з якими вам буде зручно працювати! І це нескладно!</p>   
+        <p>Структура – це , якесь об'єднання різних змінних (навіть з різними типами даних), якому можна присвоїти ім'я. Наприклад можна об'єднати дані про об'єкт Будинок: місто (в якому будинок знаходиться), вулиця, кількість квартир, інтернет(проведено чи ні) і т.д. в одній структурі. Загалом, можна зібрати в одну сукупність дані про все, що завгодно, точніше про все, що необхідно конкретному програмісту. Всім відразу стало зрозуміло :)</p>
+        <p>Якщо ви вперше до знайомству зі структурами в С , спочатку, вам необхідно ознайомитися з синтаксисом структур в мові С . Розглянемо простий приклад, який допоможе познайомитися зі структурами і покаже, як з ними працювати. У цій програмі ми створимо структуру, створимо об'єкт структури, заповнимо значеннями елементи структури (дані про об'єкт) і виведемо ці значення на екран. Ну що ж, приступимо!</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; struct building     //створюєм структуру! &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char *owner;       //тут буде зберігатися ім'я власника &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char *city;        //назва міста &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int amountRooms;   //кількість кiмнат &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; float price;       //цiна &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; setlocale (LC_ALL, "ukr") &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; building apartment1;   //це об'єкт структури з типом даних, ім'ям структури, building &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; apartment1.owner = "Денис"; //заповнюємо дані про власника і т.д. &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; apartment1.city = "Сiмферополь"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; apartment1.amountRooms = 5; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; apartment1.price = 150000; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Власник квартири: " &lt;&lt; apartment1.owner &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Квартира знаходиться в місті: " &lt;&lt; apartment1.city &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Кількість кімнат
+: " &lt;&lt; apartment1.amountRooms &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "вартість: " &lt;&lt; apartment1.price &lt;&lt; " $" &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Коментарі за кодом програми:</h2>
+        <p>В рядках 4 – 10 ми створюємо структуру. Щоб її оголосити використовуємо зарезервоване слово struct і даємо їй будь, бажано логічне, ім'я. У нашому випадку – building. З правилами іменування змінних, ви можете ознайомитися в цій статті. Далі відкриваємо фігурну дужку { , перераховуємо 4 елемента структури через крапку з комою ; , закриваємо фігурну дужку } і в завершенні ставимо крапку з комою ;. Це буде нашим шаблоном (формою) структури.</p>
+        <p>В рядку 16 оголошуємо об'єкт структури. Як і для звичайних змінних, необхідно оголосити тип даних. У цій якості виступить ім'я нашої створеної структури – building.</p>
+        <p>Як же заповнити даними (инициализировать) елементи структури? Синтаксис такий: Ім'я об'єкта далі оператор крапка . і ім'я елемента структури. Наприклад: apartment1.owner. Таким чином, в рядках 18-21 присвоюємо дані елементам структури.</p>
+        <p>Отже, дані ми внесли. Наступне питання: “Як до них звернутися, як працювати і використовувати їх в програмі?” Відповідь – “Дуже просто – так само, як і при ініціалізації, використовуючи точку . і ім'я елемента структури”. В рядках 23 – 26 виводимо заповнені елементи структури на екран.</p>
+        <h2>Що ще важливо знати:</h2>
+        <p>Об'єкт структури можна оголосити до функції main().</p>
+        <p>Ініціалізувати структуру можна і таким способом:</p>
+        <p><ex class="ex">&nbsp;&nbsp; building apartment1 = {"Денис", "Сiмферополь", 5, 150000}; &nbsp;&nbsp;</ex></p>
+        <p>труктуру можна вкладати в інші структури.</p>
+        <p>через покажчик до елементу структури потрібно звертатися використовуючи оператор -> ; У прикладі це буде так: apartment0->owner, але можна і так (*apartment0).owner. Круглі скобки, у другому випадку, обов'язкові.</p>
+        <p>Ось так, коротко, ми познайомилися зі структурами в мові С++ , попрактикували на прикладах і дізналися основи. Це тільки початок!</p>
+    </div>
+</body>
+</html>

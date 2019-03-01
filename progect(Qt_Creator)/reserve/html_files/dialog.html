@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Діалогові вікна</h1></center>
+        <br>
+        <p>Програма, показана на малюнку, є результатом створення власного діалогового вікна. При запуску на екрані вікно з кнопкою Press Me (Натисни мене), натискання на яку відображає діалогове вікно введення імені First Name (Ім'я) і прізвища Last Name (Прізвище).</p>
+        <p><ex class="ex">&nbsp;&nbsp; // Файл main.cpp &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QApplication> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "StartDialog.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char** argv) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QApplication app(argc, argv); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; StartDialog  startDialog; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; startDialog.setMinimumWidth(200); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; startDialog.show(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return app.exec(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>У файлі main.cpp створюється віджет класу StartDialog, призначений для запуску діалогового вікна.</p>
+        <br><center><img src="./debug/html_files/images/dialog.png"></center><br>
+        <p><ex class="ex">&nbsp;&nbsp; // Файл StartDialog.h &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #ifndef _StartDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #define _StartDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QtGui> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "InputDialog.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class StartDialog : public QPushButton { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Q_OBJECT &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  StartDialog(QWidget* pwgt = 0) : QPushButton("Press Me", pwgt)  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; connect(this, SIGNAL(clicked()), SLOT(slotButtonClicked())); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public slots: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void slotButtonClicked() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  InputDialog* pInputDialog = new InputDialog; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (pInputDialog->exec() == QDialog::Accepted) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMessageBox::information(0,"Information","First Name: "+ pInputDialog->firstName()+ "\nLast Name: "+ pInputDialog->lastName());  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; delete pInputDialog; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #endif  //_StartDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p>Клас StartDialog успадкований від класу кнопки натискання. Сигнал clicked () з'єднується в методі connect () зі слотом slotButtonClicked (). У цьому слоті створюється об'єкт діалогового вікна InputDialog, який не має предка.</p>
+        <p>Примітка: Діалогові вікна, що не має предка, будуть центрироваться по екрану. Вікна з предками будуть відцентровані щодо предка.</p>
+        <p>В операторі if проводиться запуск діалогового вікна. Після його закриття управління передається основній програмі і метод exec () повертає значення, утримуючи користувачем кнопки. У тому випадку, якщо користувачем була натиснута кнопка Ok, відбудеться відображення інформаційного вікна з введеними в діалоговому вікні даними. По завершенні методу діалогове вікно потрібно видалити самому, так як у нього немає предка, який подбає про це.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // Файл  InputDialog.h &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #ifndef _InputDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #define _InputDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QDialog> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class QLineEdit; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class InputDialog : public QDialog { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Q_OBJECT &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; private: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QLineEdit* m_ptxtFirstName; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QLineEdit* m_ptxtLastName; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  InputDialog(QWidget* pwgt = 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  QString firstName() const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString lastName () const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #endif  //_InputDialog_h_ &nbsp;&nbsp;</ex></p>
+        <p>Для створення свого власного діалогового вікна потрібно успадкувати клас QDialog. Клас InputDialog містить два атрибути - покажчики m_ptxtFirstName і m_ptxtLastName на віджети однострочного текстового поля, і два методи, які повертають вміст цих полів - firstName () і lastName ().</p>
+        <p><ex class="ex">&nbsp;&nbsp; //  Файл InputDialog.cpp &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QtGui> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "InputDialog.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; InputDialog::InputDialog(QWidget* pwgt/*= 0*/) : QDialog(pwgt, Qt::WindowTitleHint | Qt::WindowSystemMenuHint) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; m_ptxtFirstName = new QLineEdit; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; m_ptxtLastName  = new QLineEdit; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QLabel* plblFirstName    = new QLabel("&First Name"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QLabel* plblLastName     = new QLabel("&Last Name"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; plblFirstName->setBuddy(m_ptxtFirstName); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; plblLastName->setBuddy(m_ptxtLastName); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton* pcmdOk     = new QPushButton("&Ok"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QPushButton* pcmdCancel = new QPushButton("&Cancel"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; connect(pcmdOk, SIGNAL(clicked()), SLOT(accept())); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; connect(pcmdCancel, SIGNAL(clicked()), SLOT(reject())); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //Layout setup &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QGridLayout* ptopLayout = new QGridLayout; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptopLayout->addWidget(plblFirstName, 0, 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptopLayout->addWidget(plblLastName, 1, 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptopLayout->addWidget(m_ptxtFirstName, 0, 1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptopLayout->addWidget(m_ptxtLastName, 1, 1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  ptopLayout->addWidget(pcmdOk, 2,0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptopLayout->addWidget(pcmdCancel, 2, 1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; setLayout(ptopLayout); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>За замовчуванням область заголовку вікна містить кнопку?, Що служить для отримання докладної інформації про призначення віджетів.</p>
+        <p>У нашому прикладі я вирішив знехтувати нею - для цього необхідно встановити прапори вікна, тому другим параметром передаються прапори Qt :: WindowTitleHint і Qt :: WindowSystemMenuHint, перший встановлює заголовок вікна, а другий - додає системне меню з можливістю закриття вікна.</p>
+        <p>Модальне діалогове вікно завжди має містити кнопку Cancel (Скасувати). Сигнали clicked () кнопок Ok і Cancel (Скасування) з'єднуються зі слотами accept () і rejected () відповідно. Це робиться для того, щоб метод exec () повертав при натисканні кнопки Ok значення QDialog :: Accepted, а при натисканні на кнопку Cancel (Скасувати) - значення QDialog :: Rejected.</p>
+        <p><ex class="ex">&nbsp;&nbsp; QString InputDialog::firstName() const &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return m_ptxtFirstName->text(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Метод firstName () повертає введене користувачем ім'я:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QString InputDialog::lastName() const  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return m_ptxtLastNanie->text ();  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Метод lastName () повертає введену користувачем прізвище.</p>
+    </div>
+</body>
+</html>

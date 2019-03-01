@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>QFile і файли. Читання і запис рядків у файл.</h1></center>
+        <br>
+        <p>На сьогоднішній день переважна більшість комп'ютерних програм працюють з файлами, а тому важливо вміти користуватися функціями або класами, які дозволяють відкривати і закривати, записувати і зчитувати інформацію з файлів. У цій статті я трохи розповім про файлах і про клас QFile, а також покажу приклад використання цього класу.</p>
+        <h2>Файл, повні і відносні імена файлів</h2>
+        <p>Файл - це іменована область даних, яка зберігається на накопичувачі інформації. Тобто зрозуміло, що на накопичувачі є ділянка пам'яті, який містить послідовність біт, у цієї ділянки є своє унікальне ім'я (приклад: /home/nick/Desktop/file.txt або C: \\ Downloads \ file.txt - це повні імена файлів). На ім'я можна звертатися до цієї ділянки пам'яті.</p>
+        <p>Існує таке поняття, як відносне ім'я файлу. Відносне ім'я файлу не містить повного шляху до нього. Його ім'я по відношенню до поточної робочої директорії, наприклад з якої запущена програма, яка працює з файлами.</p>
+        <p> . - це посилання, яка містить адресу на поточну директорію</p>
+        <p> .. — это ссылка, которая содержит адрес на предыдущую директорию</p>
+        <p>Якщо ми хочемо звернутися до файлу /text.txt, перебуваючи в директорії / etc /, то необхідно писати ../text.txt</p>
+        <p>Якщо до файлу в поточному каталозі, то text.txt або ./text.txt</p>
+        <p>Зазвичай, коли говорять про ім'я файлу, то мають на увазі ту частину, де опущений повний шлях до нього, тобто просто file.txt. Шлях до файлу і повне ім'я файл поняття взаємозамінні.</p>
+        <p>Більш детальну інформацію про файлах можна знайти в мережі.</p>
+        <h2>QFile і приклади використання</h2>
+        <p>Клас QFile успадковує клас QIODevice, який для роботи з файлами надає методи: відкриття і закриття файлів, для запису і читання з файлу, для створення і видалення файлів.</p>
+        <p>Щоб створити об'єкт для роботи з файлом, потрібно передати в конструктор ім'я файлу.</p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile file("myfile.txt"); &nbsp;&nbsp;</ex></p>
+        <p>Можна не передавати ім'я файлу в конструктор, а встановити його в об'єкті методом setName ().</p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile file; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  file.setName("myfile.txt"); &nbsp;&nbsp;</ex></p>
+        <p>Часто при роботі з файлами потрібно дізнатися, чи відкритий файл. Метод QIODevice :: isOpen () повертає значення true, якщо файл відкритий і false в іншому випадку. А так як QFile успадкований від нього, то ми можемо перевірити, чи відкритий файл.</p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile file("myfile.txt"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  if(file.isOpen) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; "File is open"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Для закриття файлу потрібно викликати метод QFile :: close ()</p>
+        <p><ex class="ex">&nbsp;&nbsp; file.close(); &nbsp;&nbsp;</ex></p>
+        <p>Зверніть увагу, що дані відразу не записуються в файл на накопичувачі, вони записуються в буфер в оперативній пам'яті. Після закриття файлу дані з буфера записуються в файл на носії. Це зроблено для того, щоб не навантажувати жорсткий диск або будь-який інший тип накопичувача, на якому знаходиться файл. Інформацію з буфера в файл можна записати примусово без закриття файлу, викликавши метод QFile :: flush ()</p>
+        <p><ex class="ex">&nbsp;&nbsp; file.flush() &nbsp;&nbsp;</ex></p>
+        <p>Існує дуже корисний метод QFile :: exists (). Він приймає на вхід рядок з ім'ям файлу і повертає значення true, якщо такий файл існує. Існує статичний і нестатичних методи. Для роботи зі статичним методом необхідно вказати ім'я файлу.</p>
+        <p><ex class="ex">&nbsp;&nbsp; if(QFile::exists("myfile.txt")) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; "Файл существует"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Для роботи з нестатичних досить просто його викликати.</p>
+        <p><ex class="ex">&nbsp;&nbsp; if(file.exists()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; "Файл существует"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Для можливості запису або читання необхідно відкрити файл із зазначенням прапора читання QIODevice :: ReadOnly або записи QIODevice :: WriteOnly. Приклад відкриття файлу для запису:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile file("myfile.txt"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (!file.open(QIODevice::WriteOnly)) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; "Ошибка при открытии файла"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Є різні способи читання з фалів і записи. Можна вважати або записати всю інформацію за один раз, а можна по одному символу або блоками.</p>
+        <p>Для прикладу напишемо програму, яка зчитує з файлу блок з перших 10-ти символів, а потім вставляє в інший файл.</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QCoreApplication> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QFile> // Підключаємо для роботи з класом QFile QFile &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char *argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCoreApplication a(argc, argv); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile fileIn("filein.txt");  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile fileOut("fileout.txt"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if(fileIn.open(QIODevice::ReadOnly) && fileOut.open(QIODevice::WriteOnly)) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { // Якщо перший файл відкритий для читання, а другий для запису успішно &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QByteArray block = fileIn.read (10); // Прочитуємо 10 байт в масив block з filein.txt &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  fileOut.write(block); // Записуємо 10 байт в файл fileout.txt &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fileIn.close(); // Закриваємо filein.txt &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;   fileOut.close(); // Закриваємо fileout.txt  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  return a.exec(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Я создал файл filein.txt и внёс в него произвольный текст с помощью текстового редактора. После запуска программы я открыл filein.txt и fileout.txt в текстовом редакторе.</p>
+        <br><center><img src="html_files/images/file1.png"></center><br>
+        <p>Можна було вважати все байти, тоді весь вміст першого файлу копіювалося в другій. Для повного зчитування рядок</p>
+        <p><ex class="ex">&nbsp;&nbsp; QByteArray block = fileIn.read(10); &nbsp;&nbsp;</ex></p>
+        <p>Потрібно замінити на рядок</p>
+        <p><ex class="ex">&nbsp;&nbsp; QByteArray block = fileIn.readAll(); &nbsp;&nbsp;</ex></p>
+        <p>В результаті програма вважає все байти в масив block, а після запише їх у другій файл.</p>
+        <p>Ми можемо записувати інформацію в файл рядками, для цього його потрібно відкрити в текстовому режимі.</p>
+        <p><ex class="ex">&nbsp;&nbsp; fileOut.open(QIODevice::WriteOnly | QIODevice::Text); &nbsp;&nbsp;</ex></p>
+        <p>Після передати адресу в конструктор нового об'єкта класу QTextStream.</p>
+        <p><ex class="ex">&nbsp;&nbsp; QTextStream writeStream(&fileOut); &nbsp;&nbsp;</ex></p>
+        <p>А далі за допомогою оператора << посилати рядки в потік записи.</p>
+        <p>Приклад програми, в яка записує в файл fileout.txt рядок «Text, text, text.»</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QCoreApplication> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QFile> // Підключаємо клас QFile &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QTextStream> // Підключаємо клас QTextStream&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char *argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCoreApplication a(argc, argv); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QFile fileOut("fileout.txt"); // Зв'язуємо об'єкт з файлом fileout.txt &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;   if(fileOut.open(QIODevice::WriteOnly | QIODevice::Text))  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  {// Якщо файл успішно відкритий для запису в текстовому режимі &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QTextStream writeStream (& fileOut); // Створюємо об'єкт класу QTextStream &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // і передаємо йому адресу об'єкта fileOut &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  writeStream &lt;&lt; "Text, text, text."; // Надсилаємо рядок в потік для запису &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fileOut.close (); // Закриваємо файл &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return a.exec (); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Вміст fileout.txt після запуску програми</p>
+        <br><center><img src="html_files/images/file2.png"></center><br>
+        <h2>Запис в кінець файлу</h2>
+        <p>Попередній метод повністю перезаписував дані у файлі, тобто очищав весь його вміст і записував нові дані. Перезапису можна уникнути і записувати нові дані в кінець файлу.</p>
+        <p>Прапор QIODevice :: Append поміщає покажчик для запису (seek) в кінець файлу, в результаті вхідний потік записується відразу після наявною інформацією в файлі. Приклад фрагмента використання:</p>
+        <p><ex class="ex">&nbsp;&nbsp;  fileOutf .open(QIODevice::Append | QIODevice::Text); &nbsp;&nbsp;</ex></p>
+        <p>У прикладі замість QIODevice :: WriteOnly використовується QIODevice :: Append. Якщо зробити таку зміну в попередній програмі, то після декількох запусків у файлі fileout.txt буде зберігатися рядок</p>
+        <p>Text, text, text.Text, text, text.Text, text, text.</p>
+        <p>Отже, ми розглянули основні методи для роботи з файлами. Більш детальну інформацію про всі методи класу QFile і QIODevice можна знайти в офіційній документації Qt і в мережі.</p>
+    </div>
+</body>
+</html>

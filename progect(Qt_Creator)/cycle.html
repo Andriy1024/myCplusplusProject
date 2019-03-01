@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+   <div class="page">
+	  <center><h1>Цикли. Оператори циклу for, while, do…while</h1></center>
+      <br>
+      <h2>Поняття циклу в мові програмування</h2>
+      <p>Часто, при програмуванні задач, потрібно, щоб одна й таж послідовність команд виконувалась декілька ра0зів. Для цього у мовах програмування застосовується поняття циклічного процесу або циклу. Алгоритм, в якому певна послідовність команд повторюється декілька разів з новими вхідними даними називається циклічним.</p>
+      <p>Циклічний процес організовується з допомогою операторів циклу. Мова програмування C/C++ має в наявності зручні для роботи оператори циклу.</p>
+      <h2>Види операторів циклу у мові C++</h2>
+      <p>У мові C++ існує 3 види операторів циклу</p>
+       <ul>
+    	<li><b>- цикл for;</b></li>
+    	<li><b>- цикл while з передумовою;</b></li>
+    	<li><b>- цикл do…while з постумовою.</b></li>
+     </ul>
+     <p>Кожен з операторів циклу має свої особливості застосування. Будь-який з вищенаведених операторів циклу може бути замінений іншим.</p>
+     <h2>Цикл for. Загальна форма оператора циклу for</h2>
+     <p>У мові C++ цикл for може мати дуже широку реалізацію та застосування. Цикл for ще називається циклом з параметром.</p>
+     <p>Загальна форма оператора циклу for:</p>
+     <p><ex class="ex">&nbsp;&nbsp; for (ініціалізація; вираз; приріст)&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// послідовність операторів&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+     <p>де</p>
+     <p>ініціалізація – операція присвоювання, в якій встановлюється початкове значення змінної циклу. Ця змінна є лічильником, який керує роботою циклу. Кількість змінних, що керують циклом for, може дві і більше;</p>
+     <p>вираз – умовний вираз, в якому перевіряється значення змінної циклу. На цьому етапі визначається подальше виконання циклу;</p>
+     <p>приріст – визначає, як буде змінюватись значення змінної циклу після кожної ітерації.</p>
+     <p>Цикл <b>for</b> виконується до тих пір, поки значення вираз рівне <b>true</b>. Як тільки значення вираз стане <b>false</b>, виконання циклу припиняється і виконується оператор, що слідує за циклом <b>for</b>.</p>
+     <h2>Приклади використання оператора циклу for</h2>
+     <p>Знайти суму всіх цілих чисел від 100 до 300. Фрагмент коду, що розв‘язує дану задачу.</p>
+     <p><ex class="ex"> &nbsp;&nbsp;// сума чисел від 100 до 300&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; int sum;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;int i;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;sum = 0;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;for (i = 100; i&lt;=300; i++)&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;sum = sum + i;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;// sum = 40200&nbsp;&nbsp;</ex></p>
+     <h2>Які існують варіанти реалізації циклу for?</h2>
+     <p>Цикл for може мати декілька різновидів реалізації. Кількість змінних, що керують циклом for може бути одна, дві і більше.</p>
+     <p>У циклі for може бути відсутній будь-який з елементів заголовку циклу:</p>
+     <ul>
+    	<li><b>- ініціалізація;</b></li>
+    	<li><b>- вираз;</b></li>
+    	<li><b>- приріст.</b></li>
+     </ul>
+     <p>Приклад оператора циклу for, в якому є 2 керуючі змінні. Знайти значення добутку:</p>
+     <p><ex class="ex">&nbsp;&nbsp; D = (1 + cos(9)) * (2 + cos(8)) * … * (9 + cos(1))&nbsp;&nbsp;</ex></p>
+     <p>Фрагмент коду, що розв‘язує дану задачу.</p>
+     <p><ex class="ex">&nbsp;&nbsp;// D = (1 + cos(9))*(2 + cos(8))* ... *(9 + cos(1)) &nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;int i, j;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp;float d;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; d = 1;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;for (i = 1, j = 9; i&lt;=9; i++, j--)&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;d = d * (i + Math::Cos(j));&nbsp;&nbsp;</ex></p>
+     <p>У вищенаведеному фрагменті коду в циклі for використовуються дві змінні, що змінюють своє значення (i, j).</p>
+     <h2>Цикл while. Загальна форма</h2>
+     <p>Цикл while називається циклом з передумовою. Загальна форма циклу while наступна:</p>
+     <p><ex class="ex">&nbsp;&nbsp; while (вираз)&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;// послідовність операторів &nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; }&nbsp;&nbsp;</ex></p>
+     <p>де вираз – будь-який допустимий вираз у мові C++.</p>
+     <p>Послідовність операторів виконується до тих пір, поки умовний вираз повертає значення true. Як тільки вираз стає рівним false, виконання циклу while припиняється і управління передається наступному за циклом while оператору.</p>
+     <h2>Приклад використання оператора циклу while</h2>
+     <p>Дано натуральне число. Визначити кількість цифр 3 в ньому.</p>
+     <p>Фрагмент коду, що розв‘язує дану задачу.</p>
+     <p><ex class="ex"> &nbsp;&nbsp;// кількість цифр 3 у числі&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;int n; // задане натуральне число&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;int k; // кількість цифр 3 у числі&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp;int t, d; // додаткові змінні&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;// ввід значення n&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;n = 12343;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; t = n; // робимо копію з n&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; k = 0;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; while (t>0)&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;d = t % 10; // виділити останню цифру&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;if (d == 3) k++;&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;t = t / 10; // зменшити розрядність числа&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex">&nbsp;&nbsp; }&nbsp;&nbsp;</ex></p>
+     <p><ex class="ex"> &nbsp;&nbsp;// k = 2&nbsp;&nbsp;</ex></p>
+     <p>У даному прикладі, значення вихідного числа буде ділитись на 10 при кожній ітерації. Таким чином, буде зменшуватись розрядність числа. На кожній ітерації, з допомогою операції % мови C++ береться остача від ділення на 10, тобто визначається остання цифра числа. Якщо ця цифра рівна 3, то лічильник k збільшується на 1.</p>
+     <h2>Загальна форма оператора циклу do…while</h2>
+     <p>Цикл do … while доцільно використовувати у випадках, коли ітерацію потрібно зробити хоча б 1 раз. На відміну від циклів for та while, у циклі do…while умова перевіряється при виході з циклу (а не при вході в цикл).
+Загальна форма оператора циклу do…while:</p>
+	<p><ex class="ex"> &nbsp;&nbsp;do&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;// послідовність операторів&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex">  &nbsp;&nbsp;while (вираз);&nbsp;&nbsp;</ex></p>
+	<p>де  вираз – умовний вираз, в якому перевіряється значення змінної циклу. На цьому етапі визначається подальше виконання циклу.</p>
+	<p>Фігурні дужки у цьому циклі необов‘язкові.</p>
+	<p>Цикл працює наступним чином. Спочатку відбувається виконання тіла циклу. Потім перевіряється значення вираз (умовний вираз). Якщо значення вираз є істинним (true), виконується знову тіло циклу. Як тільки значення вираз стане false, виконання циклу припиняється.</p>
+	<h2>Приклади використання оператора циклу do…while</h2>
+	<p><ex class="ex">&nbsp;&nbsp;S = 1 + 3 + … + 99 &nbsp;&nbsp;</ex></p>
+	<p>Фрагмент коду, що розв‘язує дану задачу.</p>
+	<p><ex class="ex"> &nbsp;&nbsp;// s = 1 + 3 + ... + 99&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;int t;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;int s;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex">&nbsp;&nbsp; s = 0;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;t = 1;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;do&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex">  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;s = s + t;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;t = t + 2;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;while (t&lt;=99);&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;// s = 2500&nbsp;&nbsp;</ex></p>
+	<h2>Вкладені цикли. Приклад використання</h2>
+	<p>Вкладені цикли можуть бути використані, наприклад, при роботі з двовимірними (багатовимірними) масивами (занулення масиву, обчислення сум, добутків та інше).</p>
+	<p>Обчислити добуток</p>
+	<p><ex class="ex"> &nbsp;&nbsp;D = 1 · (1 + 2) · (1 + 2 + 3) · … · (1 + 2 + … + 9)&nbsp;&nbsp;</ex></p>
+	<p>Фрагмент коду, що розв‘язує дану задачу.</p>
+	<p><ex class="ex"> &nbsp;&nbsp;// D = 1 * (1+2) * (1+2+3) * ... * (1+2+...+9)&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;float d; // результат - добуток&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;int i, j; // лічильники циклів&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;int s; // додаткова змінна&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;d = 1;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;for (i = 1; i&lt;=9; i++)&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;s = 0;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;for (j = 1; j&lt;=i; j++)&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;s = s + j;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d = d * s;&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+	<p><ex class="ex"> &nbsp;&nbsp;// d = 2.571912E+09&nbsp;&nbsp;</ex></p>
+
+   </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Конструктор і деструктор класів в  С++</h1></center>
+        <br>
+        <p>Почнемо з того, що коли ми створюємо елементи (змінні) класу, ми не можемо присвоїти їм значення в самому визначенні класу. Компілятор видасть помилку. Тому нам необхідно створювати окремий метод (так звану set-функцію) класу, за допомогою якого і буде відбуватися ініціалізація елементів. При цьому, якщо необхідно створити, наприклад, 20 об'єктів класу, то щоб ініціалізувати елементи потрібно 20 раз викликати set-функції.</p>
+        <p>Тут нам якраз зможе допомогти конструктор класу. До речі, конструктор (від слова побудувати – створювати) - Це спеціальний метод класу, який призначений для ініціалізації елементів класу деякими початковими значеннями.</p>
+        <p>На відміну від конструктора, деструктор (від слова самознищення – руйнувати) – спеціальний метод класу, який служить для знищення елементів класу. Найчастіше його використовують тоді, коли в конструкторі,при створенні об'єкта класу, динамічно була виділена ділянка пам'яті і необхідно цю пам'ять очистити, якщо ці значення вже не потрібні для подальшої роботи програми.</p>
+        <p>Важливо запам'ятати:</p>
+        <p>1. конструктор і деструктор, ми завжди оголошуємо в розділі public;</p>
+        <p>2. при оголошенні конструктора, тип даних значення, що повертається не вказується, в тому числі – void!!!;</p>
+        <p>3. у деструктора також немає типу даних для повертається значення, до того ж деструктора не можна передавати ніяких параметрів;</p>
+        <p>4. ім'я класу і конструктора повинно бути ідентично;</p>
+        <p>5. ім'я деструктора ідентично імені конструктора, але з приставкою ~ ;</p>
+        <p>6. У класі допустимо створювати кілька конструкторів, якщо це необхідно. Імен, згідно з пунктом 2 нашого списку, будуть однаковими. Компілятор буде їх розрізняти по переданим параметрам (як при перевантаженні функцій). Якщо ми не передаємо в конструктор параметри, він вважається конструктором за замовчуванням;</p>
+        <p>7. Зверніть увагу на те, що в класі може бути оголошений лише один деструктор;</p>
+        <p>Відразу хочу привести приклад, який доступно покаже, як працює конструктор:</p>
+        <p><ex class="ex">&nbsp;&nbsp; # include &lt;iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class AB //клас &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; private: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int a; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int b; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; AB()    //це конструктор:  1) у конструктора нема типа значення, що повертається! в тому числі void!!! &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //   2) ім'я повинне бути таким як і у класу (в нашому випадку AB) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; a = 0;//дамо початкові значення змінним &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; b = 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Робота конструктора при створенні нового об'єкта: " &lt;&lt; endl;//і тут же їх відобразимо на екран &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "b = " &lt;&lt; b &lt;&lt; endl &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void setAB() // за допомогою цього методу змінимо початкові значення задані конструктором &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Введіть ціле число а: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cin >> a; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "Введіть ціле число b: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cin >> b; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void getAB() //виведемо на екран змінені значення &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "b = " &lt;&lt; b &lt;&lt; endl &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  ~AB() // це деструкція. Не будемо змушувати його очистити пам'ять, нехай просто покаже де він спрацював &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  cout &lt;&lt; "Тут спрацював деструктор" &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; setlocale(LC_ALL, "ukr"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; AB obj1;     //конструктор спрацює на даному етапі (під час створення об'єкта класу) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; obj1.setAB();   // дамо нові значення змінних &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; obj1.getAB();   //і виведемо їх на екран&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  AB obj2;     //конструктор спрацює на даному етапі (під час створення 2-го об'єкта класу) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Хочеться ще додати, що, як і звичайних функцій, ми можемо передавати конструктору параметри. Через параметри, конструктору можна передавати будь-які дані, які будуть необхідні при ініціалізації об'єктів класу.</p>
+        <p>Деструкція спрацьовує в той момент, коли завершується робота програми і знищуються всі дані.</p>
+    </div>
+</body>
+</html>

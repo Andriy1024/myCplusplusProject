@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Спадкування класів в С++</h1></center>
+        <br>
+        <p>Спадкування класів – дуже потужна можливість в об'єктно орієнтованому програмуванні. Воно дозволяє створювати похідні класи (класи спадкоємці), взявши за основу всі методи і елементи базового класу (класу батька). Таким чином економиться маса часу на написання і налагодження коду нової програми. Об'єкти похідного класу вільно можуть використовувати все, що створено і налагоджено в базовому класі. При цьому, ми можемо в похідний клас, дописати необхідний код для удосконалення програми: додати нові елементи, методи і т.д.. Базовий клас залишиться недоторканим. Цю тему цілком можливо освоїти новачкам. Необхідно тільки познайомитися з синтаксисом і деякими особливостями. Нижче наведено простий код програми, який ми детально розберемо під лістингом. У цій програмі створені два класи: базовий – FirstClass і похідний від нього SecondClass.</p>
+        <p>Приклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. #include <iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. class FirstClass    // базовый класс &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. protected:          // спецификатор доступа к элементу value &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. int value; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. FirstClass() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 10. value = 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 11. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 12. FirstClass( int input ) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 13. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 14. value = input; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 15. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 16. void show_value() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 17. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 18. cout << value << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 19. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 20. }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 21. class SecondClass : public FirstClass   // производный класс &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 22. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 23. public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 24. SecondClass() : FirstClass ()   // конструктор класса SecondClass вызывает конструктор класса FirstClass &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 25. {} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 26.  SecondClass(int inputS) : FirstClass (inputS)   // inputS передается в конструктор с параметром класса FirstClass &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 27. {} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 28.  void ValueSqr () // возводит value в квадрат. Без спецификатора доступа protected эта функция не могла бы изменить значение value &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 29. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 30. value *= value; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 31. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 32. }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 33. int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 34. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 35. setlocale(LC_ALL, "rus"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 36. FirstClass F_object(3);     // объект базового класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 37. cout << "value F_object = "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 38.  F_object.show_value(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 39. SecondClass S_object(4);    // объект производного класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 40. cout << "value S_object = "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 41. S_object.show_value();  // вызов метода базового класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 42. S_object.ValueSqr();        // возводим value в квадрат &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 43. cout << "квадрат value S_object = "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 44. S_object.show_value(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 45. //F_object.ValueSqr();      // базовый класс не имеет доступа к методам производного класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 46. return 0;&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 47. } &nbsp;&nbsp;</ex></p>
+        <p>Розбирати приклад будемо по-порядку. Раніше ми працювали тільки зі специфікаторами доступу private і public. В рядку 5 ми зустріли новий для нас специфікатор доступу protected. Він відрізняється від private тим, що дозволяє доступ до елементів базового класу з похідних класів. Якби елемент value перебував у полі private, то доступ до нього був би закритий і ми б не могли змінити його значення через об'єкт класу SecondClass, використовуючи функцію ValueSqr() , визначену в рядках 28 – 31.</p>
+        <p>Доступ з тіла класу: private -   відкритий, protected -  відкритий,  public - відкритий.</p>
+        <p>Доступ з похідних класів: private - закритий,    protected - відкритий,  public - відкритий.</p>
+        <p>Доступ із зовнішніх функцій і класів: private - закритий, protected - закритий, public - відкритий.</p>
+        <p>Якщо ви створюєте клас, який надалі плануєте використовувати, як базовий, то оголошуйте в ньому поле protected замість private. Інакше об'єкти похідного класу не зможуть звертатися до елементів базового.</p>
+        <p>Нижче, в рядках 7 – 19, визначені методи базового класу. Конструктор без параметрів FirstClass(), конструктор з параметром FirstClass( int input ) і метод void show_value(), який виводить значення value на екран.</p>
+        <p>Визначення похідного знаходиться в рядках 21 – 32. Синтаксис успадкування такий – class Імя_Похідного_Класса : специфікатор доступу Імя_Базового_Класса { } ; Двокрапка : не плутайте з подвійним двокрапкою :: (визначення області дії). Використовуючи цей оператор ми показуємо, спадкоємцем якого класу є похідний клас.</p>
+        <p>Важливою особливістю похідного класу, є те, що хоч він і може використовувати всі методи і елементи полів protected і public базового класу, але він не може звернутися до конструктора з параметрами. Якщо конструктори в похідному класі не визначені, при створенні об'єкта спрацює конструктор без аргументів базового класу. А якщо нам треба відразу при створенні об'єкта похідного класу внести дані, то для нього необхідно визначити свої конструктори. У нашому прикладі показано, як же ми все-таки можемо використовувати вже готові конструктори базового класу, щоб не набирати код конструкторів знову – рядки 24 – 27. Для цього при визначенні конструктора похідного класу після його імені слід поставити оператор : і ім'я конструктора базового класу, який необхідно викликати, при створенні об'єкта похідного класу – SecondClass() : FirstClass (){}. Тіло конструктора залишаємо порожнім т.к. всю роботу виконає конструктор базового класу. У разі конструктора з параметром, цей параметр ми передаємо в конструктор з параметром базового класу SecondClass(int inputS) : FirstClass (inputS){} – рядок 26.</p>
+        <p>В main-функції створюємо об'єкти базового і похідного класів – FirstClass F_object(3); і SecondClass S_object(4); і відображаємо їх значення value на екран. Як бачите в рядку 41, об'єкт похідного класу без проблем звертається до методу show_value() базового класу. Так, ніби це його власний метод. Нижче викликаємо метод, який зводить значення value похідного класу в квадрат. І виводимо це змінений значення на екран. А от якщо ми захочемо викликати цей метод – F_object.ValueSqr(); – для об'єкта базового класу, компілятор нам цього не дозволить зробити і видасть помилку. Це ще одна важлива особливість – похідний клас має доступ до базового класу, а базовий клас, навіть “не знає” про існування похідного та не може користуватися його кодом.</p>
+        <p>У вигляді списку наведу основну інформацію про спадкування класів, яку важливо знати: </p>
+        <p>1. Спадкування – це визначення похідного класу, який може звертатися до всіх елементів і методам базового класу за винятком тих, які перебувають у полі private; </p>
+        <p>2. Похідний клас ще називають нащадком або подклассом, а базовий – батько або надклас; </p>
+        <p>3. Синтаксис визначення похідного класу: class Імя_Похідного_Класса : специфікатор доступу Імя_Базового_Класса { /*Код * / } ; </p>
+        <p>4. Похідний клас має доступ до всіх елементів і методам базового класу, а базовий клас може використовувати тільки свої власні елементи і методи. </p>
+        <p>5. У похідному класі необхідно явно визначати свої конструктори, деструктори і перевантажені оператори присвоювання через те, що вони не успадковуються від базового класу. Але їх можна викликати явним чином при визначенні конструктора, деструктора або перевантаження оператора присвоєння похідного класу, наприклад таким чином (для конструктора): Конструктор_Проізводного_Класса (/*параметри * /) : Конструктор_Базового_Класса ( /*параметри * /) { } </p>
+        <p>6. Ще один важливий момент при спадкуванні – перевантажені функції-методи класу нащадка. У даному прикладі ми його не розглядали. Але щоб ви знали, якщо в класі батьку і в його класах нащадках зустрічаються методи з однаковим ім'ям, то для об'єктів класу нащадка компілятор буде використовувати методи саме класу нащадка. Перевантажені методи класу нащадка, можуть викликати методи класу батька. У такому випадку важливо пам'ятати, що необхідно правильно визначити область дії за допомогою оператора :: .Інакше компілятор сприйме це, як виклик функцією самої себе. Наочно, якби ми перевантажили в класі SecondClass функцію show_value() – це виглядало б так: </p>
+        <p><ex class="ex">&nbsp;&nbsp;  void show_value() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  if(value != 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  FirstClass :: show_value();&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  } &nbsp;&nbsp;</ex></p>
+        <p>Ця запис вказує компілятору – якщо значення value не дорівнює нулю – викликати метод show_value() класу FirstClass. А він у свою чергу, відобразить це значення на екрані.</p>
+        <p>Думаю для першого знайомства з успадкуванням класів цього достатньо. Це безперечно класна можливість мови С . Вона допомагає економити масу часу на написання і налагодження коду з нуля. Замість цього ми можемо використовувати вже готовий і налагоджений код і підлаштовувати його під нові завдання, які поставлені перед нами. При цьому наша нова програма буде займати набагато менше рядків, що значно покращить її читабельність.</p>
+    </div>
+    <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+</body>
+</html>

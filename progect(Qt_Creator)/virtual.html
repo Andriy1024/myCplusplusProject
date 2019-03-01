@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>virtual в С++</h1></center>
+        <br>
+        <p>Поліморфізм часу виконання забезпечується за рахунок використання похідних класів і віртуальних функцій. Віртуальна функція - це функція, оголошена з ключовим словом virtual в базовому класі і перевизначена в одному або в декількох похідних класах. Віртуальні функції є особливими функціями, тому що при виклику об'єкта похідного класу за допомогою покажчика або посилання на нього С ++ визначає під час виконання програми, яку функцію викликати, грунтуючись на типі об'єкта. Для різних об'єктів викликаються різні версії однієї і тієї ж віртуальної функції. Клас, що містить одну або більше віртуальних функцій, називається поліморфним класом (polymorphic class).</p>
+        <p>Віртуальна функція оголошується в базовому класі з використанням ключового слова virtual. Коли ж вона переопределяется в похідному класі, повторювати ключове слово virtual немає необхідності, хоча і в разі його повторного використання помилки не виникне.</p>
+        <p>В качестве первого примера виртуальной функции рассмотрим следующую короткую программу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; // невеликий приклад використання віртуальних функцій &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include <iostream.h> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class Base { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; virtual void who() { // визначення віртуальної функції &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << *Base\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class first_d: public Base { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void who() { // визначення who () стосовно first_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "First derivation\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class seconded: public Base { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void who() { // визначення who () стосовно second_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "Second derivation\n*"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Base base_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Base *p; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; first_d first_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; second_d second_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p = &base_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p->who(); // доступ до who класу Base &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p = &first_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p->who(); // доступ до who класу first_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p = &second_ob; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; p->who(); // доступ до who класу second_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Програма видасть наступний результат:</p>
+        <p><ex class="ex">&nbsp;&nbsp; Base &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; First derivation &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Second derivation &nbsp;&nbsp;</ex></p>
+        <p>Проаналізуємо детальніше цю програму, щоб зрозуміти, як вона працює.</p>
+        <p>Як можна бачити, в об'єкті Base функція who () оголошена як віртуальна. Це означає, що ця функція може бути перевизначена в похідних класах. У кожному з класів first_d і second_d функція who () перевизначена. У функції main () визначено три змінні. Першою є об'єкт base_obj, що має тип Base. Після цього оголошений покажчик р на клас Base, потім об'єкти first_obj і second_obj, що відносяться до двох похідним класам. Далі вказівником р присвоєно адресу об'єкта base_objі викликана функція who (). Оскільки ця функція оголошена як віртуальна, то С ++ визначає на етапі виконання, яку з версій функції who () вжити, в залежності від того, на який об'єкт вказує покажчик р. В даному випадку їм є об'єкт типу Base, тому виповнюється версія функції who (), оголошена в класі Base. Потім вказівником р присвоєно адресу об'єкта first_obj. (Як відомо, покажчик на базовий клас може бути використаний для будь-якого похідного класу.) Після того, як функція who () була викликана, С ++ знову аналізує тип об'єкта, на який вказує р, для того, щоб визначити версію функції who ( ), яку необхідно викликати. Оскільки р вказує на об'єкт типу first_d, то використовується відповідна версія функції who (). Аналогічно, коли вказівником р присвоєно адресу об'єкта second_obj, то використовується версія функції who (), оголошена в класі second_d.</p>
+        <p>Найбільш поширеним способом виклику віртуальної функції служить використання параметра функції. Наприклад, розглянемо наступну модифікацію попередньої програми:</p>
+        <p><ex class="ex">&nbsp;&nbsp; /* Тут посилання на базовий клас використовується для доступу до віртуальної функції * / &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include <iostream.h> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class Base { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; virtual void who() { // визначення віртуальної функції &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "Base\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class first_d: public Base {
+ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void who () { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // визначення who () стосовно first_d
+ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "First derivation\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class second_d: public Base { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void who() { // визначення who () стосовно second_d  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "Second derivation\n*"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // використання в якості параметра посилання на базовий клас &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void show_who (Base &r) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; r.who(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main() { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Base base_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; first_d first_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; second_d second_obj; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; show_who (base_ob j) ; // доступ до who класу Base &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; show_who(first_obj); // доступ до who класу first_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; show_who(second_obj); // доступ до who класу second_d &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Ця програма виводить на екран ті ж самі дані, що і попередня версія. В даному прикладі функція show_who () має параметр типу посилання на клас Base. У функції main () виклик віртуальної функції здійснюється з використанням об'єктів типу Base, first_d і second_d. Її викликає версія функції who () у функції show_who () визначається типом об'єкта, на який посилається параметр при виклику функції.</p> 
+        <p>Ключовим моментом у використанні віртуальної функції для забезпечення поліморфізму часу виконання служить те, що використовується покажчик саме на базовий клас. Поліморфізм часу виконання досягається тільки при виклику віртуальної функції з використанням покажчика або посилання на базовий клас. Однак ніщо не заважає викликати віртуальні функції, як і будь-які інші «нормальні» функції, однак досягти поліморфізму часу виконання на цьому шляху не вдасться.</p>
+        <p>На перший погляд перевизначення віртуальної функції в похідному класі виглядає як спеціальна форма перевантаження функції. Але це не так, і термін перевантаження функції не можна застосувати до перевизначення віртуальної функції, оскільки між ними є істотні відмінності. По-перше, функція повинна відповідати прототипу. Як відомо, при перевантаженні звичайної функції число і тип параметрів повинні бути різними. Якщо ви перевизначаєте віртуальної функції інтерфейс функції повинен в точності відповідати прототипу. Якщо ж такої відповідності немає, то така функція просто розглядається як перевантажена і вона втрачає свої віртуальні властивості. Крім того, якщо відрізняється тільки тип значення, то видається повідомлення про помилку. (Функції, що відрізняються тільки типом значення, що повертається, породжують невизначеність.) Іншим обмеженням є те, що віртуальна функція повинна бути членом, а не другом класу, для якого вона визначена. Проте віртуальна функція може бути другом іншого класу. Хоча деструктор може бути віртуальним, але конструктор віртуальним бути не може.</p>
+        <p>В силу відмінностей між перевантаженням звичайних функцій і перевизначенням віртуальних функцій будемо використовувати для останніх термін перевизначення (overriding).</p>
+        <p>Если функция была объявлена как виртуальная, то она и остается таковой вне зависимости от количества уровней в иерархии классов, через которые она прошла. Например, если класс second_d получен из класса first_d, а не из класса Base, то функция who() останется виртуальной и будет вызываться корректная ее версия.</p>
+        <p>Если в производном классе виртуальная функция не переопределяется, то тогда используется ее версия из базового класса.</p>
+        <p>Надо иметь в виду, что характеристики наследования носят иерархический характер. Чтобы проиллюстрировать это, предположим, что в предыдущем примере класс second_d порожден от класса first_d вместо класса Base. Когда функцию who() вызывают, используя указатель на объект типа second_d (в котором функция who() не определялась), то будет вызвана версия функции who(), объявленная в классе first_d, поскольку этот класс — ближайший к классу second_d. В общем случае, когда класс не переопределяет виртуальную функцию, С++ использует первое из определений, которое он находит, идя от потомков к предкам.</p>
+    </div>
+    <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+</body>
+</html>

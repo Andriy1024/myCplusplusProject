@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body> 
+     <div class="page"> 
+        <center><h1>Стандартні функції у C++</h1></center>
+        <br>
+        <h2>Математичні функції</h2>
+        <p>У мові С++ визначено безліч різноманітних функцій, які істотно розширюють можливості мови. Існують такі класи  функцій :</p>
+        <p>- функції вводу – виводу; </p>
+        <p>- математичні; </p>
+        <p>- функції роботи з часом та датою; </p>
+        <p>- функції роботи  з стрічками; </p>
+        <p>- функції обробки помилок;</p>
+        <p>- та інші. </p>
+        <p>Для  використовування  всіх  математичних  функцій  в  програму  необхідно 
+включити заголовок &lt;math.h>. </p>
+        <p>Ці підпрограми виконують математичні обчислення і перетворення. </p>
+        <p>abs   (x)- обчислює  абсолютне значення цілого числа; </p>
+        <p>acos (x) - обчислює  арккосинус;</p>
+        <p>asin (x) - обчислює  арксинус; </p>
+        <p>atan (x) - обчислює  арктангенс; </p>
+        <p>complex   (x)  - створює комплексні числа; </p>
+        <p>cos  (x) - обчислює  косинус; </p>
+        <p>cosh (x) - обчислює  гіперболічний косинус; </p>
+        <p>exp  (x) - функція експоненти, повертає значення в cтепені x; </p>
+        <p>fabs (x) - обчислює  абсолютне значення числа з плаваючою    крапкою; </p>
+        <p>ceil (x) - округлення; </p>
+        <p>pow  (x,y) - обчислює x в степені y; </p>
+        <p>pow10(x) - обчислює  10 у степені x;</p>
+        <p>rand (x)  - генератор випадкових чисел; </p>
+        <p>floor (x) - округлення в меншу сторону; </p>
+        <p>fmod (x,y) - обчислює  x по модулю y, тобто залишок від ділення    на ціло  x/y;</p>
+        <p>labs  (x)- обчислює  абсолютне значення довгого цілого числа;</p>
+        <p>log   (x)- обчислює  натуральний логарифм;</p>
+        <p>log10(x)- обчислює  десятковий логарифм; </p>
+        <p>real   (x) - повертає дійсну частину комплексного числа, або перетворить число з двійково-десяткового кодування в float, double або long;</p>
+        <p>sin (x) - обчислює синус; </p>
+        <p>sinh (x) - обчислює  гіперболічний синус; </p>
+        <p>sqrt (x) - обчислює  квадратний корінь; </p>
+        <p>srand (x) - ініціалізація генератора випадкових чисел; </p>
+        <p>tan (x) - обчислює  тангенс кута. </p>
+        <h2>Функції  дати та часу </h2>
+        <p>Бібліотека  С++  містить  функції  для  роботи  з  часом  та  датою. Прототипи функцій знаходяться у файлі time.h.</p>
+        <p>Функції роботи з часом в  С++  представляють  час    двома  способами.    Перший  –  це  кількість секунд  з 1 січня 1970 року. Для представлення часу раніше використовуються від’ємні значення. Значення представляються типом long int. В файлі time.h за допомогою  ключового    typedef  визначені  символьні  імена  time_t  i  clock_t  з значенням  long.  Другий  спосіб  –  представлення  часу,    розбитого  на  частини: рік,  місяць,  день  і  т.д.  Це  представлення  використовує  структуру  tm,  яка визначена  у файлі time.h. </p>
+        <p>Одержання текучого часу </p>
+        <p>Для  отримання  текучого  часу    з  внутрішнього  таймера    ПК  використовується функція time(). ЇЇ прототип має вигляд:</p>
+        <p><ex class="ex">&nbsp;&nbsp; time_t time (time_t  *timeptr);  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Наприклад,  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; time_t  n; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; n=time(0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Змінна n  буде містити текучий час. &nbsp;&nbsp;</ex></p>
+        <p>Відображення часу на екрані </p>
+        <p>Для перетворення  часу в форматовані стрічки використовуються функції 
+ctime() та asctime(). Обидві функції  повертають час у вигляді стрічки . ctime() 
+приймає час у вигляді аргумента типу time_t , а asctime() приймає час у вигляді 
+аргумента типу tm. </p>
+        <p>Вони мають наступний прототип: </p>
+        <p><ex class="ex">&nbsp;&nbsp; char *ctime(time_t * ptr  );  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char asctime (struct tm * ptr  );  &nbsp;&nbsp;</ex></p>
+        <p>Визначення різниці часу </p>
+        <p>Різниця  між  двома  моментами  часу  в  секундах  обчислюється 
+за допомогою функції difftime (). Прототип функції: </p>
+        <p><ex class="ex">&nbsp;&nbsp; double difftime (time_t  k, time_t p);  &nbsp;&nbsp;</ex></p>
+        <p>Функція  обчислює  різницю  k  i  p  та  повертає  кількість 
+секунд між двома моментами часу. </p>
+        <h2>Функції випадкового числа </h2>
+        <p>Розглянемо оператор. </p>
+        <p><ex class="ex">&nbsp;&nbsp; А=rand(); &nbsp;&nbsp;</ex></p> 
+        <p>Функція  rand  генерує  ціле  значення  в  діапазоні  від  0  до  RAND_MAX 
+(символьна  константа,  яка  визначає  в  файлі  заголовку  &lt;stdlib.h>  ).  Стандарт 
+ANSI оголошує, що значення RAND_MAX повинно дорівнювати 32767, тобто 
+потрібно певні задачі. </p>
+        <p>Функція rand генерує насправді псевдовипадкові числа. При виклику rand 
+генерується  послідовність  чисел,  які  виглядають  випадковими.  Однак,  ця 
+послідовність  повторюється  при  кожному  новому  виконанні  програми.  Дану 
+програму можна модифікувати для генерації різних послідовностей випадкових 
+чисел для кожного виконання. Це називається рандомізацією і забезпечується 
+функцією  стандартної  бібліотеки  srand.  Функція  srand  отримує  для  аргумента 
+ціле без знака (тип unsigned), яке дозволяє отримати різні послідовності чисел 
+при кожному виконанні програми. </p>
+        <p>Для  читання  даних  типу  unsigned  функцією  scanf  використовується 
+специфікація  перетворення  %u.  Прототип  функції  для  srand  знаходиться  в 
+&lt;stdlib.h> </p>
+     </div>
+</body>
+</html>

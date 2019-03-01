@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+<style type="text/css">
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+      
+     html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+    .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+    h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+        border-radius: 5px;
+         background-color:  rgba(28,22,22,0.9);
+
+       }
+   
+
+</style>
+
+</head>
+<body>
+	<div class="page">
+      <center><h1>Типи даних</h1></center>
+      <br>
+      <p>Обробка даних різного типу є головною метою будь-якої програми. Кожне з даних характеризується класом пам’яті, ім’ям, типом і значенням. Імена дозволяють ідентифікувати дані, тобто відрізняти їх між собою. Програміст обирає тип кожної величини, що використовується для подання реальних об’єктів. Тип задає множину можливих значень даних і способи їх зберігання, перетворення та використання.</p>
+      <p> <b>Обов’язкове оголошення типу даних дозволяє</b> компілятору робити перевірку допустимості різних конструкцій програми.</p>
+      <p>Усі типи даних мови C++ можна розділити на <b>основні</b> (базові) і <b>складені</b>. Основні типи визначені для представлення цілих, дійсних, символьних і логічних даних. На основі цих типів вводиться опис складених типів, до яких належать масиви, перелічення, функції, структури, посилання, покажчики, об’єднання і класи.</p>
+      <p><b>Основні типи даних</b>  часто називають арифметичними, тому що їх можна використовувати в арифметичних операціях. Для опису основних типів мови C++ використовують такі службові слова:</p>
+      <ul>
+    	<li><b>- int</b> (цілий);</li>
+    	<li><b>- char</b> (символьний);</li>
+    	<li><b>- bool</b> (логічний);</li>
+    	<li><b>- float</b> (дійсний);</li>
+    	<li><b>- double</b> (дійсний з подвійною точністю);</li>
+    	<li><b>- void</b> (порожній, не має значення).</li>
+     </ul>
+     <p>Типи <b>int</b>, <b>char</b>, <b>bool</b> називають <b>цілими</b>, а типи <b>float</b> та <b>double — дійсними з плаваючою крапкою</b>. Код, що формує компілятор для обробки цілих величин, відрізняється від коду для величин з плаваючою крапкою.</p>
+     <p>Для уточнення внутрішнього подання та діапазону значень стандартних типів <b>мова C++ використовує чотири специфікатори типу:</b></p>
+     <ul>
+     	<li><b>- short</b> (короткий);</li>
+     	<li><b>- long</b> (довгий);</li>
+     	<li><b>- signed</b> (знаковий);</li>
+     	<li><b>- unsigned</b> (беззнаковий).</li>
+     </ul>
+
+     <p>Тип: <b>bool</b>, розмір байт <b>1</b> , значення <b>true або false</b></p>
+     <p>Тип: <b>unsigned short int</b>, розмір байт <b></b> , значення <b></b></p>
+     <p>Тип: <b>short int</b>, розмір байт <b>2</b> , значення <b>від 0 до 65 535</b></p>
+     <p>Тип: <b>unsigned long int</b>, розмір байт <b>4</b> , значення <b>від 0 до 4 294 967 295</b></p>
+     <p>Тип: <b>long int</b>, розмір байт <b>4</b> , значення <b>від -2 147 483 648 до 2 147 483 647</b></p>
+     <p>Тип: <b>int (16 розрядів)</b>, розмір байт <b>2</b> , значення <b>від -32 768 до 32 767</b></p>
+     <p>Тип: <b>int (32 розряди)</b>, розмір байт <b>4</b> , значення <b>від -2 147 483 648 до 2 147 483 647</b></p>
+     <p>Тип: <b>unsigned int (16 розрядів)</b>, розмір байт <b>2</b> , значення <b>від 0 до 65 535</b></p>
+     <p>Тип: <b>unsigned int (32 розрядів)</b>, розмір байт <b>4</b> , значення <b>від 0 до 4 294 967 295</b></p>
+     <p>Тип: <b>char</b>, розмір байт <b>1</b> , значення <b>від 0 до 256</b></p>
+     <p>Тип: <b>float</b>, розмір байт <b>4</b> , значення <b>від 1.2е-38 до 3.4е38</b></p>
+     <p>Тип: <b>double</b>, розмір байт <b>8</b> , значення <b></b></p>
+     <p>Тип: <b>long double</b>, розмір байт <b>10</b> , значення <b>від 3.4е-4932 до 3.4е+4932</b></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Проведення тестів в Qt</h1></center>
+        <br>
+        <p>Тестування - це фундамент швидкої розробки програм, що дозволяє швидко просуватися вперед.</p>
+        <p>Насправді, на написання коду витрачається не так вже й багато часу. Багато часу йде на розуміння завдання і проектування. Ну а левову частку займає налагодження. Кожен з читачів напевно пам'ятає годинник, а може і дні, які йому довелося присвятити в пошуках закралася помилки. Причому її виправлення виробляється, як правило, за лічені хвилини, але пошук може відняти цілу вічність.</p>
+        <p>Але і це ще не все. На виправлення помилки історія не закінчується. Виправивши її, ви не можете дати гарантію того, що зроблене вами виправлення не спричинить за собою появу інших помилок. Насправді може виявитися так, що виправлення помилки викличе виникнення не одного, а відразу декількох помилок, ще більш підступних, ніж про її виправлення.</p>
+        <p>Тести є рішенням переважної більшості подібних проблем. Чим частіше ви будете їх виконувати, тим більше шансів швидко виявити помилку. Спробуйте виконувати тести після кожної компіляції, і ви самі побачите, як різко зросте продуктивність вашої праці. Ви перестанете витрачати багато часу на налагодження, пов'язану з пошуком помилки. І якщо ви раптом при виправленні зробили іншу помилку, то ви відразу ж виявите її, так як будете точно знати, що в попередній компіляції її не було. У будь-якому випадку, ви без зусиль зможете внести необхідні виправлення, знову відкомпілювати ваш модуль і провести наступний тест. Зауважте, важливо не тільки створювати класи тестів, але ще і часто запускати самі тести.</p>
+        <p>В ідеалі, для кожного класу повинен бути написаний тест. Але на практиці це не завжди доцільно. Завжди є ризик щось пропустити, тому не прагнете написати багато тестів - їх все одно буде недостатньо. Ваші побоювання з приводу того, що тестування не виявить всі помилки, не повинні заважати написання тестів, які дозволять вам виявити більшість помилок. Надмірна старанність при написанні тестів може викликати зворотний ефект - ви вирішите, що написання тестів забирає надто багато часу і відмовитеся від них. Тому необхідно складати тести лише для підозрілих місць. Подумайте, наприклад, про граничних умовах, які можуть бути неправильно оброблені, і зосередьте свої тести на них. Завжди пам'ятайте - тестування приносить відчутну користь, навіть якщо здійснюється в невеликому обсязі.</p>
+        <p>Для створення тестів Qt надає спеціальний модуль QtTestLib, який розроблений для того, щоб спростити тестування класів вашої програми. Також він включає в себе можливості проведення тестів класів графічного інтерфейсу і дозволяє "симулювати" клавіатуру і мишу.</p>
+        <p>Тести, про які піде мова в цьому розділі, називаються модульними тестами (unit tests). У подібних тестах кожен клас діє в рамках одного вашого модуля і виходить з того, що за його межами все працює нормально.</p>
+        <h2>Створення тестів в Qt</h2>
+        <p>Тести корисно створювати до початку реалізації коду. Це дозволить вам прінапісаніі тесту краще осмислити і зрозуміти завдання, поставивши собі запитання - що потрібно зробити для додавання реалізації.</p>
+        <p>Для демонстрації візьмемо простий приклад: припустимо, нам потрібно реалізувати клас з методами для знаходження максимуму і мінімуму двох чисел. Перше завдання полягає в підготовці тестових даних, які будуть виступати в якості зразків для тестування. Візьмемо для цієї мети чотири пари чисел: (25, 0), (-12, -15), (2007, 2007) і (-12, 5). Тепер, коли тестові дані готові, можна починати писати тести. Існують угоди для назви тестирующего класу і його методів, які встигли закріпитися і зарекомендувати себе на практиці з найкращого боку. А саме:</p>
+        <ul>
+            <li>називайте тестує клас ім'ям тестованого з префіксом Test. Наприклад: якщо ми тестуємо клас MyClass, то тестує клас буде називатися Test_MyClass;</li>
+            <li>називайте тестові слоти (методи) іменами тестованих методів.</li>
+        </ul>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QtTest> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "MyClass.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class Test_MyClass : public QObject { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Q_OBJECT &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; private slots: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void min(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void max(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void Test_MyClass::min() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; MyClass myClass; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.min(25, 0), 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.min(-12, -5), -12); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.min(2007, 2007), 2007); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.min(-12, 5), -12); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void Test_MyClass::max() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; MyClass myClass; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.max(25, 0), 25); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.max(-12, -5), -5); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.max(2007, 2007), 2007); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QCOMPARE(myClass.max(-12, 5), 5); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QTEST_MAIN(Test_MyClass) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "test.moc" &nbsp;&nbsp;</ex></p>
+        <p>У лістингу показана програма, яка повинна буде проводити тест методів min () і max () класу MyClass. У тестовій програмі необхідно включити заголовки QTest. Тестовий клас повинен бути успадкований від класу QObject і, для створення спеціальної метаінформації, містити в своєму визначенні макрос QObject. Це дозволить викликати слоти класу при виконанні, включаючи його тестові слоти в секції private.</p>
+        <p>Макрос QCOMPARE () приймає два аргументи. Отриманий і очікуваний результат, а потім порівнює їх. Якщо значення не збігаються, то тоді виконання тестового методу переривається повідомленням про не проторений тесті.</p>
+        <p>Нам потрібна функція main о, в якій буде виконуватися кожен тест. З огляду на те, що для проведення тестів ця функція виглядає однаково, Qt надає для її заміни макрос QTEST_MAIN ().</p>
+        <p>На завершення ми повинні включити метаінформацію, згенерувала МОС.</p>
+        <p>Після створення тесту можна приступити до реалізації методів тестованого класу.</p>
+        <p><ex class="ex">&nbsp;&nbsp; #ifndef MyClass_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #define MyClass_h_ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class MyClass { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int min(int n1, int n2) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return n1 < n2 ? n1 : n2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int max(int n1, int n2) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  return n1 > n2 ? n1 : n2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #endif //MyClass_h_ &nbsp;&nbsp;</ex></p>
+        <p>Клас MyClass реалізує два методи для знаходження мінімуму і максимуму.</p>
+        <p><ex class="ex">&nbsp;&nbsp; SOURCES       = test.cpp &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; HEADERS       = MyClass.h &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; CONFIG       += qtestlib &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; win32:TARGET  = ../TestLib &nbsp;&nbsp;</ex></p>
+        <p>У pro-файлі, в секції config повинна бути додана опція qttest. Ім'я заголовки тестованого класу зазначено для того, щоб за будь-яких його змінах можна було скомпілювати тест заново. При першому проведенні тесту корисно почати з перевірки на відмову, тобто нам потрібно модифікувати перевіряється метод так, щоб тест завершувався невдачею. Це допоможе нам переконатися в тому, що тест справді виконується і перевіряє те, що потрібно. Для цього поміняйте в методах min () і max () класу MyClass знаки порівняння на протилежні. Тепер откомпіліруем і запустимо тест. На екрані з'явиться наступне:</p>
+        <p><ex class="ex">&nbsp;&nbsp; ********* Start testing of Test_MyClass ********* &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Config: Using QTest library 4.7.4, Qt 4.7.4 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::initTestCase() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; FAIL!  : Test_MyClass::min() Compared values are not the same &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  Actual (myClass.min(25, 0)): 25 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Expected (0): 0 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Loc: [../TestLib/test.cpp(24)] &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; FAIL!  : Test_MyClass::max() Compared values are not the same &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Actual (myClass.max(25, 0)): 0 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Expected (25): 25 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Loc: [../TestLib/test.cpp(34)] &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::cleanupTestCase() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Totals: 2 passed, 2 failed, 0 skipped &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ********* Finished testing of Test_MyClass ********* &nbsp;&nbsp;</ex></p>
+        <p>Методи initTestCase () і cleanupTest () викликаються на початку і кінці тесту відповідно. Ці методи не трактуються як тест-методи. Вони виконуються при запуску тестів і служать для ініціалізації та очищення тесту. Крім того, на екрані ми бачимо інформацію про те, що тест пройшов невдало: повідомлення "FAIL!", Імена тестів "Test_MyClass :: min ()" і "Test_MyClass :: max ()", актуальні значення (Actual) і очікувані ( Expected). Відмінно! Наш тест завершився невдачею, а це значить, що перевірка роботи тесту вдалася - він дійсно здатний відстежувати помилки. Тепер поміняємо оператори порівняння в класі MyClass так, як це показано в лістингу. Скомпілюємо і запустимо тест ще раз. Ми побачимо на екрані такі повідомлення:</p>
+        <p><ex class="ex">&nbsp;&nbsp; ********* Start testing of Test_MyClass ********* &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Config: Using QTest library 4.7.4, Qt 4.7.4 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::initTestCase() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::min() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::max() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; PASS   : Test_MyClass::cleanupTestCase() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Totals: 4 passed, 0 failed, 0 skipped &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ********* Finished testing of Test_MyClass ********* &nbsp;&nbsp;</ex></p>
+        <p>Що говорить про те, що всі наші тести пройшли вдало.</p>
+    </div>
+</body>
+</html>

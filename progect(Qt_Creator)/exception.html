@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>exception в С++</h1></center>
+        <br>
+        <p>Всім нам інтуїтивно зрозуміло що таке виключення. Це якась дія, яка набирає чинності, при настанні нестандартної ситуації. Говорячи про про винятки в С ++, розглянемо одну з таких нестандартних ситуацій - поділ на 0. Уявіть, що ми працюємо в програмі, де вручну вносимо багато числових даних. Далі, в результаті якихось розрахунків програми, значення однієї із змінних стане рівним 0. А в наступному рядку коду це значення виступає дільником. Звичайно, ця дія призведе до неминучого закриття програми і виходу з неї. І ви можете собі уявити свій стан, коли півгодини вводите дані, працюючи в цій програмі, і на якомусь етапі вона просто перестає працювати і закривається, а всі дані пропадають.</p>
+        <p>У цій статті буде наведено дуже простий і короткий приклад, який допоможе розібратися з винятками в С ++. У ньому користувачеві буде запропоновано ввести два числа і програма проведе прості розрахунки з цими числами. Введення і розрахунки будуть проводитися певна кількість раз - за допомогою циклу while.</p>
+        <p>Спочатку наберіть вихідний код нижче і скомпілюйте. У змінну num2 внесіть число 0, щоб у вас було розуміння тієї проблеми, що якщо в програмі зустрічається поділ на 0, вона різко припиняє роботу, хочете ви цього чи ні.</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. #include <iostream>; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. setlocale(LC_ALL, "rus"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. int num1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. int num2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. int var = 2; // керуюча змінна для while &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. while(var--) // поки var - істина (не дорівнює 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 10. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 11. cout << "Введите значение num1: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 12. cin >> num1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 13. cout << "Введите значение num2: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 14. cin >> num2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 15. cout << "num1 + num2 = " << num1 + num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 16. cout << "num1 / num2 = " << num1 / num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 17. cout << "num1 - num2 = " << num1 - num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 18. cout << "=================================" << endl << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 19. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 20. cout << "Программа завершила работу!" << endl << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 21. return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 22. } &nbsp;&nbsp;</ex></p>
+        <p>У програмі цикл повинен відпрацювати два рази. У рядку 9 ми передаємо циклу значення змінної var і в цьому ж рядку зменшуємо її на одиницю, використовуючи операцію декремента (var--). Але, якщо в змінну num2 буде введено значення 0, ми побачимо тільки результат складання a + b і програма завершить роботу не залежно від того, є код нижче чи ні, відпрацював цикл чи ні.</p>
+        <p>Використовуючи виключення, ми зможемо уникнути таких проблем. Щоб «прикрутити» виняток до цього прикладу, треба познайомитися з наступними командами С ++: throw (в перекладі - обробити, запустити), try (спроба), catch (зловити, ловити) .В вихідному коді нижче, виняток спрацює так: програма отримує конкретне вказівку від програміста - якщо значення певної змінної в певній ділянці коду (в try-блоці) дорівнюватиме 0, то в цьому випадку нехай генерується виключення throw. Це виняток автоматично передасться catch-блоку у вигляді параметра і виконається код цього блоку.</p>
+        <p>Відразу розглянемо приклад. А все докладні пояснення по вихідного коду і теорія будуть розташовуватися під ним:</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. #include <iostream>; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. setlocale(LC_ALL, "rus"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. int num1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. int num2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. int var = 2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. while(var--) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 10. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 11. cout << "Введите значение num1: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 12. cin >> num1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 13. cout << "Введите значение num2: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 14. cin >> num2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 15. cout << "num1 + num2 = " << num1 + num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 16. cout << "num1 / num2 = "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 17. try // код, який може привести до помилки, розташовується тут &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 18. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 19. if (num2 == 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 20. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 21. throw 123; //генерувати ціле число 123 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 22. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 23. cout << num1 / num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 24. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 25. catch(int i)//сюда передається число 123 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 26. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 27. cout << "Ошибка №" << i << " - на 0 делить нельзя!!!!" << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 28. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 29. cout << "num1 - num2 = " << num1 - num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 30. cout << "=================================" << endl << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 31. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 32. cout << "Программа завершила работу!" << endl << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 33. return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 34. } &nbsp;&nbsp;</ex></p>
+        <p>У рядках 17 - 24 визначено try-блок. У ньому розташовується код, який потенційно може викликати помилку в роботі програми, а саме помилку в разі поділу на 0. Задаємо умова if - якщо num2 дорівнює 0, то генерувати ціле число 123, наприклад. В цьому випадку try-блок відразу припиняє виконання подальших команд, а число 123 «падає» в catch. У нашому прикладі він виводить повідомлення про помилку. При цьому програма продовжує працювати і виконувати команди, розміщені нижче. Якщо ж число num2 не дорівнюватиме нулю, то в try-блоці виконається команда cout << num1 / num2 << endl; , А catch не спрацює.</p>
+        <p>Щоб краще зрозуміти, як саме значення, яке генерує throw передається в catch, спробуйте замінити ділянку коду рядків 22 - 33 на наступний код:</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. try &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. if (num2 == 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. {&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. throw "Помилка - на 0 Ділити не можна!!!!"; // генерувати символьний рядок &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. }&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. cout << num1 / num2 << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. }&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. catch(char *str) //Сюда передається стрічка&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 10. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 11. cout << str << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 12. } &nbsp;&nbsp;</ex></p>
+        <p>Тут при спробі поділу на 0, throw генерується не число, а символьний рядок. І блоку catch в дужках ми показуємо, що він буде приймати покажчик на рядок і нижче - виводити цей рядок на екран.</p>
+        <p>Виняток так само може генеруватися в певній програмістом функції. Наприклад у нас визначена функція розподілу двох цілих чисел і в ній ми відразу перевіримо розподіл на 0.</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. int division(int n1, int n2) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. if (n2 == 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. throw 99; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. return n1 / n2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. } &nbsp;&nbsp;</ex></p>
+        <p>А викликати цю функцію, звичайно треба в try-блоці.</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. try &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. cout << division(5, 0); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. cout << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. catch(int i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8.  cout << "Помилка №" << i << " Ділення на ноль." << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. } &nbsp;&nbsp;</ex></p> 
+        <p>Ділення на нуль не станеться й catch зловить число 99.</p>
+        <p>Що важливо запам'ятати про винятки:</p>
+        <p>1. try-блок - так званий блок повторних спроб. У ньому треба розташовувати код, який може привести до помилки і аварійного закриття програми;</p>
+        <p>2. throw генерує виняток. Те що зупинить роботу try-блоку і призведе до виконання коду catch-блоку. Тип винятку повинен відповідати, типу прийнятого аргументу catch-блоку;</p>
+        <p>3. catch-блок - вловлює блок, зловить то, що визначив throw і виконає свій код. Цей блок повинен розташовуватися безпосередньо під try-блоком. Ніякої код не повинен їх розділяти.</p>
+        <p>4. якщо в try-блоці винятку не генерувалося, catch-блок не спрацює. Програма його обійде.</p>
+    </div>
+    <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+</body>
+</html>

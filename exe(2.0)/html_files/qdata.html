@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Клас дати QDate</h1></center>
+        <br>
+        <p>Додатків часто потрібна інформація про дату і час. Наприклад, для видачі звітної інформації або для реалізації годин. Qt надає для роботи з датою і часом три класи: QDate, QTime і QDateTime, певні в заголовних файлах QDate, QTime і QDateTime.</p>
+        <p>Клас QDate є структурою даних для зберігання дат і проведення з ними різного роду операцій. У конструкторі класу QDate передаються три цілочисельних параметра. У першому передається рік, у другому - місяць, а в третьому - день. Наприклад, створимо об'єкт, який буде містити дату 25 жовтня 2004: Додати</p>
+        <p><ex class="ex">&nbsp;&nbsp; QDate date(2007, 10, 25); &nbsp;&nbsp;</ex></p>
+        <p>Ці значення можна встановити і після створення об'єкта за допомогою методу setDate (). наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QDate date; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; date.setDate(2007, 10, 25); &nbsp;&nbsp;</ex></p>
+        <p>Для отримання значень року, місяця і дня, встановлених в об'єкті дати, слід скористатися наступними методами:</p>
+        <p> - year () - повертає цілий рік в діапазоні від 1752 до 8000;</p>
+        <p> - month () - повертає ціле значення місяця в діапазоні від 1 до 12 (з січня по грудень);</p>
+        <p> - day () - повертає день місяця в діапазоні від 1 до 31.</p>
+        <p>За допомогою методу daysInMonth () можна дізнатися кількість днів у місяці, а за допомогою методу daysInYear () - кількість днів в році.</p>
+        <p>Для отримання дня тижня слід викликати метод dayOfWeek (). Для отримання дня року служить метод dayOfYear (). Можна також дізнатися номер тижні, для чого потрібно викликати метод weekNumber ().</p>
+        <p>Метод toString () дозволяє отримати текстове представлення дати.</p>
+        <p>Можна визначити власний формат часу, передавши в метод toString () рядок-шаблон, що описує його. наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QDate date(2007, 10, 25);  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString str; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = date.toString ("d.M.yy"); // str - "3.7.07" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = date.toString ("dd / MM / yy"); // str - "03/07/04" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = date.toString ("yyyy.MMM.ddd"); // str = "2007.іюл.Сб" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = date.toString ("yyyy.MMMM.dddd"); // str = "2007.Іюль.суббота" &nbsp;&nbsp;</ex></p>
+        <p>За допомогою методу addDays () можна отримати змінену дату, додавши або віднявши від неї дні. Дії методів addMonths () і addYears () аналогічні, але різниця в тому, що вони оперують місяцями і роками. наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QDate date(2007, 1, 3); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QDate date2 = date.addDays(-7); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString str = date2.toString("dd/MM/yy"); //str = "27/12/06"  &nbsp;&nbsp;</ex></p>
+        <p>Клас QDate надає метод fromString (), що дозволяє проводити зворотне перетворення з строкового типу до типу QDate. Для цього, в першому параметрі методу потрібно передати формат. Одна з найбільш частих операцій - отримання поточної дати. Для цього потрібно викликати метод currentDate ().</p>
+        <p>За допомогою методу daysTo () можна дізнатися різницю в днях між двома датами. Наступний приклад визначає кількість днів від поточної дати до Нового року:</p>
+       <p><ex class="ex">&nbsp;&nbsp; QDate dateToday = QDate::currentDate(); &nbsp;&nbsp;</ex></p>
+       <p><ex class="ex">&nbsp;&nbsp; QDate dateNewYear(dateToday.year(), 12, 31); &nbsp;&nbsp;</ex></p>
+       <p><ex class="ex">&nbsp;&nbsp; qDebug () << "Залишилося" << dateToday.daysTo (dateNewYear) << "днів до Нового року"; &nbsp;&nbsp;</ex></p>
+       <p>Об'єкти дат можна порівнювати один з одним, для чого в класі QDate визначені оператори ==,! =, <, <=,> І> =. наприклад:</p>
+       <p><ex class="ex">&nbsp;&nbsp; QDate datel(2007, 1, 3); &nbsp;&nbsp;</ex></p>
+       <p><ex class="ex">&nbsp;&nbsp; QDate date2(2007, 1, 5); &nbsp;&nbsp;</ex></p>
+       <p><ex class="ex">&nbsp;&nbsp; bool b = (datel == date2); //b = false &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

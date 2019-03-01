@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+   <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+     <div class="page"> 
+        <center><h1>Вказівники</h1></center>
+        <br>
+        <p>Вказівник - змінна, значенням якої є адреса комірки пам'яті. Тобто покажчик посилається на блок даних з області пам'яті, причому на саме його початок. Покажчик може посилатися на змінну або функцію. Для цього потрібно знати адресу змінної або функції. Так ось, щоб дізнатися адресу конкретної змінної в С++ існує унарна операція взяття адреси &. Така операція витягує адреса оголошених змінних, для того, щоб його привласнити покажчику.</p>
+        <p>Покажчики використовуються для передачі за посиланням даних, що набагато прискорює процес обробки цих даних (в тому випадку, якщо обсяг даних великий), так як їх не треба копіювати, як при передачі за значенням, тобто, використовуючи ім'я змінної. Зазвичай покажчики використовуються для організації динамічного розподілу пам'яті, наприклад при оголошенні масиву, не треба буде його обмежувати в розмірі. Адже програміст заздалегідь не може знати, якого розміру потрібен масив того чи іншого користувачеві, в такому випадку використовується динамічне виділення пам'яті під масив. Будь покажчик необхідно оголосити перед використанням, як і будь-яку змінну.</p>
+        <p><ex class="ex">&nbsp;&nbsp; Тип* імя &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int* a; &nbsp;&nbsp;</ex></p>
+        <p>Принцип оголошення покажчиків такий же, як і принцип оголошення змінних. Відмінність полягає лише в тому, що перед ім'ям ставиться символ зірочки *. Візуально покажчики відрізняються від змінних тільки одним символом. При оголошенні покажчиків компілятор виділяє кілька байт пам'яті, в залежності від типу даних відводяться для зберігання деякої інформації в пам'яті. Щоб отримати значення, записане в деякій області, на яке посилається покажчик потрібно скористатися операцією разименованія покажчика *. Необхідно поставити зірочку перед ім'ям і отримаємо доступ до значення покажчика.</p>
+        <p><ex class="ex">&nbsp;&nbsp; int var = 123;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // вказівник на var (присвоєння адреси var вказівнику) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int *ptrvar = &var;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // адреса  var міститься в памяті, витягнутий операцією взяття адреси (&) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  cout &lt;&lt; "&var    = " &lt;&lt; &var &lt;&lt; endl;//0x22ff08 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // адрес змінної var, являється значенням вказівника ptrvar &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  cout &lt;&lt; "ptrvar  = " &lt;&lt; ptrvar &lt;&lt; endl;//0x22ff08 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // значення в змінній var &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "var     = " &lt;&lt; var &lt;&lt; endl;//123 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // вывод значения содержащегося в переменной var через указатель, операцией разименования указателя &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "*ptrvar = " &lt;&lt; *ptrvar &lt;&lt; endl;//123 &nbsp;&nbsp;</ex></p>
+        <h2>Покажчики на покажчики</h2>
+        <p>Покажчики можуть посилатися на інші покажчики. При цьому в комірках пам'яті, на які будуть посилатися перші покажчики, будуть міститися не значення, а адреси других покажчиків. Число символів * при оголошенні покажчика показує порядок покажчика. Щоб отримати доступ до значення, на яке посилається покажчик його необхідно разіменувати відповідну кількість разів. Розробимо програму, яка буде виконувати деякі операції з покажчиками порядку вище першого.</p>
+        <p><ex class="ex">&nbsp;&nbsp; int var = 123;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int *ptrvar = &var; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int **ptr_ptrvar = &ptrvar; // вказівник на вказівник на змінну var &nbsp;&nbsp;</ex></p>
+        <h2>Покажчики на функції</h2>
+        <p>Покажчики можуть посилатися на функції. Ім'я функції, як і ім'я масиву саме по собі є покажчиком, тобто містить адресу входу.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // оголошення вказівника на функцію &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; /*тип даних*/ (* /*імя вказівника*/)(/*список аргументів функції*/); &nbsp;&nbsp;</ex></p>
+        <p>Тип даних визначаємо такий, який буде повертати функція, на яку буде посилатися покажчик. Символ покажчика і його ім'я беруться в круглі скобочки, щоб показати, що це покажчик, а не функція, повертає покажчик на певний тип даних. Після імені покажчика йдуть круглі дужки, в цих дужках перераховуються всі аргументи через кому як в оголошенні прототипу функції. Аргументи успадковуються від тієї функції, на яку буде посилатися покажчик. Розробимо програму, яка використовує покажчик на функцію. Програма повинна знаходити НСД - найбільший спільний дільник. НОД - це найбільше ціле число, на яке без залишку діляться два числа, введених користувачем. Вхідні числа також повинні бути цілими.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // прототип функції &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int nod(int, int );  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; / оголошуєм вказівник на функцію  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int (*ptrnod)(int, int); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // присвоюєм адресу функції вказівнику &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ptrnod=nod;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int a = 24, b =57; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // звернення до функції через вказівник &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "NOD = " &lt;&lt; ptrnod(a, b) &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <br>
+        <center><h1>Силки</h1></center>
+        <br>
+        <p>Посилання - особливий тип даних, що є прихованою формою покажчика, який при використанні автоматично розіменовується. Посилання може бути оголошена як іншим ім'ям, або як псевдонім змінної, на яку посилається.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // структура обявлення силок &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; /*тип*/ &/*імя силки*/ = /*імя змінної*/; &nbsp;&nbsp;</ex></p>
+        <p>При оголошенні посилання перед її ім'ям ставиться символ амперсанда &, саме ж посилання повинне бути проініціалізоване ім'ям змінної, на яку воно посилається. Тип даних, на який вказує посилання, може бути будь-яким, але повинен збігатися з об'єктом, на який посилається, тобто з типом даних посилальної змінної. Для зручності, будемо називати змінну, на яку посилається посилання «посилальна змінна». Будь-яка зміна значення силки  спричинить за собою змінну значення змінної, на яку посилається посилання. Розробимо програму, в якій оголосимо посилання на об'єкт типу int.</p>
+        <p><ex class="ex">&nbsp;&nbsp; int value = 15; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // оголошення та ініціалізація силки значенням змінної value &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int &reference = value; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "value     = " &lt;&lt; value     << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "reference = " &lt;&lt; reference &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // міняєм значення змінної value за допомогою зміни значення в посиланні &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; reference+=15; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // дивимся яке буде значення в змінні &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "value     = " &lt;&lt; value     &lt;&lt; endl; //буде 30&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //  так і в самому помиланні &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; "reference = " &lt;&lt; reference &lt;&lt; endl; //буде 30&nbsp;&nbsp;</ex></p>
+        <p>Посилання, як правило, в більшості випадків використовують у функціях як посилання-параметри або посилання-аргументи.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // функція яка приймає значення по силці &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int name(const int &reference){} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // const не дає міняти передаваємий аргумент всередині функциї &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

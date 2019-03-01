@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Робота з файлами в С++</h1></center>
+        <br>
+        <p>Більшість комп'ютерних програм працюють з файлами, і тому виникає необхідність створювати, видаляти, записувати читати, відкривати файли. Що ж таке файл? Файл - іменований набір байтів, який може бути збережений на деякому накопичувачі. Ну, тепер зрозуміло, що під файлом розуміється деяка послідовність байтів, яка має своє, унікальне ім'я, наприклад файл.txt. В одній директорії не можуть знаходитися файли з однаковими іменами. Під ім'ям файлу розуміється не тільки його назву, а й розширення, наприклад: file.txt і file.dat – різні файли, хоч і мають однакові назви. Існує таке поняття, як повне ім'я файлів - це повна адреса до директорії файлу із зазначенням імені файлу, наприклад: D:\docs\file.txt. Важливо розуміти ці базові поняття, інакше складно буде працювати з файлами.</p>
+        <p>Для роботи з файлами необхідно підключити заголовний файл &lt;fstream>. В &lt;fstream> визначені кілька класів і підключені заголовні файли &lt;ifstream> – файловий ввід і &lt;ofstream> – файловий вивід.</p>
+        <p>Файловий ввід / вивід аналогічний стандартному вводу / виводу, єдина відмінність - це те, що введення / виведення виконаються не на екран, а в файл. Якщо введення / виведення на стандартні пристрої виконується за допомогою об'єктів cin і cout, то для організації файлового введення / виводу досить створити власні об'єкти, які можна використовувати аналогічно операторам cin і cout.</p> 
+        <p>Наприклад, необхідно створити текстовий файл і записати в нього рядок Работа с файлами в С++. Для цього необхідно виконати наступні кроки:</p> 
+        <p>1. створити об'єкт класу ofstream;</p>  
+        <p>2. зв'язати об'єкт класу з файлом, в який проводитиметься запис;</p>
+        <p>3. записати рядок у файл;</p>
+        <p>4. закрити файл.</p>
+        <p>Чому необхідно створювати об'єкт класу ofstream, а не класу ifstream? Тому, що потрібно зробити запис у файл, а якби потрібно було вважати дані з файлу, то створювався б об'єкт класу ifstream.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // створюємо об'єкт для запису в файл &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ofstream /*імя обєкта*/; // об'єкт класу ofstream &nbsp;&nbsp;</ex></p>
+        <p>Назвемо об'єкт - fout, Ось що вийде:</p>
+        <p><ex class="ex">&nbsp;&nbsp; ofstream fout; &nbsp;&nbsp;</ex></p>
+        <p>Для чого нам об'єкт? Об'єкт необхідний, щоб можна було виконувати запис у файл. Вже об'єкт створений, але не пов'язаний з файлом, в який потрібно записати рядок.</p>
+        <p><ex class="ex">&nbsp;&nbsp; fout.open("cppstudio.txt"); // пов'язуємо об'єкт з файлом &nbsp;&nbsp;</ex></p>
+        <p>Через операцію точка отримуємо доступ до методу класу open(), в круглих дужках якого вказуємо ім'я файлу. Зазначений файл буде створений в поточній директорії з програмою. Якщо файл з таким ім'ям існує, то існуючий файл буде замінений новим. Отже, файл відкритий, залишилося записати в нього потрібний рядок. Робиться це так:</p>
+        <p><ex class="ex">&nbsp;&nbsp; fout &lt; "Работа с файлами в С++"; // запис рядка в файл &nbsp;&nbsp;</ex></p>
+        <p>Використовуючи операцію передачі в потік спільно з об'єктом fout рядок Работа с файлами в С++ записується в файл. Так як більше немає необхідності змінювати вміст файлу, його треба закрити, тобто відокремити об'єкт від файлу.</p>
+        <p><ex class="ex">&nbsp;&nbsp; fout.close(); // закриваємо файл &nbsp;&nbsp;</ex></p>
+        <p>Підсумок - створений файл з рядком Работа с файлами в С++.</p>
+        <p>Кроки 1 і 2 можна об'єднати, тобто в одному рядку створити об'єкт і пов'язати його з файлом. Робиться це так:</p>
+        <p><ex class="ex">&nbsp;&nbsp; ofstream fout("cppstudio.txt"); // створюємо об'єкт класу ofstream і зв'язати його з файломcppstudio.txt &nbsp;&nbsp;</ex></p>
+        <p>Об'єднаймо весь код і отримаємо таку програму.</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;fstream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char* argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ofstream fout("cppstudio.txt"); // створюємо об'єкт класу ofstream для запису і зв'язати його з файломcppstudio.txt &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fout &lt "Работа с файлами в С++"; // запис рядка в файл &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fout.close(); // закриваємо файл &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; system("pause"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Залишилося перевірити правильність роботи програми, а для цього відкриваємо файл cppstudio.txt і дивимося його вміст, повинно бути – Работа с файлами в С++.</p>
+        <p>Для того щоб прочитати файл знадобиться виконати ті ж кроки, що і при записі у файл з невеликими змінами:</p>
+        <p>1. створити об'єкт класу ifstream і пов'язати його з файлом, з якого буде проводитися зчитування;</p>
+        <p>2. прочитати файл;</p>
+        <p>3. закрити файл.</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;fstream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char* argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; setlocale(LC_ALL, "ukr"); // коректне відображення кирилиці &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char buff[50]; // буфер проміжного зберігання зчитує з файлу тексту &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  ifstream fin("cppstudio.txt"); // відкрили файл для читання &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fin >> buff; // зчитали перше слово з файлу &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; buff &lt;&lt; endl; // надрукували це слово &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fin.getline(buff, 50); // зчитали рядок з файлу &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  fin.close(); //закриваємо файл&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout &lt;&lt; buff &lt;&lt; endl; // надрукували цей рядок &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; system("pause"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>У програмі показані два способи читання з файлу, перший - використовуючи операцію передачі в потік, другий - використовуючи функцію getline(). У першому випадку зчитується тільки перше слово, а в другому випадку зчитується рядок, довжиною 50 символів.</p>
+        <p>Програма спрацювала правильно, але не завжди так буває, навіть у тому випадку, якщо з кодом все в порядку. Наприклад, в програму передано ім'я неіснуючого файлу або в імені допущена помилка. Що тоді? У цьому випадку нічого не відбудеться взагалі. Файл не буде знайдений, а значить і прочитати його не можливо. Тому компілятор проігнорує рядки, де виконується робота з файлом. В результаті коректно завершиться робота програми, але нічого, на екрані показано буде. Здавалося б це цілком нормальна реакція на таку ситуацію. Але простому користувачеві не буде зрозуміло, в чому справа і чому на дисплеї не з'явився рядок з файлу. Так ось, щоб все було максимально зрозуміло в С++ передбачена така функція – is_open(), яка повертає цілі значення: 1 – якщо файл був успішно відкритий, 0 – якщо файл відкритий не був. Доопрацюємо програму з відкриттям файлу, таким чином, що якщо файл не відкритий виводилося відповідне повідомлення.</p>
+        <h2>Режими відкриття файлів</h2>
+        <p>Режими відкриття файлів встановлюють характер використання файлів. Для установки режиму в класі ios_base передбачені константи, які визначають режим відкриття файлів.</p>
+        <p>ios_base::in відкрити файл для читання</p>
+        <p>ios_base::out    відкрити файл для запису</p>
+        <p>ios_base::ate    при відкритті перемістити покажчик в кінець файлу</p>
+        <p>ios_base::app    відкрити файл для запису в кінець файлу</p>
+        <p>ios_base::trunc  видалити вміст файлу, якщо він існує</p>
+        <p>ios_base::binary відкриття файлу в двійковому режимі</p>
+        <p>Режими відкриття файлів можна встановлювати безпосередньо при створенні об'єкта або при виконанні функції open().</p>
+        <p><ex class="ex">&nbsp;&nbsp; ofstream fout("cppstudio.txt", ios_base::app); // відкриваємо файл для додавання інформації до кінця файлу &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; fout.open("cppstudio.txt", ios_base::app); // відкриваємо файл для додавання інформації до кінця файлу &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

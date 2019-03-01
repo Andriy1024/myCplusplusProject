@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page">
+     	<center><h1>Функції у C++</h1></center>
+        <br>
+        <h2>Об’явлення та визначення функцій</h2>
+        <p>Функція – це іменована послідовність операторів, що виконує якунебудь закінчену дію. Функція може одержувати параметри і повертати єдине значення. Будь-яка функція в програмі повинна бути об’явлена і визначена. Об’явлення функції повинне бути зроблено до її виклику, щоб компілятор міг правильно обробити її параметри.</p>
+        <p>Визначення функції (прототип функції) задає її ім'я, тип значення, що повертається, і список одержуваних параметрів. Після визначення слідує тіло функції – складений оператор, що містить оператори, які визначають дію функції.</p>
+        <p>Формат визначення функції: </p>
+        <p><ex class="ex">&nbsp;&nbsp;тип ім'я_функції(список_параметрів)  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;{тіло функції  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;return значення}  &nbsp;&nbsp;</ex></p>
+        <p>Тип значення, що повертається функцією може бути будь-яким, крім масиву і функції (але може бути вказівником на масив або функцію). Якщо функція не повинна повертати значення, то вона повинна мати тип void.</p>
+        <p>Список_параметрів визначає величини, що потрібно передати у функцію при її виклику. Елементи списку параметрів розділяються комами. Для кожного параметра вказується його тип і ім'я.</p>
+        <p>У визначенні, в оголошенні і при виклику однієї і тієї ж функції типи і порядок слідування параметрів повинні збігатися.
+        Для виклику функції потрібно вказати її ім'я, а за ним у круглих дужках – імена переданих аргументів (через кому). Виклик функції може розташовуватися в будь-якому місці програми. Виключення – функція типу void не може входити до складу виражень або розташовуватися в правій частині оператора присвоювання.</p>
+        <p>Усі величини, описані у функції, а також її параметри являються локальними. Їхня область дії обмежена межами цієї функції. При виході з функції значення локальних змінних губляться. Якщо цього потрібно уникнути, при описі локальних змінних використовується модифікатор static.</p>
+        <h2>Обмін даними між функціями</h2>
+        <p>Обмін даними між функціями може виконуватися наступними шляхами:</p>
+        <p>1) за допомогою глобальних змінних;</p>
+        <p>2) через значення, що повертається.</p>
+        <p>3) через параметри;</p>
+        <h2>Глобальні змінні</h2>
+        <p>Глобальні змінні доступні усередині будь-якої функції, де немає однойменних локальних змінних. Але їх використовувати не рекомендується, тому що це утрудняє налагодження і робить функцію залежною від іншої програми (неможливість виділити функцію в окрему бібліотеку).</p>
+        <p>Значення, що повертається. Повернення з функції в точку її виклику здійснюється оператором:</p>
+        <p><ex class="ex">&nbsp;&nbsp; return вираження; &nbsp;&nbsp;</ex></p>
+        <p>У функції може бути декілька операторів return. Якщо функція описана як void, вираження не вказується (може навіть бути відсутнім і оператор return).</p>
+        <p>Вираження, зазначене в операторі return неявно перетвориться до типу значення, що повертається функцією, і передається в точку виклику. Забороняється повертати з функції вказівник на локальну змінну, тому що пам'ять, виділена циєї змінної при виході з функції звільняється.</p>
+        <h2>Параметри функції</h2>
+        <p>Параметри, зазначені в заголовку при описі функції являються формальними. Параметри, задані при виклику функції, називаються фактичними (аргументами).</p>
+        <p>Способи передачі параметрів у функцію:</p>
+        <p>1) за значенням;</p>
+        <p>2) за адресою (по посиланню).</p>
+        <p>При передачі за значенням функція одержує копії значень параметрів.</p>
+        <p>Можливість змінити самі параметри відсутня. При передачі за адресою функція одержує адреси аргументів. При цьому функція може змінити значення аргументів. Якщо потрібно заборонити зміну параметра усередині функції, використовується модифікатор const.</p>
+        <p>Код програми 1: Функція для обміну двох цілих чисел.</p>
+        <p><ex class="ex">&nbsp;&nbsp;#include <iostream.h>  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void swap(int &x, int &y) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp; int z; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;z=x; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;x=y; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;y=z; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  &nbsp;int a=20,b=40;&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"Значення до обміну"&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"a="&lt;&lt;a&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"b="&lt;&lt;b&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;swap(a,b); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"Значення після обміну"&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"a="&lt;&lt;a&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; &nbsp;cout&lt;&lt;"b="&lt;&lt;b&lt;&lt;endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Примітка – Аргумент може передаватися або як вказівник, або як посилання. При передачі по посиланню усередині функції при звертанні до параметра неявно виконується операція розіменування. При використанні вказівника програміст повинний явно задавати операцію розіменування.</p>
+        <h2>Рекурсія</h2>
+        <p>Рекурсія – це здатність функції викликати саму себе.</p>
+        <p>Пряма рекурсія – коли функція викликає сама себе безпосередньо.</p>
+        <p>Непряма рекурсія – коли функція викликає себе через іншу функцію.<br>Для нормального завершення будь-яка рекурсивна функція повинна містити хоча б одну нерекурсивну галузь, що закінчується оператором повернення.</p>
+     </div>
+    
+</body>
+</html>

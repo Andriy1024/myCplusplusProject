@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Клас головного вікна QMainWindow</h1></center>
+        <br>
+        <p>QMainWindow - це дуже важливий клас, який реалізує головне вікно, що містить в собі типові віджети, необхідні більшості додатків, такі як меню, секції для панелей інструментів, робочу область, рядка стану. В цьому класі зовнішній вигляд вже підготовлений і його віджети не потребують додаткового розміщення, так як вони вже знаходяться в потрібних місцях.</p>
+        <p>Вікно додатка, зображене на малюнку, має рамку, область заголовка для відображення імені і три кнопки, що керують вікном. Крім цього, вікно програми має меню, яке розташовується нижче області заголовка вікна. Панель інструментів розташована під меню. Під робочою областю розташований рядок стану.</p>
+        <p>Покажчик на віджет меню можна отримати викликом методу QMainWindow :: menuBar () і встановити в ньому потрібні спливаючі меню:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMenu* pmnuFile = new QMenu("&File") ;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnuFile->addAction("&Save"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; menuBar()->addMenu(pmnuFile); &nbsp;&nbsp;</ex></p>
+        <br><center><img src="./debug/html_files/images/mainwindow.png"></center><br>
+        <p>Як правило, встановлюються такі спливаючі меню:</p>
+        <p> File (Файл) - містить основні операції для роботи з файлами: New (Створити) Open (Відкрити), Save (Зберегти), Print (Друк) і Quit (Вихід);</p>
+        <p> Edit (Правка) - містить команди загального редагування: Cut (Вирізати), Сміттю (Копіювати), Paste (Вставити); Undo (Скасувати), Redo (Повторити), Find (Знайти), Replace (Замінити) і Delete (Очистити);</p>
+        <p> View (Вид) - містить команди, що змінюють уявлення даних вікна. Наприклад, команда Zoom (Масштаб) масштабує відображення документа. У цей меню можна включати і ті команди, які керують відображенням елементів інтерфейсу програми, наприклад: панелі інструментів і рядка стану;</p>
+        <p> Help (Довідка) - необхідна для надання допомоги користувачеві, при освоєнні програми. А також, звичайно, включає в себе інформацію про авторські права додатки. Наприклад, при виборі команди About (Про програму) з'явиться вікно, що відображає назва програми, його версію, інформацію про авторські права.</p>
+        <p>Щоб отримати покажчик на робочу область, слід викликати метод QMainWindow :: centralWidget (), який поверне покажчик на QWidget. Для установки віджета робочої області буде потрібно викликати метод QMainWindows :: setCentralWidget () і передати в нього покажчик на цей віджет.</p>
+        <p>Метод QMainWindow :: statusBar () повертає покажчик на віджет рядки стану. Кнопка зміни розмірів вікна, розташована в нижньому правому куті рядка стану, є всього лише підказкою для користувача, що повідомляє про те, що розміри головного вікна можуть бути змінені. Цей віджет реалізований в класі QSizeGrip. Отримати покажчик на нього з класу головного вікна (QMainWindow) неможливо, так як він знаходиться під контролем віджета рядки стану.</p>
+    </div>
+</body>
+</html>

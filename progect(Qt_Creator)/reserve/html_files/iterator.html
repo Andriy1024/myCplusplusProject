@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+    html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+    html , body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+     }
+       .page{
+        width: 600px;
+        margin: 0px auto;
+        text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+        
+    }
+      h1{
+        font-size: 22px;
+        font-weight: bold;
+    }
+    h2{
+        font-size: 21px;
+        font-weight: bold;
+    }
+  
+    b{
+        font-weight: bold;
+
+    }
+    ul{
+        list-style-type: disc;
+        list-style-position: inside;
+        margin:  10px 0px;
+        line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+         border-radius: 5px;
+         background-color:  rgba(28,22,22,0.9);
+         padding: 0px 10px;
+       }
+
+    </style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Ітератори</h1></center>
+        <br>
+        <p>Ітератори - об'єкти для уніфікованого доступу до елементів контейнера.</p>
+        <p>Ви повинні бути знайомі з ітераторами, якщо маєте хороший досвід програмування на C ++ з використанням STL, або на Java. В Qt є як ітератори в стилі STL, так і ітератори в стилі Java. Перші трохи ефективніше, але з другими зручніше працювати.</p>
+        <h2>Ітератори в стилі Java</h2>
+        <p>Ітератори в стилі Java є новими в Qt 4 і є стандартними, використовуваними в додатках Qt. Вони більш зручні у використанні, ніж ітератори в стилі STL, але вони трохи менш ефективні. Їх API зроблений за зразком класів-ітераторів Java.</p>
+        <p>Ітератори в стилі Java є новими в Qt 4 і є стандартними, використовуваними в додатках Qt. Вони більш зручні у використанні, ніж ітератори в стилі STL, але вони трохи менш ефективні. Їх API зроблений за зразком класів-ітераторів Java.</p>
+        <h2>Ітератори тільки для читання</h2>
+        <p>QList&lt;T>, QQueue&lt;T> - QListIterator&lt;T></p>
+        <p>QLinkedList&lt;T> - QLinkedListIterator&lt;T></p>
+        <p>QVector&lt;T>, QStack&lt;T> - QVectorIterator&lt;T></p>
+        <p>QSet&lt;T> - QSetIterator&lt;T></p>
+        <p>QMap&lt;Key, T>, QMultiMap&lt;Key, T> - QMapIterator&lt;Key, T></p>
+        <p>QHash&lt;Key, T>, QMultiHash&lt;Key, T> - QHashIterator&lt;Key, T></p>
+        <h2>Ітератори для читання-запису</h2>
+        <p>QList&lt;T>, QQueue&lt;T> - QMutableListIterator&lt;T></p>
+        <p>QLinkedList&lt;T> - QMutableLinkedListIterator&lt;T></p>
+        <p>QVector&lt;T>, QStack&lt;T> - QMutableVectorIterator&lt;T></p>
+        <p>QSet&lt;T> - QMutableSetIterator&lt;T></p>
+        <p>QMap&lt;Key, T>, QMultiMap&lt;Key, T> - QMutableMapIterator&lt;Key, T></p>
+        <p>QHash&lt;Key, T>, QMultiHash&lt;Key, T> - QMutableHashIterator&lt;Key, T></p>
+        <p>В цьому обговоренні ми сконцентруємося на QList і QMap. Типи ітераторів для QLinkedList, QVector і QSet мають точно такий же інтерфейс, що і ітератори QList; аналогічно, типи ітераторів для QHash мають той же інтерфейс, що і ітератори QMap.</p>
+        <p>На відміну від ітераторів в стилі STL (що розглядаються нижче), ітератори в стилі Java вказують на осередок пам'яті між елементами, а не на самі елементи. Тому вони вказують або на початок контейнера (перед першим елементом), або на кінець контейнера (після останнього елемента), або між двома елементами. На діаграмі нижче червоними стрілками показані можливі позиції ітератора в списку, що містить чотири елементи:</p>
+        <br><center><img src="./debug/html_files/images/iterator_java.png"></center><br>
+        <p>Ось типовий приклад циклу для перебору всіх елементів QList <QString> по порядку і виведення їх в консоль:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList<QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list &lt;&lt; "A" &lt;&lt; "B" &lt;&lt; "C" &lt;&lt; "D"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QListIterator<QString> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; i.next(); &nbsp;&nbsp;</ex></p>
+        <p>Він працює таким чином: щоб перебрати елементи, QList поміщається в конструктор QListIterator. У цей момент итератор позиціонується на початок першого елемента в списку (перед елементом "A"). Потім ми викликаємо hasNext () для перевірки, чи існує який-небудь елемент після позиції ітератора. Якщо є, то ми викликаємо next (), щоб перестрибнути через нього. Функція next () повертає елемент, через який перестрибнув итератор. Для QList &lt;QString>, це елемент типу QString.</p>
+        <p>Ось як перебрати елементи QList в зворотному порядку:</p>
+        <p><ex class="ex">&nbsp;&nbsp;  QListIterator<QString> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.toBack(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasPrevious()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; i.previous(); &nbsp;&nbsp;</ex></p>
+        <p>Цей код симетричний перебору в прямому порядку, за виключення того, що ми починаємо з виклику toBack () для переміщення ітератора на позицію, після останнього елемента в списку.</p>
+        <p>Діаграма, наведена нижче, показує ефект від викликів функцій ітератора next () і previous ():</p>
+        <br><center><img src="./debug/html_files/images/iterator_java2.png"></center><br>
+        <h2>Функції</h2>
+        <p>toFront () переміщує ітератор в початок списку (перед першим елементом)</p>
+        <p>toBack () переміщує ітератор в кінець списку (після останнього елемента)</p>
+        <p>hasNext () Повертає true, якщо итератор не в кінці списку</p>
+        <p>next () Повертає наступний елемент і переміщає ітератор на одну позицію вперед</p>
+        <p>peekNext () Повертає наступний елемент без переміщення ітератора</p>
+        <p>hasPrevious () Повертає true, якщо итератор не на початку списку</p>
+        <p>previous () Повертає попередній елемент і переміщає ітератор на одну позицію назад</p>
+        <p>peekPrevious () Повертає попередній елемент без переміщення ітератора</p>
+        <p>QListIterator не надає функцій для вставки або видалення елементів перебирати списку. Для того, щоб зробити це, ви повинні використовувати QMutableListIterator. Ось приклад, де ми видаляємо всі елементи з непарними значеннями з QList &lt;int> використовуючи QMutableListIterator:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableListIterator&lt;int> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (i.next() % 2 != 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.remove(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Виклик next () здійснюється в кожній ітерації циклу. Він перестрибує через наступний елемент у списку. Функція remove () видаляє останній елемент, через який ми перестрибнули в списку. Виклик remove () робить итератор недійсним, і він залишається придатним для подальшого використання. Це працює точно також і при переборі елементів в зворотному порядку:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableListIterator&lt;int> i(list);  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.toBack(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  while (i.hasPrevious()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (i.previous() % 2 != 0) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.remove(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Якщо ви бажаєте лише змінити значення існуючого елемента, то можете використовувати функцію setValue (). У коді нижче, ми замінюємо будь-яке значення більше ніж 128, на 128:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableListIterator&lt;int> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (i.next() > 128) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.setValue(128); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Точно також, як і remove (), setValue () працює з останньому елементом, який ми перестрибнули. Якщо ви перебирає елементи в прямому напрямку, то це елемент, розташований прямо перед ітератором, якщо ви перебирає елементи в зворотному порядку, то це елемент, розташований відразу за ітератором.</p>
+        <p>Функція next () повертає неконстантную посилання на елемент списку. Для простих операцій нам навіть не потрібно setValue ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableListIterator&lt;int> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.next() *= 2; &nbsp;&nbsp;</ex></p>
+        <p>Як було сказано вище, ітератори класів QLinkedList, QVector і QSet мають абсолютно такий же API як і у QList. Тепер звернемося до QMapIterator, який дещо відрізняється, так як служить для перебору пар (ключ, значення).</p>
+        <p>Як і QListIterator, QMapIterator надає toFront (), toBack (), hasNext (), next (), peekNext (), hasPrevious (), previous () і peekPrevious (). Компоненти ключ і значення можуть бути отримані викликом key () і value () для об'єкта, повернутого next (), peekNext (), previous () або peekPrevious ().</p>
+        <p>У наступному прикладі видаляються всі пари (столиця, держава), в яких назва столиці закінчується на "City":</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;QString, QString> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("Paris", "France"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("Guatemala City", "Guatemala"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("Mexico City", "Mexico"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("Moscow", "Russia"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableMapIterator&lt;QString, QString> i(map); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (i.next().key().endsWith("City")) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.remove(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>QMapIterator також надає функції key () і value (), які працюють безпосередньо з ітератором і повертають ключ і значення останнього елемента, який перестрибнув итератор. Наприклад, в наступному коді проводиться копіювання вмісту QMap в QHash:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;int, QWidget *> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  QHash&lt;int, QWidget *> hash; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMapIterator&lt;int, QWidget *> i(map); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  i.next(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.insert(i.key(), i.value()); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Якщо ми хочемо перебрати всі елементи, що містять один і той же значення, то ми можемо використовувати findNext () або findPrevious (). Ось приклад, де ми видаляємо всі елементи з заданим значенням:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMutableMapIterator&lt;int, QWidget *> i(map); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.findNext(widget)) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i.remove(); &nbsp;&nbsp;</ex></p>
+        <h2>Ітератори в стилі STL</h2>
+        <p>Ітератори в стилі STL стали доступні, починаючи з версії Qt 2.0. Вони сумісні з базовими алгоритмами Qt і STL і оптимізовані за швидкістю.</p>
+        <p>Для кожного контейнерного класу є два типи ітераторів в стилі STL: один з них надає доступ тільки для читання, а інший - доступ для читання-запису. Ітератори тільки для читання повинні використовуватися всюди, де це тільки можливо, так як вони швидше, ніж ітератори для читання-запису.</p>
+        <h2>Ітератори тільки для читання</h2>
+        <p>QList&lt;T>, QQueue&lt;T> - QList&lt;T>::const_iterator</p>
+        <p>QLinkedList&lt;T> - QLinkedList&lt;T>::const_iterator</p>
+        <p>QVector&lt;T>, QStack&lt;T> - QVector&lt;T>::const_iterator</p>
+        <p>QSet&lt;T> -    QSet&lt;T>::const_iterator</p>
+        <p>QMap&lt;Key, T>, QMultiMap&lt;Key, T> - QMap&lt;Key, T>::const_iterator</p>
+        <p>QHash&lt;Key, T>, QMultiHash&lt;Key, T> - QHash&lt;Key, T>::const_iterator    </p>
+        <h2>Ітератори для читання-запису</h2>
+        <p>QList&lt;T>, QQueue&lt;T> - QList&lt;T>::iterator</p>
+        <p>QLinkedList&lt;T> - QLinkedList&lt;T>::iterator</p>
+        <p>QVector&lt;T>, QStack&lt;T> - QVector&lt;T>::iterator</p>
+        <p>QSet&lt;T> - QSet&lt;T>::iterator</p>
+        <p>QMap&lt;Key, T>, QMultiMap&lt;Key, T> - QMap&lt;Key, T>::iterator</p>
+        <p>QHash&lt;Key, T>, QMultiHash&lt;Key, T> - QHash&lt;Key, T>::iterator</p>
+        <p>API ітераторів в стилі STL зроблений за зразком покажчиків в масиві. Наприклад, оператор ++ переміщує ітератор до наступного елементу, а оператор * повертає елемент, на який позиціонується итератор. Фактично, для QVector і QStack, що зберігають свої елементи в суміжних комірках пам'яті, тип iterator - це всього лише typedef для T *, а тип const_iterator - всього лише typedef для const T *.</p>
+        <p>В цьому обговоренні ми сконцентруємося на QList і QMap. Типи ітераторів для QLinkedList, QVector і QSet мають точно такий же інтерфейс, що і ітератори QList; аналогічно, типи ітераторів для QHash мають той же інтерфейс, що і ітератори QMap.</p>
+        <p>Ось типовий приклад циклу для перебору всіх елементів QList &lt;QString> по порядку і конвертації їх в в нижній регістр:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list &lt;&lt; "A" &lt;&lt; "B" &lt;&lt; "C" &lt;&lt; "D"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;QString>::iterator i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; for (i = list.begin(); i != list.end(); ++i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; *i = (*i).toLower(); &nbsp;&nbsp;</ex></p>
+        <p>На відміну від ітераторів в стилі Java, ітератори в стилі STL вказують прямо на елемент. Функція контейнера begin () повертає ітератор, який вказує на перший елемент контейнера. Функція контейнера end () повертає ітератор, який вказує на уявний елемент, що знаходиться в позиції, наступної за останнім елементом контейнера. end () позначає неіснуючу позицію; він ніколи не повинен разименовиваться. Зазвичай, він використовується, як умова виходу з циклу. Якщо список порожній, то begin () дорівнює end (), тому цикл ніколи не виконається.</p>
+        <p>На діаграмі нижче червоними стрілками показані можливі позиції ітератора в списку, що містить чотири елементи:</p>
+        <br><center><img src="./debug/html_files/images/iterator_stl.png"></center><br>
+        <p>При переборі елементів в зворотному порядку за допомогою ітераторів в стилі STL, потрібно, щоб оператор декремента використовувався перед звернення до елементу. Ось необхідний цикл while:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list &lt;&lt; "A" &lt;&lt; "B" &lt;&lt; "C" &lt;&lt; "D"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;QString>::iterator i = list.end(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i != list.begin()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; --i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; *i = (*i).toLower(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>У цих фрагментах коду, ми використовували унарний оператор * для відновлення значення елемента (типу QString), що зберігається в деякій позиції ітератора, а потім для нього викликали QString :: toLower (). Більшість компіляторів C ++ (але не всі) також дозволяють писати i-> toLower () ().</p>
+        <p>Для доступу до елементів тільки для читання, можна використовувати const_iterator, constBegin () і constEnd (). наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;QString>::const_iterator i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; for (i = list.constBegin(); i != list.constEnd(); ++i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; *i; &nbsp;&nbsp;</ex></p>
+        <p>*i Повертає поточний елемент</p>
+        <p>++ i переміщує ітератор до наступного елементу</p>
+        <p>i + = n переміщує ітератор вперед на n елементів</p>
+        <p>--i переміщує ітератор на один елемент назад</p>
+        <p>i - = n переміщує ітератор назад на n елементів</p>
+        <p>i - j Повертає кількість елементів, що знаходяться між позицією ітератора i та j</p>
+        <p>Обидва оператора ++ і - можуть використовуватися і як префіксние (++ i, --i) і як постфіксні (i ++, i--) оператори. Префіксная версія змінює итератор, і повертає посилання на змінений итератор; Постфіксний версія, бере копію ітератора перед його зміною, і повертає цю копію. У виразах, в яких повертається значення ігнорується, ми рекомендуємо використовувати префіксних версію (++ i, --i), так як вона трохи швидше.</p>
+        <p>Для неконстантних ітераторів, яке значення унарна оператора *, може бути використано з лівого боку від оператора присвоювання.</p>
+        <p>Для QMap і QHash, оператор * повертає компонент значення елемента. Якщо ви хочете отримати ключ, викличте key () для ітератора. Для симетрії, типи ітераторів надають також функцію value (), витягує значення. Наприклад, тут показано, як ми можемо надрукувати всі елементи в QMap в консоль:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;int, int> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;int, int>::const_iterator i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; for (i = map.constBegin(); i != map.constEnd(); ++i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; i.key() &lt;&lt; ":" &lt;&lt; i.value(); &nbsp;&nbsp;</ex></p>
+        <p>Завдяки неявному спільному використанню даних, використання значень контейнера вельми недорого. API Qt містить безліч функцій, які повертають QList або QStringList зі значеннями (наприклад, QSplitter :: sizes ()). Якщо ви хочете перебрати ці значення за допомогою ітератора в стилі STL, то ви завжди повинні мати копію контейнера і перебирати її елементи. наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; // ПРАВИЛЬНО &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const QList&lt;int> sizes = splitter->sizes(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;int>::const_iterator i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  for (i = sizes.begin(); i != sizes.end(); ++i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // НЕПРАВИЛЬНО &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;int>::const_iterator i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; for (i = splitter->sizes().begin(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; i != splitter->sizes().end(); ++i) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p>Ця проблема не повинна виникати при використанні функцій, які повертають константний або неконстантний покажчик на контейнер.</p>
+        <p>Неявне спільне використання даних має і інший вплив на використання ітераторів в стилі STL: ви не повинні робити копії контейнера, якщо для нього активні неконстантние ітератори. Ітератори в стилі Java не страждають таким обмеженням.</p>
+    </div>
+</body>
+</html>

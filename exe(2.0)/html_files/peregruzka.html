@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Перегрузка операторів в С++</h1></center>
+        <br>
+        <p>Іноді хочеться проявити творчість і полегшити програмний код для себе і для інших. Для себе написання, для інших розуміння. Скажімо, якщо в нашій програмі часто зустрічається функція додавання одного рядка в кінець інший, звичайно, можна це реалізувати різними способами. А якщо ми, в якійсь ділянці нашого коду, напишемо, наприклад так:</p>
+        <p><ex class="ex">&nbsp;&nbsp; char str1[15] = "Hello "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char str2[] = "world!"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str1 + str2; &nbsp;&nbsp;</ex></p>
+        <p>I в результаті отримаємо рядок «Hello world!». Правда, було б чудово? Ну так будь ласка! Сьогодні ви навчитеся «пояснювати» комп'ютера, що оператором + ви хочете скласти не два числа, а два рядки. І робота з рядками - це один з найбільш вдалих, на мій погляд, прикладів, щоб почати розбиратися з темою «Перевантаження операторів».</p>
+        <p>Приступимо до практики. У цьому прикладі ми перевантажимо оператор + і змусимо його до одного рядка дописувати вміст якого іншого рядка. А саме: ми зберемо з чотирьох окремих рядків частина відомого всім нам вірша О.С.Пушкіна. Раджу відкрити вашу середовище розробки і переписати цей приклад. Якщо вам не все буде зрозуміло в коді, не хвилюйтеся, нижче будуть наведені докладні пояснення.</p>
+        <p><ex class="ex">&nbsp;&nbsp; 1. #include &lt;iostream>  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 2. #include &lt;string.h>  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 3. using namespace std;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 4. class StringsWork  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 5. {  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 6. private: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 7.  char str[256];//рядок, яка доступна класу&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 8. public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 9. StringsWork()//конструктор в якому очистимо рядок класу від сміття &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 10. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 11.  for(int i = 0; i &lt; 256; i++)  str[i] = '\0'; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 12. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 13. void operator +(char*);//прототип методу класу в якому ми перевантажимо оператор + &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 14. void getStr();//метод виведення даних на екран &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 15. }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 16. void StringsWork::operator +(char *s) //що повинен виконати оператор+ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 17. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 18. strcat(str, s); //складання рядків &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 19. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 20. void StringsWork::getStr() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 21. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 22. cout &lt;&lt; str &lt;&lt; endl &lt;&lt; endl;//висновок символьного масиву класу на екран &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 23. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 24. int main() &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 25. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 26. setlocale(LC_ALL, "ukr"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 27. char *str1 = new char [strlen("У Лукомор'я дуб зелений;\n")+1]; //виділимо пам'ять для рядків &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 28. char *str2 = new char [strlen("Все ходить по ланцюгу навколо;\n")+1];&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 29. char *str3 = new char [strlen("І вдень і вночі кіт учений\n")+1]; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 30. char *str4 = new char [strlen("І золотий ланцюг на дубі тому:\n")+1]; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 31. strcpy(str1,"У Лукомор'я дуб зелений;\n");//ініціалізуємо &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 32. strcpy(str2,"Все ходить по ланцюгу навколо;\n"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 33. strcpy(str3,"І вдень і вночі кіт учений\n"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 34. strcpy(str4,"І золотий ланцюг на дубі тому:\n"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 35. cout &lt;&lt; "1) " &lt;&lt; str1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 36. cout &lt;&lt; "2) " &lt;&lt; str2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 37. cout &lt;&lt; "3) " &lt;&lt; str3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 38. cout &lt;&lt; "4) " &lt;&lt; str4 &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 39. StringsWork story;//створюємо об'єкт і добавяем в нього рядки з допомогою переобтяженого + &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 40. story + str1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 41. story + str4; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 42. story + str3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 43. story + str2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 44. story.getStr(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 45. delete [] str4;//звільнимо пам'ять&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 46. delete [] str3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 47. delete [] str2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 48. delete [] str1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 49. return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 50. } &nbsp;&nbsp;</ex></p>
+        <p>Pозберемося:</p>
+        <p>Что-то новое в коде мы увидели в строке 13 void operator +(char*);  Тут мы объявили прототип метода класса в котором перегрузим наш оператор +.  Чтобы перегрузить оператор необходимо использовать зарезервированное слово operator. Выглядит это так, словно вы определяете обычную функцию: void operator+ () {//код} В теле этой функции мы размещаем код, который покажет компилятору, какие действия будет выполнять оператор + (или какой-либо другой оператор). Перегруженный оператор будет выполнять указанные  для него действия  только в пределах того класса, в котором он определен. Ниже, в строках 16 — 19 мы уже  определяем какую роль будет играть  + в нашем классе. А именно, с помощью функции   strcat(str, s);  он будет дописывать содержимое строки s , которую мы передали по указателю, в конец строки str.  Строки 14, 20 — 23 это обычный метод класса, с помощью которого строка класса будет показана на экран. Если вам не понятно, как  определять методы класса вне тела класса, т.е. такой момент как void StringsWork::getStr() {//определение}, то вам сначала желательно сходить сюда. Далее, уже  в главной функции main(), в строках 27 — 30,создаем четыре указателя на строки и выделяем необходимое количество памяти для каждой из них, не забывая о том, что для символа '\0' так же надо зарезервировать одну ячейку char *str1 = new char [strlen("текст")+1];. Затем копируем  в них текст с помощью функции strcpy()  и показываем их на экран —  строки 31 — 38. А в строке 39 создаем объект класса. При его создании сработает конструктор класса и строка класса будет очищена от лишних данных. Теперь нам остается только сложить строки в правильной последовательности, используя перегруженный оператор + — строки 40 — 43 и посмотреть, что получилось — строка 44.</p>
+        <h2>Обмеження перевантаження операторів</h2>
+        <p>перевантажити можна практично будь-який оператор, за винятком таких:</p>
+        <p>. крапка (вибір елемента класу);</p>
+        <p>* Зірочка (визначення або розіменування покажчика);</p>
+        <p>:: подвійна двокрапка (область видимості методу);</p>
+        <p>?: Знак питання з двокрапкою (тернарний оператор порівняння);</p>
+        <p># Дієз (символ препроцесора);</p>
+        <p>## подвійний дієз (символ препроцесора);</p>
+        <p>sizeof оператор знаходження розміру об'єкта в байтах;</p>
+        <p>за допомогою перевантаження неможливо створювати нові символи для операцій;</p>
+        <p>перевантаження операторів не змінює порядок виконання операцій і їх пріоритет;</p>
+        <p>унарний оператор не може використовуватися для перевизначення бінарної операції так само, як і бінарний оператор не перевизначити унарна операцію.</p>
+        <p>Не забувайте, що в програмуванні дуже бажано, робити все можливе, щоб ваш код був якомога більш зрозумілим. Цей принцип стосується всього: назв, які ви даєте змінним, функціям, структурам, класам, також і тих дій, які буде виконувати перевантажений оператор. Намагайтеся визначати ці дії, як можна ближче до логічного значення операторів. Наприклад + для додавання рядків або інших об'єктів класу, - для видалення рядка і т.д.</p>
+        <p>Не можна не відзначити, що багато програмістів негативно ставляться до перевантаження операторів. Сама можливість перевантаження операторів надана для полегшення розуміння і читання коду програм. У той же час, вона навпаки може стати і причиною ускладнення вашої програми і багатьом програмістам буде важко її зрозуміти. Пам'ятайте про «золоту середину» і використовуйте перевантаження тільки тоді, коли вона реально принесе користь вам та іншим. Цілком можна обійтися і без перевантаження операторів. Але це не означає, що можна проігнорувати цю тему. У ній слід розібратися хоча б тому, що вам колись доведеться зіткнутися з перевантаженням в чужому коді і ви зможете легко розібратися що до чого.</p>
+        <p>Ось ми дуже коротко ознайомилися з перевантаженням операторів в С ++. Побачили, так би мовити, вершину айсберга. А вашим домашнім завданням (ДА-ДА - домашнє завдання!) Буде доопрацювати програму, додавши в неї перевантаження оператора для видалення рядка. Який оператор перевантажувати виберіть самі. Або запропонуйте свій варіант апгрейда коду, додавши в нього те, що вважаєте за потрібне і цікавим. Ваші «праці» можете додавати в коментарі до цієї статті. Нам цікаво буде подивитися ваші варіанти вирішення. Успіхів!</p>
+    </div>
+</body>
+</html>

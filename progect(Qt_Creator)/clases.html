@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Класи в С++</h1></center>
+        <br>
+        <p>Класи і об'єкти в С є основними концепціями об'єктно-орієнтованого програмування – ООП. Об'єктно-орієнтоване програмування – розширення структурного програмування, в якому основними концепціями є поняття класів і об'єктів. Основна відмінність мови програмування С від С полягає в тому, що в С немає класів, а отже мова С не підтримує ООП, на відміну від С .</p>
+        <p>Щоб зрозуміти, для чого ж насправді потрібні класи, проведемо аналогію з яким-небудь об'єктом з повсякденного життя, наприклад, з велосипедом. Велосипед – це об'єкт, який був побудований згідно з кресленнями. Так ось, ці самі креслення грають роль класів в ООП. Таким чином класи – це деякі описи, схеми, креслення по яких створюються об'єкти. Тепер зрозуміло, що для створення об'єкта в ООП необхідно спочатку скласти креслення, тобто класи. Класи мають свої функції, які називаються методами класу. Пересування велосипеда здійснюється за рахунок обертання педалей, якщо розглядати велосипед з точки зору ООП, то механізм обертання педалей – це метод класу. Кожен велосипед має свій колір, вага, різні складові – все це властивості. Причому у кожного створеного об'єкта властивості можуть відрізнятися. Маючи один клас, можна створити необмежено кількість об'єктів (велосипедів), кожен з яких буде володіти однаковим набором методів, при цьому можна не замислюватися про внутрішню реалізації механізму обертання педалей, коліс, спрацьовування системи гальмування, так як все це вже буде визначено в класі. Розібравшись з призначенням класу, дамо йому грамотне визначення.</p>
+        <p>Класи в С – це абстракція, що описує методи, властивості, ще не існуючих об'єктів. Об'єкти – конкретне уявлення абстракції, що має свої властивості і методи. Створені об'єкти на основі одного класу називаються екземплярами цього класу. Ці об'єкти можуть мати різну поведінку, властивості, але все одно будуть об'єктами одного класу. В ООП існує три основних принципи побудови класів:</p>
+        <p>1. Інкапсуляція – це властивість, що дозволяє об'єднати в класі і дані, і методи, які працюють з ними і приховати деталі реалізації від користувача.</p>
+        <p>2. Спадкування – це властивість, що дозволяє створити новий клас-нащадок на основі вже існуючого, при цьому всі характеристики класу батька присвоюються класу-нащадка.</p>
+        <p>3. Поліморфізм – властивість класів, що дозволяє використовувати об'єкти класів з однаковим інтерфейсом без інформації про тип і внутрішню структуру об'єкта.</p>
+        <p>Кожна властивість побудови класів ми розглянемо докладно в міру необхідності, а поки просто запам'ятайте ці три. А тепер повернемося до класів, для початку розглянемо структуру оголошення класів.</p>
+        <p><ex class="ex">&nbsp;&nbsp;// объявление классов в С++  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; class /*имя класса*/ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  private: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; /* список свойств и методов для использования внутри класса */ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; public: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  /* список методов доступных другим функциям и объектам программы */ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; protected: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; /*список средств, доступных при наследовании*/ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p>Оголошення класу починається з зарезервованого ключового слова клас, після якого пишеться ім'я класу. У фігурних дужках, рядки 3 – 10 оголошується тіло класу, причому після закривається скобочки обов'язково потрібно ставити крапку з комою, рядок 10. У тілі класу оголошуються три мітки специфікації доступу, рядки 4, 6, 8, після кожної мітки потрібно обов'язково ставити двокрапку. В рядку 4 оголошена мітка специфікатора доступу private. Всі методи і властивості класу, оголошені після специфікатор доступу private будуть доступні тільки усередині класу. В рядку 6 оголошений специфікатор доступу public, всі методи і властивості класу, оголошені після специфікатора доступу public будуть доступні іншим функціям та об'єктам в програмі. Поки на цьому зупинимося, специфікатор доступу protected розбирати зараз не будемо, просто запам'ятайте, що він є. При оголошенні класу, не обов'язково оголошувати три специфікатора доступу, і не обов'язково їх оголошувати в такому порядку. Але краще відразу визначитися з порядком оголошення специфікаторів доступу, і намагатися його дотримуватися. Розробимо програму, в якій оголосимо найпростіший клас, в якому буде оголошена одна функція, друкуюча повідомлення.</p>
+        <p><ex class="ex">&nbsp;&nbsp;1. #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;2. #include <iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;3. using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;4. // начало объявления класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;5. class CppStudio // имя класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;6. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;7. public: // спецификатор доступа &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;8.  void message() // функция (метод класса) выводящая сообщение на экран &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;9. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;10. cout << "website: cppstudio.com\ntheme: Classes and Objects in C + +\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;11. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;12. }; // конец объявления класса CppStudio &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;13. int main(int argc, char* argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;14. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;15. CppStudio objMessage; // объявление объекта &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;16. objMessage.message(); // вызов функции класса message &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;17. system("pause"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;18. return 0;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;19. } &nbsp;&nbsp;</ex></p>
+        <p>В рядках 5 – 15 ми визначили клас з ім'ям CppStudio. Ім'я класу прийнято починати з великої літери, наступні слова в імені також повинні починатися з великої літери. Таке поєднання букв називають верблюжим регістром, так як чергування великих і маленьких букв нагадує силует верблюда. У тілі класу оголошений специфікатор доступу public, який дозволяє викликати інших функцій методи класу, оголошені після public. Ось саме тому у головній функції, в рядку 16 ми змогли викликати функцію message(). В класі CppStudio оголошена всього одна функція, яка не має параметрів і виводить повідомлення на екран, рядок 10. Методи класу – це ті ж функції, тільки оголошені вони всередині класу, тому все що відноситься до функцій актуально і для методів класів. Оголошення класів виконується аналогічно оголошенню функцій, тобто клас можна оголошувати в окремому файлі або в головному файлі, пізніше подивимося як це робиться. В рядку 15 оголошена змінна objMessage типу CppStudio, так ось, змінна objMessage – це об'єкт класу CppStudio. Таким чином, клас є складним типом даних. Після того як об'єкт класу оголошений, можна скористатися його методами. Метод всього один – функція message(). Для цього звертаємося до методу об'єкта objMessage через точку, як показано в рядку 16</p>
+        <h2>набір – функції і get – функції класів</h2>
+        <p>Кожен об'єкт має якісь свої властивості або атрибути, які характеризують його протягом усього життя. Атрибути об'єкта зберігаються в змінних, оголошених всередині класу, якому належить даний об'єкт. Причому, оголошення змінних повинно виконуватися зі специфікатором доступу private. Такі змінні називаються елементами даних. Так як елементи даних оголошені в private, то і доступ до них можуть отримати тільки методи класу, зовнішній доступ до елементів даних заборонений. Тому прийнято оголошувати в класах спеціальні методи – так звані set і get функції, за допомогою яких можна маніпулювати елементами даних. Набір-функції инициализируют елементи даних, отримати-функції дозволяють переглянути значення елементів даних. Доопрацюємо клас CppStudio так, щоб у ньому можна було зберігати дату в форматі дд.мм.гг. Для зміни і перегляду дати реалізуємо відповідно set і get функції.</p>
+        <p><ex class="ex">&nbsp;&nbsp;1. #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;2. #include <iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;3. using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;4. class CppStudio // имя класса &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;5. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;6. private: // спецификатор доступа private &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;7. int day,month,year;&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;8. public: // спецификатор доступа public &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;9. void message() // функция (метод класса) выводящая сообщение на экран &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;10. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;11. cout << "\nwebsite: cppstudio.comntheme: Classes and Objects in C + +\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;12. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;13. void setDate(int date_day, int date_month, int date_year) // установка даты в формате дд.мм.гг &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;14. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;15. day   = date_day; // инициализация день &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;16. month = date_month; // инициализация месяц &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;17. year  = date_year; // инициализация год &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;18. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;19. void getDate() // отобразить текущую дату &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;20. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;21. cout << "Date: " << day << "." << month << "." << year << endl; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;22. } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;23. }; // конец объявления класса CppStudio &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;24. int main(int argc, char* argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;25. { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;26. setlocale(LC_ALL, "rus"); // установка локали &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;27. int day, month, year; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;28. cout << "Введите текущий день месяц и год!\n"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;29. cout << "день: ";     cin >> day; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;30. cout << "месяц: ";    cin >> month; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;31. cout << "год: ";  cin >> year; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;32. CppStudio objCppstudio; // объявление объекта &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;33. objCppstudio.message(); // вызов функции класса message &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;34. objCppstudio.setDate(day, month, year); // инициализация даты &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;35. objCppstudio.getDate(); // отобразить дату &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;36. system("pause"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;37. return 0;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;38. } &nbsp;&nbsp;</ex></p>
+        <p>У визначенні класу з'явився новий специфікатор доступу private, рядок 6. Даний специфікатор доступу обмежує доступ до змінних, які оголошені після нього і до початку специфікатора доступу public, рядки 6 – 7. Таким чином до змінних day, month, year, можуть отримати доступ тільки методи класу. Функції не належать класу, не можуть звертатися до цих змінним. Елементи даних або методи класу, оголошені після специфікатора доступу private, але до початку наступного специфікатора доступу називаються закритими елементами даних і закритими методами класу. Дотримуючись принципу найменших привілеїв і принципом хорошого програмування, доцільно оголошувати елементи даних після специфікатора доступу private, а методи класу – після специфікатора доступу public. Тоді, для маніпулювання елементами даних, оголошуються спеціальні функції – get і set. В клас CppStudio ми додали два методи setDate() і getDate(), детально розглянемо кожен метод. Метод setDate() визначений з 13 по 18 рядки. Як вже раніше згадувалося, набір – функції инициализируют елементи даних, тому метод setDate() виконує саме таку функцію. Тобто метод setDate() инициализирует змінні day, month, year. Щоб переглянути, значення в закритих елементах даних оголошена функція getDate(), яка повертає значення з змінних day, month, year у вигляді дати.На цьому визначення класу закінчено, в основний(), як і завжди, створюємо об'єкт класу, і через об'єкт викликаємо його методи,рядки 33 – 35. Якби елементи даних були оголошені після специфікатора public ми б змогли до них звернутися точно також, як і до методів класу. </p>
+    </div>
+    <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+</body>
+</html>

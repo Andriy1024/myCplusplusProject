@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Контейнери в Qt</h1></center>
+        <br>
+        <p>Qt надає свої реалізації рядків, контейнерів і алгоритмів в якості спрощеної кроссплатформенной альтернативи для STL.</p>
+        <p>Як і в STL, контейнери Qt використовують шаблони C ++ і дозволяють зберігати елементи потрібного типу. Наприклад, QLinkedList &lt;T> - шаблон зв'язного списку; якщо потрібно зв'язний список цілих чисел, то використовується QLinkedList &lt;int>.</p>
+        <p>Для контейнерів застосовується неявне поділ пам'яті. Передача контейнерів у вигляді аргументів і їх повернення не пов'язані з витратами, так як копія буде створюватися лише при необхідності зміни одного з об'єктів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;T> list1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;T> list2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list1 &lt;&lt; a &lt;&lt; b &lt;&lt; c; // елементи a, b, c заносяться в list1 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list2 = list1; // вміст списків збігається &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list2[0] = d; // тепер list1 копіюється; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  // list2 змінений, але не list1 &nbsp;&nbsp;</ex></p>
+        <p>По можливості, краще передавати const-посилання, так як в цьому випадку змін гарантовано не буде.</p>
+        <p>У всіх контейнерів є деякі загальні методи:</p>
+        <p><ex class="ex">&nbsp;&nbsp; int size () const; // число елементів &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void clear (); // видалити всі елементи &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; bool isEmpty () const; // true, якщо size () == 0 &nbsp;&nbsp;</ex></p>
+        <p>Також всюди перевантажені оператори порівняння == і! =. Мається на увазі, що для типу елементів буде перевантажений оператор ==. Контейнери з послідовним зберіганням елементів порівнюються з урахуванням порядку, інші контейнери порядок не враховують.</p>
+        <h2>Контейнери з послідовним зберіганням елементів</h2>
+        <p>Для початку розглянемо контейнери QList &lt;T>, QVector &lt;T> і QLinkedList &lt;T>.</p>
+        <p>Для додавання елементів до такого контейнера або для об'єднання контейнерів можна використовувати оператори +, + =, &lt;&lt;:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;int> xs, ys, zs, us; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (Працює аналогічно для QVector і QLinkedList.) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; xs &lt;&lt; 1 &lt;&lt; 2 &lt;&lt; 3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // xs = (1,2,3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ys += 1; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ys += 2; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ys += 3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // ys = (1,2,3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; zs = xs + ys; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // zs = (1,2,3,1,2,3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; us &lt;&lt; xs &lt;&lt; ys &lt;&lt; zs; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // us = (1,2,3,1,2,3,1,2,3,1,2,3) &nbsp;&nbsp;</ex></p>
+        <p>У цих контейнерах виділяються перший і останній елементи. Посилання на них можна отримати за допомогою first () і last ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; T& first(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T& first() const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T& last(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T& last() const; &nbsp;&nbsp;</ex></p>
+        <p>(Для сумісності з STL підтримуються також імена методів front () і back ().)</p>
+        <p>Перш ніж викликати ці методи, переконайтеся, що контейнер не порожній.</p>
+        <p>Також можна звірити значення першого або останнього елемента:</p>
+        <p><ex class="ex">&nbsp;&nbsp; bool startsWith (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; bool endsWith (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p>Пошук елементів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; bool contains (const T & val) const; // міститься val в контейнері? &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int count (const T & val) const; // кількість входжень &nbsp;&nbsp;</ex></p>
+        <p>Додавання і видалення:</p>
+        <p><ex class="ex">&nbsp;&nbsp; void prepend (const T & val); // додати val в початок &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void push_front (const T & val); // теж саме &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void append (const T & val); // додати val в кінець &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void push_back (const T & val); // теж саме
+  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void pop_front (); // видалити перший елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void pop_back (); // видалити останній елемент &nbsp;&nbsp;</ex></p>
+        <p>Для вставки і видалення використовуються ітератори. Поки ми тільки перелічимо відповідні методи, але якщо ви не знаєте, що таке ітератори і як вони працюють, то докладні пояснення містяться в останньому розділі.</p>
+        <p><ex class="ex">&nbsp;&nbsp; iterator insert (iterator before, const T & val);
+ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // вставити перед позицією before, &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // повернути итератор, який вказує на вставлене значення &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; iterator erase (iterator pos); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // видалити елемент в позиції pos, &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // повернути итератор, який вказує на наступний елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; iterator erase (iterator begin, iterator end); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // видалити елементи в інтервалі [begin, end) (виключаючи end), &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // повернути итератор, який вказує на end &nbsp;&nbsp;</ex></p>
+        <p>Далі будуть розглянуті відмінності між QList &lt;T>, QVector &lt;T> і QLinkedList &lt;T>.</p>
+        <h2>Контейнери з доступом за індексом</h2>
+        <p>QList &lt;T> і QVector &lt;T> використовують доступ за індексом за постійний час O (1). Як і в масивах C ++, елементи нумеруються з 0.</p>
+        <p>Доступ за індексом:</p>
+        <p><ex class="ex">&nbsp;&nbsp; const T& at (int i) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T& operator[] (int i); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T& operator[] (int i) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T value (int i) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T value (int i, const T& defaultValue) const; &nbsp;&nbsp;</ex></p>
+        <p>Заміна значення за індексом:</p>
+        <p><ex class="ex">&nbsp;&nbsp; void replace (int i, const T& val) &nbsp;&nbsp;</ex></p>
+        <p>При зверненні до елементів за індексом перевіряйте, що індекс лежить в інтервалі [0, size ()).</p>
+        <p>Пошук індексу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; int indexOf (const T & val, int from = 0) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // індекс першого входження val, починаючи з from; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // -1, якщо елемент не знайдений &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int lastIndexOf (const T & val, int from = -1) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // індекс останнього входження val, починаючи з from &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (пошук в зворотному порядку, при from = -1 - з кінця); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // -1, якщо елемент не знайдений &nbsp;&nbsp;</ex></p>
+        <p>Вставка в даній позиції:</p>
+        <p><ex class="ex">&nbsp;&nbsp; void insert (int i, const T& val); &nbsp;&nbsp;</ex></p>
+        <p>Якщо потрібно копіювати n елементів з середини, починаючи з позиції pos, то використовується mid (pos, n). При n = -1 елементи копіюються до кінця:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;T> mid (int pos, int length = -1) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector&lt;T> mid (int pos, int length = -1) const; &nbsp;&nbsp;</ex></p>
+        <h2>QList</h2>
+        <p>QList &lt;T> - найбільш часто використовуваний контейнер.</p>
+        <p>Додавання візуального ефекту в середину списку здійснюється за O (n). Для вставки за постійний час в Qt є зв'язний список QLinkedList.</p>
+        <p>Амортизоване час вставки елементів в початок і в кінець - O (1).</p>
+        <p>Особливі методи QList &lt;T>:</p>
+        <p><ex class="ex">&nbsp;&nbsp; T QLinkedList :: takeFirst (); // повернути перший елемент і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QLinkedList :: takeLast (); // повернути останній елемент і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QList :: removeFirst (); // видалити перший елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QList :: removeLast (); // видалити останній елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QList :: removeAt (int i); // видалити i-й елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QList :: takeAt (int i); // повернути i-й елемент і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; bool QList :: removeOne (const T & val); // видалити перше входження &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int QList :: removeAll (const T & val); // видалити всі входження &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void move (int from, int to); // відповідає insert (to, takeAt (from)) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void swap (int i, int j); // обміняти i-е і j-е значення &nbsp;&nbsp;</ex></p>
+        <p>Приклад роботи зі списком:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;int> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list &lt;&lt; 0 &lt;&lt; 1 &lt;&lt; 2 &lt;&lt; 3; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (0, 1, 2, 3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.swap (1,2); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (0, 2, 1, 3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.move (0,2); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (2, 1, 0, 3) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.removeAt (1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.removeAt (1); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (2, 3) &nbsp;&nbsp;</ex></p>
+        <h2>QVector</h2>
+        <p>QVector &lt;T> - це звичайний динамічний масив. Його має сенс використовувати, якщо елементи повинні зберігатися в одній ділянці пам'яті.</p>
+        <p>При використанні вектора можна отримати покажчик на дані і звертатися з ними як зі звичайним масивом:</p>
+        <p><ex class="ex">&nbsp;&nbsp; T* QVector::data(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T* QVector::data() const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T* QVector::constData() const; &nbsp;&nbsp;</ex></p>
+        <p>Звичайно, покажчики діють тільки до тих пір, поки вміст не буде переміщено в пам'яті.</p>
+        <p>При створенні вектора можна вказати розмір і инициализирующее значення:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector::QVector (int size = 0, const T& val = T()); &nbsp;&nbsp;</ex></p>
+        <p>Якщо потім буде потрібно знову ініціювати вектор, то використовується fill ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector &lt;T> & QVector :: fill (const T & val); // форматувати &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector &lt;T> & QVector :: fill (const T & val, int n); // змінити розмір,форматувати &nbsp;&nbsp;</ex></p>
+        <p>Крім числа елементів size (), у вектора є ємність - загальний зарезервований обсяг.</p>
+        <p><ex class="ex">&nbsp;&nbsp; int QVector::capacity() const; &nbsp;&nbsp;</ex></p>
+        <p>Число елементів змінюється за допомогою resize ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector::resize (int size); &nbsp;&nbsp;</ex></p>
+        <p>Ємність змінюється за допомогою reserve ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector::reserve (int n); &nbsp;&nbsp;</ex></p>
+        <p>Ємність можна встановлювати, якщо заздалегідь відомо максимальне число елементів. Якщо ємності не вистачить для збільшення розміру на деякому етапі, то це лише торкнеться швидкодію.</p>
+        <p>Невикористовувана пам'ять звільняється за допомогою squeeze ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector::squeeze(); &nbsp;&nbsp;</ex></p>
+        <p>Як і reserve (), цей метод може знадобитися в рідкісних випадках при оптимізації коду.</p>
+        <p>Видалення і вставка в векторі:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector &lt;T> :: iterator QVector :: insert (iterator before, int count, const T & val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // вставити кілька копій val перед before &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector :: insert (int i, int count, const T & val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // вставити кілька копій val в позиції i &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector :: remove (int i); // видалити i-й елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QVector :: remove (int i, int n); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // видалити n елементів, починаючи з i-го &nbsp;&nbsp;</ex></p>
+        <p>Приклад роботи з вектором:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QVector&lt;int> vec(5,23); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // 23, 23, 23, 23, 23 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; for (int i = 0; i < vec.size(); i++) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; vec[i] = i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // 0, 1, 2, 3, 4 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; vec.resize(10); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // 0, 1, 2, 3, 4, 0, 0, 0, 0, 0 &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; vec.data (); // покажчик на перший елемент &nbsp;&nbsp;</ex></p>
+        <h2>QLinkedList</h2>
+        <p>QLinkedList &lt;T> - зв'язний список. Він відрізняється від QList &lt;T> тим, що при роботі для доступу до елементів потрібно використовувати ітератори. При цьому вставка елементів в середину відбувається за постійний час O (1) і не призводить до псування ітератора, що вказує на деякий інший елемент. Доступ за індексом здійснюється за O (n).</p>
+        <p>Специфічні методи QList &lt;T>:</p>
+        <p><ex class="ex">&nbsp;&nbsp; T QLinkedList :: takeFirst (); // повернути перший елемент і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QLinkedList :: takeLast (); // повернути останній елемент і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QLinkedList :: removeFirst (); // видалити перший елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QLinkedList :: removeLast (); // видалити останній елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; bool QLinkedList :: removeOne (const T & val); // видалити всі входження &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int QLinkedList :: removeAll (const T & val); // видалити перше входження &nbsp;&nbsp;</ex></p>
+        <p>Приклад роботи із зв'язковим списком:</p> 
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list &lt;&lt; "A" &lt;&lt; "B" &lt;&lt; "C"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (A, B, C) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list += list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (A, B, C, A, B, C) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.removeFirst(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.removeLast(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //  (B, C, A, B) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.prepend("A"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.append("A"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (A, B, C, A, B, A) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.removeAll("B"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (A, C, A, A) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; list.append(list.takeFirst()); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (C, A, A, A) &nbsp;&nbsp;</ex></p>   
+        <h2>Стек і черга</h2>
+        <h2>QStack</h2>
+        <p>Стек (LIFO) QStack &lt;T> реалізований через успадкування від QVector &lt;T> з додаванням наступних методів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; T & QStack :: top (); // верхній елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T & QStack :: top () const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QStack :: pop (); // зняти верхній елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QStack :: push (const T & x); // покласти елемент зверху &nbsp;&nbsp;</ex></p>
+        <p>Перш ніж брати елемент, переконайтеся, що стек не порожній (! Stack.isEmpty ()).</p>
+        <p>Приклад роботи зі стеком:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QStack&lt;QString> stack; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.push("D"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.push("N"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.push("A"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (D, N, A) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.pop();  // A &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (D, N) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.pop();  // N &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (D) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.push("M"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; stack.push("T"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (D, M, T) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (!stack.isEmpty())  // зняти всі елементи з стека &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; stack.pop(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>QQueue</h2>
+        <p>Черга (FIFO) QQueue &lt;T> реалізована через успадкування від QList &lt;T> з додаванням наступних методів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; T & QQueue :: head (); // головний елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T & QQueue :: head () const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QQueue :: dequeue (); // взяти головний елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; void QQueue :: enqueue (const T & x); // додати елемент в хвіст &nbsp;&nbsp;</ex></p>
+        <p>Перш ніж брати елемент, переконайтеся, що черга не порожня (! Queue.isEmpty ()).</p>
+        <p>Приклад роботи з чергою:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QQueue&lt;QString> queue; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue("s"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue("l"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue("a"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue("c") &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue("k"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (s, l, a, c, k) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString e = queue.dequeue(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (l, a, c, k) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; queue.enqueue(e); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // (l, a, c, k, s) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (! queue.isEmpty ()) // забрати всі елементи з черги &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; queue.dequeue(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Контейнери з доступом по ключу</h2>
+        <h2>QHash</h2>
+        <p>QHash &lt;K, T> - хеш-таблиця, яка відображає ключі типу K в значення типу T.</p>
+        <p>Амортизоване час пошуку і вставки - O (1).</p>
+        <p>Якщо потрібно структура, в якій елементи зберігаються відсортованими по ключу, використовуйте QMap &lt;K, T>.</p>
+        <p>Додавання елементів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QHash::insert (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QHash::insertMulti (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p>insert (key, val) прив'язує значення val за ключем key. Якщо такий ключ вже є, то значення заміщається. Якщо потрібно зберігати кілька значень для одного ключа, використовуйте insertMulti (key, val). Крім того, у QHash &lt;K, T> є спеціальний дочірній клас QMultiHash &lt;K, T>.</p>
+        <p>Якщо потрібно повністю вставити вміст іншої хеш-таблиці, використовуйте unite ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>& QHash::unite (const QHash&lt;K,T>& other); &nbsp;&nbsp;</ex></p>
+        <p>Якщо поточна хеш-таблиця вже містить певний ключ, то в результуючій таблиці він буде дублюватися.</p>
+        <p>Доступ до значень по ключу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; const T QHash::value (const K& key) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T& QHash::operator[] (const K& key); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const T QHash::operator[] (const K& key) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; T QHash :: take (const K & key); // отримати значення і видалити &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList &lt;T> QHash :: values () const; // всі значення &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList &lt;T> QHash::values (const K& key) const; &nbsp;&nbsp;</ex></p>
+        <p>Можна також отримати ключі за значеннями, але хеш-таблиці не оптимізована для роботи в цьому напрямку, тому час пошуку буде лінійним.</p>
+        <p><ex class="ex">&nbsp;&nbsp; const K QHash::key (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; const K QHash::key (const T& val, const K& defaultKey) const;  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList &lt;K> QHash :: keys () const; // всі ключі &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList &lt;K> QHash::keys (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList &lt;K> QHash :: uniqueKeys () const; // без повторень &nbsp;&nbsp;</ex></p>
+        <p>Якщо ключ не знайдений, то повертається значення за замовчуванням K (). Також можна використовувати метод</p>
+        <p><ex class="ex">&nbsp;&nbsp; const T QHash::value (const K& key, const T& defaultValue) const; &nbsp;&nbsp;</ex></p>
+        <p> - він повертає defaultValue, якщо ключа немає.</p>
+        <p>Пошук елементів:</p>
+        <p><ex class="ex">&nbsp;&nbsp; bool QHash :: contains (const K & key) const; // чи є ключ key? &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int QHash :: count (const K & key) const; // число входжень &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash &lt;K, T> :: iterator QHash :: find (const K & key); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash &lt;K, T> :: const_iterator QHash :: find (const K & key) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash &lt;K, T> :: const_iterator QHash :: constFind (const K & key) const; &nbsp;&nbsp;</ex></p>
+        <p>Якщо ключу відповідає кілька значень, то повертається итератор, який вказує на останній доданий елемент; якщо цей итератор інкрементіровать, то можна отримати інші значення. Якщо елемент не знайдений, то повертається итератор end ().</p>
+        <p>Видалення по Ітератор і по ключу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash &lt;K, T> :: iterator QHash :: erase (QHash &lt;K, T> :: iterator pos); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // повертається итератор вказує на наступний елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int QHash :: remove (const K & key); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // повертає число віддалених елементів &nbsp;&nbsp;</ex></p>
+        <p>Приклад роботи з хеш-таблицею:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash<QString,QString> hash; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; 
+hash.insert("02-16", "Cremation Wednesday"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.insert("02-23", "The Feast of St Monty Python"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.insert("02-29", "Quaternary Prolapse begins"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.insert("04-01", "The Feast of Saint Eris"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.insertMulti("04-01", "Bob's Birthday"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.remove("02-29"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //видалить запис &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //   02-29 => Quaternary Prolapse begins &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.value("04-01", "slack");  // "Bob's Birthday" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.value("01-01", "slack");  // "slack" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; hash.key("The Feast of St Monty Python");  // "02-23" &nbsp;&nbsp;</ex></p>
+        <h2>QMultiHash</h2>
+        <p>QMultiHash &lt;K, T> успадковує QHash &lt;K, T> і орієнтований на структури, в яких одному ключу може відповідати кілька значень. метод</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QMultiHash::insert (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p>завжди додає новий елемент, навіть якщо ключ повторюється. Щоб замінити наявне значення при повторенні ключів, потрібно викликати</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator replace (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p>Також додаються методи для пошуку і видалення елементів, які беруть, крім ключа, відповідне значення:</p>
+        <p><ex class="ex">&nbsp;&nbsp; bool contains (const K& key, const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int count (const K& key, const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QMultiHash::find (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::const_iterator QMultiHash::find (const K& key, const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::const_iterator QMultiHash::constFind (const K& key, const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int QMultiHash::remove (const K& key, const T& val); &nbsp;&nbsp;</ex></p>
+        <p>Для злиття хеш-таблиць перевантажені оператори + і + =:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMultiHash QMultiHash::operator+ (const QMultiHash& other) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMultiHash& QMultiHash::operator+= (const QMultiHash& other); &nbsp;&nbsp;</ex></p>
+        <h2>QMap</h2>
+        <p>QMap &lt;K, T> - асоціативний масив, що відображає ключі типу K в значення типу T.</p>
+        <p>Елементи упорядковано відповідно до ключу (для чого потрібно перевантаження operator <()), і прохід по QMap завжди дає вміст в відсортованому порядку.</p>
+        <p>Пошук і вставка здійснюються за логарифмічна час O (log n).</p>
+        <p>Якщо елементи не потрібно сортувати по ключам, то використовуйте QHash &lt;K, T>.</p>
+        <p>Інтерфейс QMap &lt;K, T> практично збігається з QHash &lt;K, T>. Є додаткові функції для пошуку елементів по ключам:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QHash::lowerBound (const K& key); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::const_iterator QHash::lowerBound (const K& key) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::iterator QHash::upperBound (const K& key); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QHash&lt;K,T>::const_iterator QHash::upperBound (const K& key) const; &nbsp;&nbsp;</ex></p>
+        <p>lowerBound (key) повертає ітератор, який вказує на перший елемент з ключем key. Якщо такого ключа немає, то повертається итератор, який вказує на найближчий елемент з великим ключем.</p>
+        <p>upperBound (key) повертає ітератор, який вказує на останній елемент з ключем key. Якщо такого ключа немає, то повертається итератор, який вказує на найближчий елемент з великим ключем.</p>
+        <p>Таким чином, всі елементи з даними ключем лежать в інтервалі [lowerBound, upperBound].</p>
+        <p>приклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMultiMap&lt;QString,QString> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("02-16", "Cremation Wednesday"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("02-23", "The Feast of St Monty Python"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("02-29", "Quaternary Prolapse begins"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("04-01", "The Feast of Saint Eris"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.insert("04-01", "Bob's Birthday"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.lowerBound ("02-16"); // вказує на ("02-16", "Cremation Wednesday") &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.lowerBound ("02-17"); // вказує на ("02-23", "The Feast of St Monty Python") &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; map.lowerBound ("05-23"); // вказує на end () &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;QString,QString>::const_iterator lb = map.lowerBound("04-01"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;QString,QString>::const_iterator ub = map.upperBound("04-01"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (lb != ub) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; lb.value(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; lb++; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // Виводить &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // "Bob's Birthday" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // "The Feast of Saint Eris" &nbsp;&nbsp;</ex></p>
+        <h2>QMultiMap</h2>
+        <p>QMultiMap &lt;K, T> успадковує QMap &lt;K, T> і орієнтований на структури, в яких одному ключу може відповідати кілька значень.</p>
+        <p>Інтерфейс QMultiMap &lt;K, T> практично повністю відповідає QMultiHash &lt;K, T>.</p>
+        <h2>Множини</h2>
+        <p>QSet &lt;T> - неврегульована множина, заснована на хеш-таблиці. Множина дозволяє швидко отримувати і додавати значення:</p>
+        <p><ex class="ex">&nbsp;&nbsp; bool QSet::contains (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // міститься елемент val в множині? &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>::iterator QSet::find (const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // знайти val; якщо елемент не знайдений, повернути end () &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>::const_iterator QSet::find (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>::const_iterator QSet::constFind (const T& val) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>::iterator QSet::erase (iterator pos); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // видалити значення в даній позиції &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator&lt;&lt; (const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>::const_iterator QSet::insert (const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // додасть елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; bool QSet::remove (const T& val);   // видалить елемент &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QList&lt;T> QSet::values() const;  // список елементів &nbsp;&nbsp;</ex></p>
+        <p>Особливий інтерес представляють операції об'єднання, перетину і різниці:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::unite (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::intersect (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::subtract (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p>Для тих же цілей перевантажені оператори:</p>
+        <p><ex class="ex">&nbsp;&nbsp; // Об'єднання:
+ &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T> QSet::operator+ (const QSet&lt;T>& other) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator+= (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator+= (const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // Перетин: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T> QSet::operator& (const QSet&lt;T>& other) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator&= (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator&= (const T& val); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; // Різниця: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T> QSet::operator- (const QSet&lt;T>& other) const; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator-= (const QSet&lt;T>& other); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet&lt;T>& QSet::operator-= (const T& val); &nbsp;&nbsp;</ex></p>
+        <p>Приклад роботи з множинами:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QSet<QString> x, y, z, u, v, w; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; x &lt;&lt; "a" &lt;&lt; "b" &lt;&lt; "c" &lt;&lt; "d" &lt;&lt; "e";  // {a,b,c,d,e} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; y &lt;&lt; "b" &lt;&lt; "d"; // {b,d} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; z &lt;&lt; "b" &lt;&lt; "c"; // {b,c} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; u = y+z;    // {b,d} + {b,c} = {b,c,d} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; v = y&z;    // {b,d} & {b,c} = {b} &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; w = x - u;  // {a,b,c,d,e} - {b,c,d} = {a,e} &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

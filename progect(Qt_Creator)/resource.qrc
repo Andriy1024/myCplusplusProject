@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/new">
+        <file>fone.png</file>
+        <file>ico.ico</file>
+        <file>keyboard.jpg</file>
+        <file>Vodafone.ttf</file>
+        <file>Ubuntu.ttf</file>
+        <file>arrow_close2.png</file>
+        <file>arrow_open2.png</file>
+        <file>add.png</file>
+        <file>delete1.png</file>
+        <file>select.png</file>
+        <file>lock.png</file>
+        <file>password-back.jpg</file>
+        <file>quit.png</file>
+        <file>collapse.png</file>
+        <file>deploy.png</file>
+        <file>help.png</file>
+        <file>sign_out.png</file>
+        <file>sign_in.png</file>
+        <file>Author1.png</file>
+        <file>Author2.png</file>
+    </qresource>
+</RCC>

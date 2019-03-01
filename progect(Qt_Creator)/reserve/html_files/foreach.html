@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Конструкція foreach</h1></center>
+        <br>
+        <p>Якщо ви хочете перебрати всі елементи контейнера по порядку, то можете використовувати конструкцію Qt foreach. Дана конструкція - це доповнення Qt до мови C ++, реалізоване за допомогою засобів препроцесора.</p>
+        <p><ex class="ex">&nbsp;&nbsp;  cout &lt;&lt; "Помилка №" &lt;&lt; i &lt;&lt; " - на 0 ділити неможна!!!!" &lt;&lt; endl; &nbsp;&nbsp;</ex></p>
+        <p>Її синтаксис :: foreach (змінна, контейнер) оператор. У наступному прикладі показано використання конструкції foreach для перебору всіх елементів контейнера QLinkedList QString>:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString str; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (str, list) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; str; &nbsp;&nbsp;</ex></p>
+        <p>Код з конструкцією foreach значно коротше, ніж аналогічний код, який використовує ітератори:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedListIterator&lt;QString> i(list); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (i.hasNext()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; i.next(); &nbsp;&nbsp;</ex></p>
+        <p>За винятком типу даних, що містить кому (наприклад, QPair &lt;int, int>), змінна, яка використовується для перебору елементів контейнера може бути визначена всередині виразу foreach:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (QString str, list) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; qDebug() &lt; str; &nbsp;&nbsp;</ex></p>
+        <p>І подібно до будь-якого циклу C ++, ви можете укласти тіло циклу foreach в фігурні дужки і використовувати break для переривання циклу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QLinkedList&lt;QString> list; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (QString str, list) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (str.isEmpty()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; break; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt; str; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>При використанні з QMap і QHash, foreach надає доступ до парам значень (key, value). Якщо ви хочете перебрати і ключі і значення, то можете використовувати ітератори (які швидше) або написати код, подібний наступного:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMap&lt;QString, int> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (QString str, map.keys()) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; qDebug() &lt;&lt; str &lt;&lt; ":" &lt;&lt; map.value(str); &nbsp;&nbsp;</ex></p>
+        <p>Для багатозв'язних карт:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QMultiMap&lt;QString, int> map; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (QString str, map.uniqueKeys()) { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; foreach (int i, map.values(str)) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() &lt;&lt; str &lt;&lt; ":" &lt;&lt; i; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>При вході в цикл foreach, Qt автоматично робить копію контейнера. Якщо ви зміните контейнер під час виконання циклу, то в циклі цього не буде помітно. (Якщо ви не змінювали контейнер, копіювання все ще має місце, але, завдяки неявному спільному використанню даних, копіювання контейнера здійснюється дуже швидко.)</p>
+        <p>На додаток до foreach, Qt також надає псевдоключевое слово forever, для нескінченного циклу:</p>
+        <p><ex class="ex">&nbsp;&nbsp; forever { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; ... &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Якщо вас турбує засмічення простору імен, то ви можете відключити використання цих макросів, додавши в .pro-файл такий рядок:</p>
+        <p><ex class="ex">&nbsp;&nbsp; CONFIG += no_keywords &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

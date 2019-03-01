@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+   <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+     <div class="page"> 
+        <center><h1>Динамічні структури даних</h1></center>
+        <br>
+        <center><h1>Однобічно зв'язаний список</h1></center>
+        <p>Однозв'язний список — вид зв'язаного списку, який складається з вузлів, кожен з яких містить у собі данні (інформаційну частину) та посилання на наступний вузол.</p>
+        <p>Найчастіше вузлом списку вважають структурний тип (структуру), який зберігає у собі певну інформаційну частину (іншу структуру або тип даних) та посилання (вказівник) на наступний вузол у списку. Список має «голову» head, тобто вказівник на початок списку та інколи має кінець tail, проте найчастіше його не використовують.</p>
+        <h2>Переваги списків над масивами:</h2>
+        <p>1. Можливість додавати вузол у кінець списку. Масив має статичний розмір, і, якщо, вільного місця там немає, доведеться створювати масив більшого розміру, копіювати у нього елементи «старого» масиву і тільки після цього додавати новий елемент</p>
+        <p>2. Можливість видаляти вузол і звільнювати пам'ять, яку він займав. У масиві можна лише зсунути елементи і розглядати його, як масив меншого розміру. Пам'ять при цьому не звільняється.</p>
+        <p>3. Можливість вставляти вузол у середину списку. При умові, що масив не заповнений до кінця, можна «розсунути» елементи і вставити між ними необхідний. Якщо ж масив повний — доведеться створювати новий масив більшого розміру, копіювати елементи і вставляти новий.</p>
+        <h2>Недоліки списків перед масивами:</h2>
+        <p>1. Відсутність поіндексного доступу до елементів списку</p>
+        <p>2. Зайвий час на прохід по списку для пошуку/видалення/додавання елементу у кінець</p>
+        <p>3. Використання більшого об'єму пам'яті за рахунок покажчиків на наступний вузол</p>
+        <h2>Операції зі списками: </h2>
+        <h2>Додати вузол у кінець списку</h2>
+        <p>Для того, щоб додати вузол А у кінець списку, треба знайти останній вузол В у цьому списку, заповнити інформаційну частину вузла А і вказівнику вузла А присвоїти NULL, і «приєднати» його до останнього вузла у списку, тобто до вузла В.</p>
+        <h2>Додати вузол у початок списку</h2>
+        <p>Для того, щоб додати вузол А у початок списку, потрібно заповнити інформаційну частину вузла А, вказівник А направити на голову head списку і зробити цей вузол головою.</p>
+        <h2>Видалити заданний вузол зі списку</h2>
+        <p>Для того, щоб видалити необхідний вузол, потрібно послідовно перебирати вузли, запам'ятовуючи попередній вузол В. Коли необхідний вузол А буде знайдено, потрібно вказівник «попередника» (тобто вузла В) зв'язати з наступним вузлом (тим, що йде після вузла А) і видалити вузол А.</p>
+        <h2>Реалізація списку у С++</h2>
+        <p><ex class="ex">&nbsp;&nbsp; struct Node &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int value; // певна інформативна частина &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * next; // вказівник (pointer) на наступну структуру-вузол у списку &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * head = NULL; // вказівник на голову списку, спочатку він нікуди не вказує, бо список порожній &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції додавання у кінець списку</h2>
+        <p><ex class="ex">&nbsp;&nbsp; void addToEnd(int v) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * n; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (!head) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; head = new Node; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; head->value = v; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; head->next = NULL; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; else &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; n = head; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (n->next) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; n = n->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * newNode = new Node; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; newNode->value = v; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; newNode->next = NULL; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; n->next = newNode; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції додавання у початок списку</h2>
+        <p><ex class="ex">&nbsp;&nbsp; void addToBegin(int v) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * n = new Node; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; n->value = v; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; n->next = head; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; head = n; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції видалення певного вузла</h2>
+        <p><ex class="ex">&nbsp;&nbsp; void deleteNode(Node * n) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * k = head; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; if (head == n) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; head = n->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; delete n; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; return; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (k->next != n) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; k = k->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; k->next = n->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; delete n; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції пошуку вузла за інформаційною частиною</h2>
+        <p><ex class="ex">&nbsp;&nbsp; Node * find(const int v) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Node * n = head; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; while (n) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; if (n->value == v) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return n;&nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;&nbsp;&nbsp; n = n->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return NULL; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <br>
+        <center><h1>Стек</h1></center>
+        <p>Стек (англ. stack — «стос, стіс») в інформатиці та програмуванні — різновид лінійного списку, структура даних, яка працює за принципом (дисципліною) «останнім прийшов — першим пішов» (LIFO, англ. last in, first out). Всі операції (наприклад, видалення елементу) в стеку можна проводити тільки з одним елементом, який знаходиться на верхівці стеку та був введений в стек останнім.</p>
+        <p>Стек можна розглядати як певну аналогію до стопки тарілок, з якої можна взяти верхню, і на яку можна покласти верхню тарілку (інша назва стеку — «магазин», за аналогією з принципом роботи магазину в автоматичній зброї).</p>
+        <h2>Операції зі стеком</h2>
+        <p>push - («заштовхнути елемент»): елемент додається в стек та розміщується в його верхівці. Розмір стеку збільшується на одиницю. При перевищенні розміру стека граничної величини, відбувається переповнення стека (англ. stack overflow).</p>
+        <p>pop - («виштовхнути елемент»): отримує елемент з верхівки стеку. При цьому він видаляється зі стеку і його місце в верхівці стеку займає наступний за ним відповідно до правила LIFO, а розмір стеку зменшується на одиницю. При намаганні «виштовхнути» елемент з вже пустого стеку, відбувається ситуація «незаповнення» стеку (англ. stack underflow).</p>
+        <p>Кожна з цих операцій зі стеком виконується за фіксований час O(1) і не залежить від розміру стеку.</p>
+        <p>Додаткові операції (присутні не у всіх реалізаціях стеку):</p>
+        <p>isEmpty: перевірка наявності елементів в стеку; результат: істина (true), коли стек порожній.</p>
+        <p>isFull: перевірка заповненості стека. Результат: істина, коли додавання нового елементу неможливе.</p>
+        <p>clear: звільнити стек (видалити усі елементи).</p>
+        <p>top: отримати верхній елемент (без виштовхування).</p>
+        <p>size: отримати розмір (кількість елементів) стека.</p>
+        <h2>Організація в пам'яті комп'ютера</h2>
+        <p>Стек може бути організований як масив або множина комірок в певній області комп'ютера з додатковим зберіганням ще й вказівника на верхівку стека. Заштовхування першого елемента в стек збільшує адресу вказівника, виштовхування елементу зменшує її. Таким чином, адреса вказівника завжди відповідає комірці масиву, в якій зараз знаходиться верхівка стеку.</p>
+        <p>Багато процесорів ЕОМ мають спеціалізовані регістри, які використовуються як вказівники на верхівку стеку, або використовують деякі з регістрів загального вжитку для цієї спеціальної функції в певних режимах адресації пам'яті.</p>
+        <h2>Реалізація стеку у С++</h2>
+        <p><ex class="ex">&nbsp;&nbsp; struct Stek &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int key; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Stek *next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; }; &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції push</h2>
+        <p><ex class="ex">&nbsp;&nbsp; void push(Stek **next, int d) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Stek *pv = new Stek; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pv->key = d; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pv->next = *next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; *next = pv; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <h2>Реалізація функції pop</h2>
+        <p><ex class="ex">&nbsp;&nbsp; int pop(Stek **next) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int temp = (*next)->key; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; Stek *pv = (*next); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; (*next) = (*next)->next; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; delete pv; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return temp; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+    </div>
+</body>
+</html>

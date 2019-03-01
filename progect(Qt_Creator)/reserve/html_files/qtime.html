@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Клас часу QTime</h1></center>
+        <br>
+        <p>Контроль над часом - дуже важливе завдання, за допомогою якої можна обчислювати затримки в роботі програми, відображати на екрані поточний час, перевіряти час створення файлів і т. Д.</p>
+        <p>Для роботи з часом бібліотека Qt надає клас QTime. Як і у випадку з об'єктами дати, з об'єктами часу можна проводити операції порівняння ==,! =, <, <=,> Або> =. Об'єкти часу здатні зберігати час з точністю до мілісекунд. У конструктор класу QTime передаються чотири параметри. Перший параметр задає годинник, другий - хвилини, третій - секунди, а четвертий - мілісекунди. Третій і четвертий параметри можна опустити, за замовчуванням вони дорівнюють нулю. наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QTime time(20, 4); &nbsp;&nbsp;</ex></p>
+        <p>Ці значення можна встановлювати і після створення об'єкта часу за допомогою методу setHMS (). наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QTime time; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; time.setHMS (20, 4, 23, 3); &nbsp;&nbsp;</ex></p>
+        <p>Для отримання значень годин, хвилин, секунд і мілісекунд, встановлених в об'єкті часу, в класі QTime визначені наступні методи:</p>
+        <p>hour () - повертає позитивні значення години в діапазоні від 0 до 23;</p>
+        <p>minute () - повертає ціле значення, що позначає хвилини, в діапазоні від 0 до 59;</p>
+        <p>second () - повертає ціле значення, що позначає секунди, в діапазоні від 0 до 59;</p>
+        <p>msec () - повертає ціле значення в діапазоні від 0 до 999, що представляє собою мілісекунди.</p>
+        <p>Клас QTime надає метод toString () для передачі даних об'єкта часу у вигляді рядка. У цей метод, як параметр, можна передати одне з форматів часу або задати свій власний. наприклад:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QTime time(20, 4, 23, 3); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QString str; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = time.toString("hh:mm:ss.zzz"); //str = "20:04:23.003" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; str = time.toString("h:m:s ap"); //str = "8:4:23 pm" &nbsp;&nbsp;</ex></p>
+        <p>За допомогою статичного методу fromString () можна зробити перетворення з строкового типу в тип QTime. Для цього, в першому параметрі методу потрібно передати одне зі значень форматів.</p>
+        <p>Отримати змінений об'єкт часу можна, додавши або віднявши значення секунд (або мілісекунд) від існуючого об'єкта. Ці значення передаються в методи addSecs () і addMSecs (). Для отримання поточного часу в класі QTime міститься статичний метод currentTime ().</p>
+        <p>За допомогою методу start () можна почати відлік часу, а для того щоб дізнатися скільки часу пройшло з моменту початку відліку, слід викликати метод elapsed (). Наприклад, на базі цих методів можна зробити невеликий профайлер.</p>
+        <p>Наступний приклад обчислює час роботи функції test ():</p>
+        <p><ex class="ex">&nbsp;&nbsp; QTime time; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; time.start () ; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; test(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; qDebug() << "Час роботи функції test() = "  << time.elapsed() << "мілісекунд" << endl; &nbsp;&nbsp;</ex></p>
+        <p>Недолік класу QTime полягає в обмеженні 24-годинним інтервалом, після закінчення якого відлік буде проводитися з нуля. Для вирішення цієї проблеми можна скористатися класом QDateTime.</p>
+        <p>Об'єкти класу QDateTime містять в собі дату і час. Викликом методу date () можна отримати об'єкт дати QDate, а виклик time () повертає об'єкт часу QTime. Цей клас також містить методи toString () для представлення даних у вигляді рядка.</p>
+    </div>
+</body>
+</html>

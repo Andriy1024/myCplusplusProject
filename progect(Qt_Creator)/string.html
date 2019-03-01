@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+   <p><ex class="ex">&nbsp;&nbsp;  &nbsp;&nbsp;</ex></p>
+     <div class="page"> 
+        <center><h1>Символи і рядки в С++</h1></center>
+        <br>
+        <p>Символ - елементарна одиниця, деякий набір, певного змісту. В мові програмування С++ передбачено використання символьних констант. Символьна константа - це ціле значення (типу int) представлене у вигляді символу, поміщеного в одинарні лапки, наприклад 'a'. У таблиці ASCII представлені символи і їх цілочисельні значення.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // оголошення змінної &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char symbol = 'a'; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //  де symbol – імя перемінної типу  char &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //  char – тип данних для зберігання символов &nbsp;&nbsp;</ex></p>
+        <p>Рядки в С++ представляються як масиви елементів типу char, завершуються нуль-термінатором \0 називаються C рядками або рядками в стилі С.</p>
+        <p>\0 – символ нуль-термінатора.</p>
+        <p>Символьні рядки складаються з набору символьних констант поміщених в подвійні лапки. При оголошенні рядкового масиву необхідно враховувати наявність в кінці рядка нуль-термінатора, і відводити додатковий байт під нього.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // приклад оголошення стрічки &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char string[10]; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //  де string – імя стрічкової змінної  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //      10 – розмір массива, тобто в даній стрічці може поміститися 9 символів , останнє місце виділяється під нуль-термінатор. &nbsp;&nbsp;</ex></p>
+        <p>Рядок при оголошенні може бути ініційований початковим значенням, наприклад, так:</p>
+        <p><ex class="ex">&nbsp;&nbsp; char string[10] = "abcdefghf"; &nbsp;&nbsp;</ex></p>
+        <p>Якщо підрахувати кількість символів у подвійних лапках після символу дорівнює, їх виявиться 9, а розмір рядка 10 символів, останнє місце відводиться під нуль-термінатор, та компілятор самостійно додасть його в кінець рядка.</p>
+        <p><ex class="ex">&nbsp;&nbsp; // посимвольна ініціалізація стрічки: &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char string[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'f', '\0'}; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex"> &nbsp;&nbsp;// десятий символ це нуль-термінатор. &nbsp;&nbsp;</ex></p>
+        <p>При оголошенні рядка не обов'язково вказувати його розмір, але при цьому обов'язково потрібно його форматувати початковим значенням. Тоді розмір рядка визначиться автоматично і в кінець рядка буде додано нуль-термінатор.</p>
+        <p><ex class="ex">&nbsp;&nbsp; //ініціалізація рядки без вказання розміру &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char string[] = "abcdefghf"; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; //все те ж саме тільки розмір не вказуємо. &nbsp;&nbsp;</ex></p>
+        <p>Рядок може містити символи, цифри та спеціальні знаки. В С++ рядки розміщують в подвійних лапках. Ім'я рядка є константним покажчиком на перший символ. Розробимо програму, з використанням рядків.</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "stdafx.h" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include <iostream> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; using namespace std; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char* argv[]) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char string[] = "this is string - "; // оголошення і ініціалізація рядка &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << "Enter the string: "; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; char in_string[500]; // строковий масив для введення &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  gets(in_string); // функція gets() зчитує всі введені символи з пробілами до тих пір, поки ви не натиснете Enter &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; cout << string << in_string << endl; // вивід стрічки &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; system("pause"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return 0; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>У рядку 12 за допомогою функції gets() зчитуються всі введені символи з пробілами доти, поки у вводимому потоці не трапиться код клавіші enter. Якщо використовувати операцію cin то з усього введеного зчитується послідовність символів до першого пробілу</p>
+        <h2>Функції для роботи з рядками і символами</h2>
+        <p>StrLen(ім'я_рядка)   визначає довжину вказаного рядка, без урахування нуль-символу</p>
+        <p>strcpy(S1, S2)   виконує побайтне копіювання символів з рядка s2 в рядок s1</p>
+        <p>strncpy(S1, S2, N)   виконує побайтное копіювання n символів з рядка s2 в рядок s1. повертає значення s1</p>
+        <p>strcat(S1, S2)   об'єднує рядок s2 з рядком s1. Результат зберігається в s1</p>
+        <p>strncat(S1, S2, N)   об'єднує n символів рядка s2 з рядком s1. Результат зберігається в s1</p>
+        <p>strcmp(S1, S2)   порівнює рядок s1 з рядком s2 і повертає результат типу int: 0 - якщо рядки еквівалентні, >0 - якщо s1<s2, <0 – якщо s1>s2 З урахуванням регістру</p>
+        <p>atof(S1) перетворить рядок s1 в тип double</p>
+        <p>atoi(S1) перетворить рядок s1 в тип int</p>
+        <p>atol(S1) перетворить рядок s1 в тип long int</p> 
+        <p>gets(s)  зчитує потік символів зі стандартного пристрою введення в рядок s доти, поки не буде натиснута клавіша ENTER</p>   
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Mодулі Qt</h1></center>
+        <br>
+        <p>Qt 4 складаєтьсaя з декількох модулів, кожен з яких знаходиться в окремій бібліотеці.</p>
+        <p>Модулі для розробки загального програмного забезпечення:</p>
+        <p> QtCore - Ядро НЕ-графічних класів, використовуваних іншими модулями</p>
+        <p> QtGui - Компоненти графічного призначеного для користувача інтерфейсу (GUI)</p>
+        <p> QtNetwork - Класи для програмування мережевих додатків</p>
+        <p> QtOpenGL - Класи, що підтримують OpenGL</p>
+        <p> QtScript - Класи для роботи з Qt Scripts</p>
+        <p> QtScriptTools - Додаткові компоненти Qt Script</p>
+        <p> QtSql - Класи для роботи з базами даних, що використовують SQL</p>
+        <p> QtSvg - Класи для відображення вмісту SVG-файлів</p>
+        <p> QtWebKit - Класи для відображення і редагування вмісту веб-сторінок</p>
+        <p> QtXml - Класи для обробки XML</p>
+        <p> QtXmlPatterns - Механізм XQuery & XPath для XML і призначених для користувача моделей даних</p>
+        <p> Phonon - Класи мультимедійного каркасу</p>
+        <p> Qt3Support - Класи сумісності з Qt 3</p>
+        <p>Модулі для роботи з інструментами Qt:</p>
+        <p> QtDesigner - Класи для розширення Qt Designer</p>
+        <p> QtUiTools - Класи для обробки форм Qt Designer в додатку </p>
+        <p> QtHelp - Класи для онлайнових підказок</p>
+        <p> QtAssistant - Підтримка онлайнових підказок</p>
+        <p> QtTest - Класи інструментів для тестування модулів</p>
+        <p>Наступні модулі розширення доступні в Qt Commercial Editions для Windows:</p>
+        <p> QAxContainer - Розширення, що дозволяє працювати з елементами управління ActiveX</p>
+        <p> QAxServer - Розширення для створення ActiveX-серверів</p>
+        <p>Наступний модуль розширення доступний у всіх Qt Editions на Unix платформах:</p>
+        <p> QtDBus - Підтримка взаємодії між процесами через інтерфейс D-Bus</p>
+        <p>Якщо для створення ваших проектів ви використовуєте qmake, то модулі QtCore і QtGui включаються в проект за замовчуванням. Для складання проекту тільки з QtCore, додайте в ваш .pro-файл такий рядок:</p>
+        <p><ex class="ex">&nbsp;&nbsp; QT -= gui &nbsp;&nbsp;</ex></p>
+        <p>У Windows, якщо ви не використовуєте qmake, Visual Studio Integration, доступний за комерційним ліцензіями, або інші інструменти для збірки, такі як CMake, вам необхідно також прілінкованние бібліотеку qtmain.</p>
+    </div>
+</body>
+</html>

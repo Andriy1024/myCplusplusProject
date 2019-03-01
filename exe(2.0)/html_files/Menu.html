@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+    	 padding: 0px 10px;
+       }
+
+	</style>
+</head>
+<body>
+     <div class="page"> 
+        <center><h1>Створення меню в Qt</h1></center>
+        <br>
+        <p>Меню є важливою і невід'ємною частиною практично будь-якої програми. Воно знаходиться у верхній частині головного вікна програми і являє собою секцію для розташування великої кількості команд, з яких користувач може вибирати потрібну. У додатках використовуються меню чотирьох основних типів:</p>
+        <p> - меню верхнього рівня;</p>
+        <p> - спливаюче меню;</p>
+        <p> - відривний меню, яке можна відокремлювати</p>
+        <p> - від основного;</p>
+        <p> - контекстне меню.</p>
+        <p>У бібліотеці Qt меню реалізується класом QMenu. Цей клас визначено в заголовки QMenu. Основне призначення класу - це розміщення команд в меню. Кожна команда представляє об'єкт дії (клас QAction). Всі дії і саме меню можуть бути з'єднані зі слотами для виконання відповідного коду при виборі команди користувачем.</p>
+        <p>Наприклад, якщо користувач виділив команду меню, то і меню, і об'єкти дій висилають сигнал hovered (), і якщо вам потрібно зробити в цей момент будь-які дії, то їх потрібно з'єднати з відповідним слотом.</p>
+        <h2>Анатомія меню. Класи QMenu і QMenuBar</h2>
+        <p>Користувачеві буде легше звикнути до роботи з новою програмою, якщо її меню буде схоже на меню інших програм. На малюнку показані складові типового меню.</p>
+        <br><center><img src="html_files/images/menu.png"></center><br>
+        <p>Основний відправною точкою меню є меню верхнього рівня. Воно являє собою меню з постійно видимим набором команд, які, в свою чергу, можуть бути обрані за допомогою покажчика миші або клавіш клавіатури (&lt;Alt> і клавіші курсора). Команди меню верхнього рівня призначені для відображення меню, що випадають, тому їх не слід використовувати для інших цілей, так як це може неабияк спантеличити користувача. Намагайтеся логічно групувати команди і об'єднувати їх в одному випадаючому меню, яке, в свою чергу, буде викликатися при виборі відповідної команди верхнього меню. Клас QMenuBar відповідає за меню верхнього рівня і визначено в заголовки QMenuBar.</p>
+        <p>"Гарячі" клавіші інформують користувача про комбінації клавіш, за допомогою якої виконується той же дію, що і при виборі відповідної команди меню. Наприклад, для відображення вікна About Q&lt; (Про Qt), в прикладі, показаному на малюнку, використовується комбінація клавіш &lt;Ctrl> + &lt;Q>. Намагайтеся використовувати стандартні комбінації для "гарячих" клавіш.</p>
+        <p>По можливості, для всіх пунктів меню повинні бути визначені клавіші швидкого виклику. Це дозволить користувачеві вибирати команди не тільки за допомогою миші, але і за допомогою клавіатури, натиснувши підкреслену букву (в назві команди) спільно з клавішею &lt;Alt>. Наприклад, для вибору команди Exit (Вихід) потрібно натиснути &lt;Alt> + &lt;E>. Основні відмінності подібного роду комбінацій для швидкого виклику від "гарячих" клавіш полягають у наступному:</p>
+        <p> - такі комбінації складаються з буквеної клавіші і клавіші &lt;Alt>;</p>
+        <p> - вони зустрічаються не тільки в меню, але і в діалогових вікнах;</p>
+        <p> - вони представляють собою контекстне виконання команд. Наприклад, щоб викликати діалогове вікно About Qt (Про Qt) потрібно відкрити меню Menu (Меню) комбінацією &lt;Alt> + &lt;M>, а потім натиснути &lt;Alt> + &lt;A>.</p>
+        <p>Стрілка у команди SubMenu (Підменю) говорить про те, що при виборі цієї команди з'явиться вкладене підменю, в нашому випадку - Test (Тест). Вкладене підменю зручно для того, щоб розвантажити меню, якщо воно містить велику кількість команд. Для зручності і розуміння програми рекомендується, щоб ступінь вкладення не перевищувала двох рівнів.</p>
+        <p>Роздільник - це риса, яка відокремлює одну групу команд від іншої.</p>
+        <p>Команда з прапорцем використовується для надання користувачеві інформації про режим роботи програми та сигналізує про активованої команді меню.</p>
+        <p>Піктограма команди відображає команду меню в графічному вигляді. Це дуже хороший прийом для додаткової ілюстрації дій самої команди.</p>
+        <p>Іноді зустрічаються команди, які не можна виконати в певний момент часу. У таких випадках застосування повинне робити такі команди недоступними, тобто робити їх вибір неможливим. Недоступні команди меню відображаються іншим, як правило - сірим, кольором.</p>
+        <p>Також, пам'ятайте, що в тих випадках, коли команда меню викликає діалогове вікно, її назва повинна містити три точки. Це правило, правда, не поширюється на виклик простих вікон повідомлень.</p>
+        <p>У наступному коді Qt реалізується меню, показане на малюнку вище:</p>
+        <p><ex class="ex">&nbsp;&nbsp; #include &lt;QtGui> &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; #include "img4.xpm" &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; int main(int argc, char** argv) &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; { &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QApplication app(argc, argv); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMenuBar mnuBar; &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp;  QMenu*   pmnu   = new QMenu("&Menu"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addAction("&About Qt",&app,SLOT(aboutQt()),Qt::CTRL + Qt::Key_Q); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addSeparator(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QAction* pCheckableAction = pmnu->addAction("&CheckableItem"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pCheckableAction->setCheckable(true); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pCheckableAction->setChecked(true); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addAction(QPixmap(img4_xpm), "&IconItem"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QMenu* pmnuSubMenu = new QMenu("&SubMenu", pmnu); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addMenu(pmnuSubMenu); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnuSubMenu->addAction("&Test"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; QAction* pDisabledAction = pmnu->addAction("&DisabledItem"); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pDisabledAction->setEnabled(false); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addSeparator(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; pmnu->addAction("&Exit", &app, SLOT(quit())); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; mnuBar.addMenu(pmnu); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; mnuBar.show(); &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; return app.exec();  &nbsp;&nbsp;</ex></p>
+        <p><ex class="ex">&nbsp;&nbsp; } &nbsp;&nbsp;</ex></p>
+        <p>Щоб створити повноцінне меню, потрібно до кожної команди меню верхнього рівня приєднати відповідне спливаюче меню. За спливаючі меню відповідає клас QMenu. Отже, для створення меню необхідно мати віджет класу QMenuBar - покажчик pmnuBar і, щонайменше, один віджет класу QMenu - покажчик pmnu.</p>
+        <p>Для додавання спливаючого меню до меню верхнього рівня потрібно передати в метод addAction () назва команди. Кожен метод addAction () повертає покажчик на об'єкт дії QAction. Користуючись цим покажчиком можна отримати доступ до команди меню (pCheckableAction). Таким чином, виклик з об'єкта дії методу setCheckable () про надає можливість установки прапорця. Подальший виклик методу setChecked () встановлює стан прапорця. У нашому прикладі в цей метод передається значення true, а це значить, що він буде перебувати під "включеному" стані.</p>
+        <p>Метод addAction () приймає чотири параметри. Перший задає назву команди меню, в якому можна вказати букву для швидкого виклику, поставивши перед нею символ &. Не упускайте з виду того, що команди меню не повинні містити однакових букв, які використовуються для швидкого виклику, адже, в іншому випадку, одна з команд буде недоступна. Другим параметром передається покажчик на об'єкт, що містить слот, який викликається при виборі цієї команди. Сам слот передається третім параметром. Останній параметр задає комбінацію для "гарячої" клавіші. У нашому прикладі, для відображення діалогового вікна AboutQt (Про Qt) використовується комбінація &lt;Ctrl> + &lt;Q>. Натискання цієї комбінації призведе до того ж дії, що і вибір відповідної команди меню, а саме - буде викликаний слот об'єкта додатка aboutQt ().</p>
+        <p>Виклик методу addSeparator () додає роздільник в меню.</p>
+        <p>Покажчиком на об'єкт дії (pDisableAction) можна скористатися також і для того, щоб зробити деякі з команд меню недоступними - за допомогою методу setEnabled ().</p>
+        <p>В метод addAction() первым параметром можно передавать объекты растровых изображений для установки пиктограммы действия команды.</p>
+    </div>
+</body>
+</html>

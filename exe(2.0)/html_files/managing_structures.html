@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+	html , body{
+     	height: 100%;
+     	margin: 0;
+     	padding: 0;
+     }
+       .page{
+    	width: 600px;
+    	margin: 0px auto;
+    	text-indent: 30px;
+        text-align: justify;
+        line-height: 20px;
+        font-size: 20px;
+        color: white;
+    	
+    }
+      h1{
+    	font-size: 22px;
+	    font-weight: bold;
+    }
+    h2{
+    	font-size: 21px;
+	    font-weight: bold;
+
+    }
+  
+    b{
+    	font-weight: bold;
+
+    }
+    ul{
+    	list-style-type: disc;
+    	list-style-position: inside;
+    	margin:  10px 0px;
+    	line-height: 20px;
+        font-size: 20px;
+
+    }
+    .ex{
+    	 border-radius: 5px;
+    	 background-color:  rgba(28,22,22,0.9);
+       }
+
+	</style>
+</head>
+<body>
+<div class="page">
+	  <center><h1>Керуючі структури</h1></center>
+      <br>
+      <p>До операторів вибору відносять оператор умовного переходу <b>if</b> та оператор-перемикач <b>switch</b>. Оператор умовного переходу <b>if</b> використовується для розгалуження процесу обчислень на два напрямки і має такий формат запису:</p>
+      <p><ex class="ex">&nbsp;&nbsp;if (вираз) оператор 1;&nbsp;&nbsp;</ex></p>
+      <p><ex class="ex">&nbsp;&nbsp;else&nbsp;&nbsp;</ex></p>
+      <p><ex class="ex">&nbsp;&nbsp;оператор 2;&nbsp;&nbsp;</ex></p>
+      <p>де <b>вираз</b> — це вираз, який має логічне значення (<b>true</b> — «істина» або <b>false</b> — «неправда»).
+       Реалізується оператор if таким чином: спочатку обчислюється вираз і, якщо значення виразу не дорівнює нулю («істина»), виконується <b>оператор 1</b>, в        протилежному випадку — <b>оператор 2</b> і далі управління передається оператору, що є наступним з умовних операторів if, наприклад:</p>
+       <p><ex class="ex"> &nbsp;&nbsp;if (i > j) {i++;}&nbsp;&nbsp; </ex></p>
+       <p><ex class="ex">&nbsp;&nbsp; else&nbsp;&nbsp;</ex></p>
+       <p><ex class="ex"> &nbsp;&nbsp;{ j = i-3; i++; }&nbsp;&nbsp;</ex></p>
+       <p>У записі оператора if друга частина (тобто else) може бути відсутня і тоді, якщо вираз приймає значення «неправда», виконується зразу наступний оператор програми, що розташований за умовним. Таку конструкцію називають “пропуск оператора”.
+Коли у будь-якій гілці розгалуження необхідно виконати декiлька операторів, їх слід розташовувати у блоці, інакше компiлятор не зможе зрозуміти, де закінчується розгалуження. блок може включати різні оператори, у тому числі описи та інщi умовні оператори, але не може складатися з одних описів. Слiд ураховувати, що змінна, яка описана у такому блоці, за межами блока не існує. Синтаксис C++ припускає, що у випадку застосування вкладених умовних операторів кожне else відповідає найближчому до нього попередньому if.<br> Наприклад:</p> 
+<p><ex class="ex">&nbsp;&nbsp;if (с > d && (с > r || с = = 0)) d++; &nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;else&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;{d /= с; с = 0 } &nbsp;&nbsp;</ex></p>
+<p>декілька умов слід об’єднати знаками логічних операцій, а сукупність операцій необхідно розмістити у блоці; обчислення найбільшого значення серед трьох змінних а, b, с:</p>
+<p><ex class="ex">&nbsp;&nbsp;if (а > b)&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;{ if (а > с) max = а;&nbsp;&nbsp; </ex></p>
+<p><ex class="ex">&nbsp;&nbsp;else max = с; }&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;else { if (b > c) max = b; &nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;else max = c; }&nbsp;&nbsp; </ex></p>
+<p> у цьому фрагменті програми фігурні дужки можуть бути відсутні, тому що компілятор відносить частину else до найближчого if; if(p++) ps++; — вираз не використовує операцій відношення.</p>
+<p><b>Оператор-перемикач</b> switch називають оператором множинного розгалуження. Він використовується для вибору одного а багатьох варіантів рішення і має таку форму запису:</p>
+<p><ex class="ex">&nbsp;&nbsp; switch (L)&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case к.в.1: оператор 1; [break;]&nbsp;&nbsp;</ex>
+  <p><ex class="ex">&nbsp;&nbsp;case к.в.2: оператор 2; [break;]&nbsp;&nbsp;</ex>
+  <p><ex class="ex">&nbsp;&nbsp;..................................................&nbsp;&nbsp;</ex>
+  <p><ex class="ex">&nbsp;&nbsp;case к.в.n: оператор n; [break;]&nbsp;&nbsp;</ex>
+  <p><ex class="ex">&nbsp;&nbsp;[default: оператор n+1;]&nbsp;&nbsp;</ex>
+<p><ex class="ex">&nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+<p>де <b>switch, case, default</b> — службові слова;</p>
+<p>break — оператор (необов’язковий) здійснює вихід з оператopa switch;
+L — будь-який вираз одного з цілих типів; к.в.1, …, к.в.n — константні вирази, які неможуть повтoрюватися і не можуть містити змінних чи викликів функцій; зазвичай, це ціла або символьна константа; оператор 1; …  – будь-які оператори мови C++.
+У процесі виконання цього оператора спочатку обчислюється значення виразу L, потім це значення порівнюється (послідовно зверху донизу) зі значеннями константних виразів к.в.1, …, к.в.n. У випадку збігу значень L і одного з цих константних виразів та якщо наприкінці гілки розгалуження немає оператора break, виконуються всі оператори,починаючи з відповідної гілки. За наявності оператора break виконується тільки оператор,що знаходиться у відповідній гілці розгалуження, і керування передається оператору, який розташований за межами oпeратора switch. Якщо значення виразу L не збігається з жодним із значень константних виразів, то виконується гілка default і здійснюється вихід з оператора switch. У випадку, коли в операторі switch відсутня гілка default (вона необов’язкова) і значення L не збігається з жодним із значень константних виразів,відбувається вихід з оператора switch.
+Наведемо фрагмент програми з використанням оператора switch:</p>
+<p><ex class="ex">&nbsp;&nbsp; int а=2;&nbsp;&nbsp;</ex></p>
+ <p><ex class="ex">&nbsp;&nbsp;switch (а)&nbsp;&nbsp;</ex></p>
+ <p><ex class="ex">&nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 1: func1( );&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 2: func2( );&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 0: …&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 4: func3( );&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;default: printf ("good bye \n");&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+<p>Тут оператор switch передбачає реалізацію функцій func2(), func3() і default: printf (“good bye \n”);.</p>
+<p>Фрагмент програми можна записати по-іншому:</p>
+<p><ex class="ex"> &nbsp;&nbsp;int а=2;&nbsp;&nbsp;</ex></p>
+ <p><ex class="ex">&nbsp;&nbsp;switch (а)&nbsp;&nbsp;</ex></p>
+ <p><ex class="ex">&nbsp;&nbsp;{&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 1: funcl( ); break;&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 2: func2( ); break;&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 0: ...&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;case 4: func4( ); break;&nbsp;&nbsp;</ex></p>
+  <p><ex class="ex">&nbsp;&nbsp;default: printf ("good bye \n");&nbsp;&nbsp;</ex></p>
+<p><ex class="ex">&nbsp;&nbsp;}&nbsp;&nbsp;</ex></p>
+<p>Оператор-перемикач приводить до виконання тільки гілки case 2: func2( ); break; після чого здійснюється вихід із switch.</p>
+</div>
+</body>
+</html>
